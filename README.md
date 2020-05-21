@@ -20,8 +20,8 @@
 
 ### Association
  - has_many :items dependent: :destroy
- - belongs_to :address dependent: :destroy
- - belongs_to :card dependent: :destroy
+ - has_one :address dependent: :destroy
+ - has_one :card dependent: :destroy
 
 
 ## addressテーブル
@@ -67,7 +67,6 @@
 ##  itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|image|references|null: false, foreign_key: true| 
 |name|string|null: false|
 |price|integer|null:false|
 |introduction|text|null: false|
@@ -82,9 +81,9 @@
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association 
- - belongs_to :user dependent: :destroy
- - belongs_to :category dependent: :destroy
- - belongs_to :brand dependent: :destroy
+ - belongs_to :user 
+ - belongs_to :category
+ - belongs_to :brand
  - has_many :images dependent: :destroy
  - belongs_to_active_hash :prefecture
 
