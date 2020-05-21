@@ -12,10 +12,10 @@
 |introduction|text| 
 |last_name|string|null: false|
 |first_name|string|null: false|
-|last_name_kana|string|null: false|
-|first_name_kana|string|null: false|
+|lastname_kana|string|null: false|
+|firstname_kana|string|null: false|
 |birth_year|integer|null: false|
-|birth_manth|integer|null: false|
+|birth_month|integer|null: false|
 |birth_day|integer|null: false|
 
 ### Association
@@ -29,15 +29,15 @@
 |------|----|-------|
 |last_name|string|null: false| 
 |first_name|string|null: false|
-|last_name_kana|string|null: false|
-|first_name_kana|string|null: false|
+|lastname_kana|string|null: false|
+|firstname_kana|string|null: false|
 |post_code|string|null: false|
 |prefecture|string|null: false|
 |city|string|null: false|
 |address|string|null: false|
 |building_name|string|
 |tel_number|string|
-|user|reference|null: false, foreign_key:true|
+|user|references|null: false, foreign_key:true|
 
 ### Association
  - belongs_to :user
@@ -58,8 +58,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|ancestry|string|		
-#gem-ancestry使用
+|ancestry|string|
 
 ### Association
  - has_many :items
@@ -69,7 +68,7 @@
 ##  itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|image|referemce|null: false, foreign_key: true| 
+|image|references|null: false, foreign_key: true| 
 |name|string|null: false|
 |price|integer|null:false|
 |introduction|text|null: false|
@@ -78,8 +77,8 @@
 |shipping_cost|string|null: false|
 |shipping_days|string|null: false|
 |prefecture_id|string|null: false|
-|category|reference|null: false, foreign_key: true|	
-|brand|reference|null: false, foreign_key: true|
+|category|references|null: false, foreign_key: true|	
+|brand|references|null: false, foreign_key: true|
 |buyer|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 
@@ -87,24 +86,24 @@
  - belongs_to :user dependent: :destroy
  - belongs_to :category dependent: :destroy
  - belongs_to :brand dependent: :destroy
- - has_many :images dependent: :destroy 
- - belongs_to_active_hash :prefecture 
+ - has_many :images dependent: :destroy
+ - belongs_to_active_hash :prefecture
 
 
 ## imageテーブル
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
-|items|reference|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 
 ### Association
- - belongs_to :items
+ - belongs_to :item
 
 
 ## brandテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|index: ture|
+|name|string|index: true|
 
 ### Association
  - has_many :items
