@@ -62,7 +62,6 @@
 
 ### Association
  - has_many :items
-※ancdestryは、gem ancestryを使用するため		
 
 
 ##  itemsテーブル
