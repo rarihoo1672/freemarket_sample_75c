@@ -56,6 +56,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener_web'
+  #better_errors
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
@@ -73,4 +76,17 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+#devise
 gem 'devise'
+
+# haml
+gem 'haml-rails'
+
+# font-awesome
+gem 'font-awesome-sass', '~> 5.4.1'
+
+#jquery
+gem 'jquery-rails'
+
+#pry
+gem 'pry-rails'
