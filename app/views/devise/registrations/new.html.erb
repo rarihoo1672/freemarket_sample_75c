@@ -39,16 +39,16 @@
     <%= f.text_field :firstname_kana, autofocus: true, autocomplete: "given-name" %>
   </div>
 
-  <div class="field">
+  <%# <div class="field">
     <%= f.label :生年月日 %><br />
-    <%= f.date_select :birth_year, {discard_month: true, discard_day: true, start_year: (Time.now.year - 100), end_year: (Time.now.year), include_blank: true}, autocomplete: "bday-year" %>
-    <%= f.date_select :birth_month, {discard_year: true, discard_day: true, include_blank: true}, autocomplete: "bday-month" %>
-    <%= f.date_select :birth_day, {discard_year: true, discard_day: false, include_blank: true}, autocomplete: "bday-day" %>
-  </div>
+    <%# <%= f.date_select :birth_year, {discard_month: true, discard_day: true, start_year: (Time.now.year - 100), end_year: (Time.now.year), include_blank: true}, autocomplete: "bday-year" %>
+    <%# <%= f.date_select :birth_month, {discard_year: true, discard_day: true, include_blank: true}, autocomplete: "bday-month" %>
+    <%# <%= f.date_select :birth_day, {discard_year: true, discard_day: false, include_blank: true}, autocomplete: "bday-day" %>
+  <%# </div> %>
 
   <div class="field">
     <%= f.label :生年月日 %><br />
-    <%= f.date_select :birth_day, {start_year: (Time.now.year - 100), end_year: (Time.now.year), include_blank: true}, autofocus: true, autocomplete: "bday-year" %>
+    <%= f.date_select :birth_day, {start_year: (Time.now.year - 100), end_year: (Time.now.year), include_blank: true}, autofocus: true, autocomplete: "bday" %>
   </div>
 
   <div class="actions">

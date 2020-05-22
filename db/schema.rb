@@ -39,9 +39,7 @@ ActiveRecord::Schema.define(version: 2020_05_21_060759) do
     t.string "first_name", null: false
     t.string "lastname_kana", null: false
     t.string "firstname_kana", null: false
-    t.integer "birth_year", null: false
-    t.integer "birth_month", null: false
-    t.integer "birth_day", null: false
+    t.date "birth_day", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

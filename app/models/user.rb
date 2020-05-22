@@ -11,8 +11,6 @@ class User < ApplicationRecord
     validates :first_name
     validates :lastname_kana
     validates :firstname_kana
-    validates :birth_year
-    validates :birth_month
     validates :birth_day
   end
 
