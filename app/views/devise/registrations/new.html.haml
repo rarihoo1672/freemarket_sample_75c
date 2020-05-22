@@ -22,14 +22,13 @@
     = f.password_field :password_confirmation, autocomplete: "new-password"
   .field
     = f.label :名字
-    \&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp
-    \&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp#{f.label :名前}
+    = f.label :名前
     %br/
     = f.text_field :last_name, autofocus: true, autocomplete: "family-name"
     = f.text_field :first_name, autofocus: true, autocomplete: "given-name"
   .field
     = f.label :名字（カタカナ）
-    \&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp#{f.label :名前（カタカナ）}
+    = f.label :名前（カタカナ）
     %br/
     = f.text_field :lastname_kana, autofocus: true, autocomplete: "family-name"
     = f.text_field :firstname_kana, autofocus: true, autocomplete: "given-name"

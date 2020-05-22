@@ -15,8 +15,8 @@ class User < ApplicationRecord
   end
 
   validates :email, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9_\#!$%&`'*+\-{|}~^\/=?\.]+@[a-zA-Z0-9][a-zA-Z0-9\.-]+\z/ }
-  validates :password, presence: true, length: { minimum: 7 }, format: { with: /\A[a-zA-Z]\d\z/ }
-  validates :password, presence: true, length: { minimum: 7 }, format: { with: /\A[a-zA-Z]\d\z/ }
+  validates :password, presence: true, length: { minimum: 7 }, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i }
+  validates :password, presence: true, length: { minimum: 7 }, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i }
 
   has_many :items
   has_one :address
