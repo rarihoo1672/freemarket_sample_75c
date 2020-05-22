@@ -1,0 +1,115 @@
+.showcontainer
+  .showcontainer__itemContents
+    %h2.showcontainer__itemContents__item-name
+      = @item.name
+
+
+    .showcontainer__itemContents__price
+      %h2.showcontainer__itemContents__price__amount
+        ¥
+        = @item.price
+      %span.showcontainer__itemContents__price__tax
+        (税込)
+      %span.showcontainer__itemContents__price__shippingConst
+        送料込み
+
+
+    .container__itemContents__item-btns
+      -# - if user_signed_in? && current_user.id == @item.user_id
+        = link_to "商品を編集する", "#"
+        = link_to "商品を削除する", "#"
+      -# - elsif user_signed_in? && current_user.id
+        = link_to "購入画面に進む", "#"
+
+
+    .showcontainer__itemContents__item-introduction
+      %p.container__itemContets__item-introduction__text
+        = @item.introduction
+
+
+    %table.showcontainer__itemContents__details
+      %tbody
+        %tr
+          %th
+            出品者
+          %td
+            -# = link_to  
+        %tr
+          %th
+            カテゴリー
+          %td
+            -# = link_to  
+        %tr
+          %th
+            ブランド
+          %td
+            -# = @brand.name
+        %tr
+          %th
+            商品の状態
+          %td
+            = @item.status
+        %tr
+          %th
+            大きさ
+          %td
+            = @item.size
+        %tr
+          %th
+            配送元
+          %td
+            = @item.prefecture_id
+        %tr
+          %th
+            配送料負担
+          %td
+            = @item.shipping_cost
+        %tr
+          %th
+            配送日数
+          %td
+            = @item.shipping_days              
+
+
+    .showcontainer__itemContents__user-btn
+      %button.showcontainer__itemContents__user-btn__left
+        %i.fas.fa-star
+        %span
+          お気に入り
+        %span
+          = rand (100)
+      %button.showcontainer__itemContents__user-btn__right
+        %i.fas.fa-flag
+        %span
+          不適切な商品の通報
+
+
+  .showcontainer__messages
+    .showcontianer__messages__box
+      .showcontianer__messages__box__form
+        %textarea.showcontainer__messages__box__form__text
+        %p.showcontainer__messages__box__form__notice
+          相手のことを考え丁寧なコメントを心がけましょう。
+          %br
+          不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %button.showcontainer__messages__box__form__btn
+          %i.fas.fa-comment
+          %span
+            コメントする
+
+
+  %ul.showcontainer__prevLink
+    %li.showcontainer__prevLink__flex
+      = link_to "" do
+        %i.fas.fa-angle-left
+        前の商品
+    %li.showcontainer__prevLink__flex
+      = link_to "" do
+        次の商品
+        %i.fas.fa-angle-right
+
+
+  .showcontainer__related-item
+    -# %a{href: '#', class: "showcontainer__related-item__link"}
+    -#   ベビー商品を見る
+
