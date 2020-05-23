@@ -5,18 +5,14 @@ class User < ApplicationRecord
         :recoverable, :rememberable, :validatable,
         :confirmable, :lockable
 
-  with_options presence: true do
-    validates :nickname
-    validates :last_name
-    validates :first_name
-    validates :lastname_kana
-    validates :firstname_kana
-    validates :birth_day
-  end
-
-  validates :email, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9_\#!$%&`'*+\-{|}~^\/=?\.]+@[a-zA-Z0-9][a-zA-Z0-9\.-]+\z/ }
-  validates :password, presence: true, length: { minimum: 7 }, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i }
-  validates :password, presence: true, length: { minimum: 7 }, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i }
+  validates :nickname,       presence: true
+  validates :last_name,      presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+$\z/ }
+  validates :first_name,     presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+$\z/ }
+  validates :lastname_kana,  presence: true, format: { with: /\A([ァ-ン]|ー)+$\z/ }
+  validates :firstname_kana, presence: true, format: { with: /\A([ァ-ン]|ー)+$\z/ }
+  validates :birth_day,      presence: true
+  validates :email,          presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9_\#!$%&`'*+\-{|}~^\/=?\.]+@[a-zA-Z0-9][a-zA-Z0-9\.-]+\z/ }
+  validates :password,       presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i }
 
   has_many :items
   has_one :address
