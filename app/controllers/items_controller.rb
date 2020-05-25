@@ -3,6 +3,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.first
+    @item = Item.find(params[:id])
   end
 end
