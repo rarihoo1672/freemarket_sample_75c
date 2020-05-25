@@ -3,6 +3,19 @@
     %h2.showcontainer__itemContents__item-name
       = @item.name
 
+    .showcontainer__itemContents__images
+      .showcontainer__itemContents__images__display-up
+        %p.showcontainer__itemContents__images__display-up__badge
+          SOLD
+        -# = image_tag "#", class:  "showcontainer__itemContents__images__display-up__slide-image"
+      %ul.showcontainer__itemContents__images__display-down
+        -# - @item.images.each do |image|
+        -#   %li.showcontainer__itemContents__images__display-down__thumbnail
+        -#     = image_tag image.url , class: "showcontainer__itemContents__images__display-down__thumbnail__images"
+
+
+
+
 
     .showcontainer__itemContents__price
       %h2.showcontainer__itemContents__price__amount
@@ -14,17 +27,16 @@
         送料込み
 
 
-    .container__itemContents__item-btns
+    .showcontainer__itemContents__item-btns
       -# - if user_signed_in? && current_user.id == @item.user_id
-        = link_to "商品を編集する", "#"
-        = link_to "商品を削除する", "#"
+        = link_to "商品を削除する", "#", class: "showcontainer__itemContents__item-btns--left"
+        = link_to "商品を編集する", "#", class: "showcontainer__itemContents__item-btns--right"
       -# - elsif user_signed_in? && current_user.id
-        = link_to "購入画面に進む", "#"
+      = link_to "購入画面に進む", "#", class: "showcontainer__itemContents__item-btns--center"
 
 
     .showcontainer__itemContents__item-introduction
-      %p.container__itemContets__item-introduction__text
-        = @item.introduction
+      = simple_format @item.introduction, class: "showcontainer__itemContents__item-introduction__text"
 
 
     %table.showcontainer__itemContents__details
@@ -33,16 +45,22 @@
           %th
             出品者
           %td
-            -# = link_to  
+            = link_to  "仮置", "#"
         %tr
           %th
             カテゴリー
           %td
-            -# = link_to  
+            .category
+            = link_to "仮置" , "#"
+            .category
+            = link_to "仮置" , "#"
+            .category
+            = link_to "仮置" , "#"
         %tr
           %th
             ブランド
           %td
+            仮置
             -# = @brand.name
         %tr
           %th
@@ -110,6 +128,5 @@
 
 
   .showcontainer__related-item
-    -# %a{href: '#', class: "showcontainer__related-item__link"}
-    -#   ベビー商品を見る
+    = link_to "#", "#" ,{class: "showcontainer__related-item__link"}
 
