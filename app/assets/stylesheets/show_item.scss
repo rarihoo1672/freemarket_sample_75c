@@ -1,8 +1,10 @@
 a {
   color: #3CCACE;
+  text-decoration: none;
 }
 a:hover {
   opacity: 0.5;
+  text-decoration: underline;
 }
 
 .showcontainer {
@@ -22,50 +24,127 @@ a:hover {
       text-align: center;
       font-weight: bold;
       font-size: 40px;
+      margin-bottom: 6%;
     }
 
 
-    &__price {
-      margin: 24px 0 0;
-      text-align: center;
-      font-size: 16px;
-      &__amount {
-        margin: 0 16px 0 0;
-        font-size: 30px;
-        font-weight: bold;
+    &__images {
+      width: 100%;
+      height: 100%;
+      margin-bottom: 6%;
+
+      &__display-up {
+        width: 100%;
+        height: 390px;
+        position: relative;
+
+        &__badge {
+          width:100%;
+          position: absolute;
+          background-color: aquamarine;
+          opacity: 0.5;
+          text-align: center;
+          font-weight: bold;
+          font-size: xx-large;
+        }
+        &__slide-image {
+          width: 100%;
+          height: 100%;
+          object-fit: fill;
+        }
+      }
+
+      &__display-down {
+        margin: 5px 0;
+        display: flex;
+        flex-flow: wrap;
+        &__thumbnail{
+          &__images {
+            height: 100px;
+            width: 100px;
+            margin-right: 3px;
+          }
+        }
       }
     }
 
 
+    &__price {
+      margin-bottom: 6%;
+      text-align: center;
+      font-size: 16px;
+      &__amount {
+        margin: 0 16px 0 0;
+        font-size:40px;
+        font-weight: bold;
+        letter-spacing: 2px;
+      }
+    }
+
+
+
+    &__item-btns {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6%;
+
+      &--left {
+        padding: 10px 30px;
+        background-color: #3CCACE;
+        border-radius: 4px;
+        color: white;
+        font-size: 18px;
+      }
+      &--right {
+        padding: 10px 30px;
+        background-color: #3CCACE;
+        border-radius: 4px;
+        color: white;
+        font-size: 18px;
+      }
+      &--center {
+        margin: 0 auto;
+        width: 80%;
+        padding: 10px 30px;
+        background-color: #3CCACE;
+        text-align: center;
+        color: white;
+        font-size: 18px;
+      }
+    }
+
     &__item-introduction {
-      padding: 32px 0 0;
-      font-size: 18px;
-      line-height: 1.5;
+      margin-bottom: 6%;
       &__text {
-        white-space: pre-wrap;
+        font-size: 18px;
+        letter-spacing: 2px;
+        line-height: 1.5;
+        
       }
     }
 
 
     &__details {
-      // max-width: 300px;
       height: 420px;
       width: 100%;
+      margin-bottom: 6%;
+
       tbody {
         tr {
           th {
             width: 25%;
             background-color: #eee;
             text-align: center;
-            border: 1px solid black;
+            border: 1px solid rgba($color: #000000, $alpha: 0.2);
             padding: 8px;
-            font-size: 14px;
+            font-size: 16px;
             color: gray;
           }
           td {
-            padding: 15px;
+            padding: 20px;
             width: 75%;
-            border: 1px solid black;
+            border: 1px solid rgba($color: #000000, $alpha: 0.2);
           }
         }
       }
@@ -74,7 +153,6 @@ a:hover {
 
 
     &__user-btn {
-      margin: 6% 0 0;
       display: flex;
       justify-content: space-between;
       
@@ -82,11 +160,9 @@ a:hover {
       &__left {
         margin-right: auto;
         border-radius: 40px;
-        color: #3CCACE;
         border: 1px solid #ffb340;
         font-size: 14px;
         padding: 6px 10px;
-        text-decoration: none;  
         span{
           font-size: 14px;
           margin: 1px 0 0 8px;
@@ -95,23 +171,10 @@ a:hover {
       
       &__right {
         border-radius: 4px;
-        color: #3CCACE;
         border: 1px solid gray;
         font-size: 14px;
         padding: 6px 10px;
         color: black;
-        text-decoration: none;
-      }
-    }
-
-    &__view {
-      margin: 16px 0 0;
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      &__photo {
-        &__display {
-        }
       }
     }
   }
@@ -123,7 +186,7 @@ a:hover {
   &__messages {
     width: 652px;
     background: white;
-    margin: 8px auto;
+    margin: 0 auto 3%;
     padding: 24px;
 
     &__box {
@@ -153,9 +216,9 @@ a:hover {
           display: block;
           margin: 20px auto 0;
           font-size: 18px;
-          background: #3CCACE;
           color: #fff;
           border-radius: 100px;
+          background-color: #3CCACE;
         }
       }
     }
@@ -163,20 +226,11 @@ a:hover {
 
 
   &__prevLink {
-    margin: 24px auto 0;
+    margin: 0 auto 3%;
     width: 700px;
     display: flex;
     justify-content: space-between;
     font-size: 18px;
-    &__flex {
-      a {
-        text-decoration: none;
-        color: #3CCACE;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-    }
   }
 
 
@@ -187,12 +241,9 @@ a:hover {
 
     &__link {
       display: inline-block;
-      margin: 24px 0 8px;
-      color: #3CCACE;
       text-decoration: none;
       font-weight: bold;
       font-size: 22px;
-      position: relative;
     }
   }
 }
