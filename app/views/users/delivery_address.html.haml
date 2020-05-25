@@ -1,0 +1,111 @@
+-#= render "header"
+
+.mypage-nav
+  %ul.page-lists
+    %li.page-lists__list
+      = link_to "root_path" do 
+        freemarket
+        = icon('fa', 'angle-right', class: 'icon')
+    %li.page-lists__list--2
+      マイページ
+.main
+  .main__left
+    .menu
+      %h3.menu__title
+        設定
+      %ul.menu-lists
+        %li.menu-lists__list
+          =link_to "root_path" do
+            プロフィール
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "delivery_address" do
+            発送元・お届け先住所変更
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "card" do
+            支払い方法
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "#" do
+            メール/パスワード
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "user_information" do
+            本人情報
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "#" do
+            電話番号の確認
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "log_out" do
+            ログアウト
+            = icon('fa', 'angle-right', class: 'icon')
+  .main__right
+    .container
+      %h2.container-head
+        発送元・お届け先住所変更
+      .form
+        = form_with class: 'form-content' do |f|
+          .field
+            .field-label
+              = f.label :name, "お名前（全角）"
+              %span<必須
+            .field-input
+              = f.text_field :firstname, autofocus: true,  placeholder:"例）山田"
+              = f.text_field :lastname, autofocus: true, placeholder:"例）太郎"
+          .field
+            .field-label
+              = f.label :name, "お名前カナ（全角）"
+              %span<必須
+            .field-input
+              = f.text_field :firstname_kana, autofocus: true, placeholder:"例）ヤマダ"
+              = f.text_field :lastname_kana, autofocus: true, placeholder:"例）タロウ"
+          .field
+            .field-label
+              = f.label :post_nunber, "郵便番号"
+              %span<必須
+            .field-input
+              = f.text_field :post_nunber, placeholder: "例)123-4567"
+          .field
+            .field-label
+              = f.label :prefecture, "都道府県"
+              %span<必須
+            .field-input
+              = f.select :prefecture, ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"]
+          .field
+            .field-label
+              = f.label :city, "市区町村"
+              %span<必須
+            .field-input
+              = f.text_field :city, placeholder: "例)渋谷区"
+          .field
+            .field-label
+              = f.label :address, "番地"
+              %span<必須
+            .field-input
+              = f.text_field :address, placeholder: "例)道玄坂3-2"
+          .field
+            .field-label
+              = f.label :apartment, "建物名"
+              %span.no2<任意
+            .field-input
+              = f.text_field :apartment, placeholder: "例)フォンティスビル7F"
+          .field
+            .field-label
+              = f.label :tel_number, "電話番号"
+              %span.no2<任意
+            .field-input
+              = f.text_field :tel_number, autofocus: true, placeholder: "ハイフンなし10~11桁"
+          .actions
+            = f.submit "変更する", class: 'btn'
+
+.sell-btn
+  .btn-title
+    出品する
+    = image_tag src="/assets/icon/icon_camera.png", size: "60"
+
+
+
+-#= render "footer"
