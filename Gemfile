@@ -94,3 +94,5 @@ gem 'jquery-rails'
 
 #pry
 gem 'pry-rails'
+
+gem 'active_hash'
