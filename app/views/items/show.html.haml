@@ -1,18 +1,12 @@
 .showcontainer
   .showcontainer__itemContents
     %h2.showcontainer__itemContents__item-name
-      = @item.name
 
     .showcontainer__itemContents__images
       .showcontainer__itemContents__images__display-up
         %p.showcontainer__itemContents__images__display-up__badge
-          SOLD
-        -# = image_tag "#", class:  "showcontainer__itemContents__images__display-up__slide-image"
-      %ul.showcontainer__itemContents__images__display-down
-        -# - @item.images.each do |image|
-        -#   %li.showcontainer__itemContents__images__display-down__thumbnail
-        -#     = image_tag image.url , class: "showcontainer__itemContents__images__display-down__thumbnail__images"
 
+      %ul.showcontainer__itemContents__images__display-down
 
 
 
@@ -20,7 +14,7 @@
     .showcontainer__itemContents__price
       %h2.showcontainer__itemContents__price__amount
         ¥
-        = @item.price
+
       %span.showcontainer__itemContents__price__tax
         (税込)
       %span.showcontainer__itemContents__price__shippingConst
@@ -60,33 +54,32 @@
           %th
             ブランド
           %td
-            仮置
-            -# = @brand.name
+            
         %tr
           %th
             商品の状態
           %td
-            = @item.status
+
         %tr
           %th
             大きさ
           %td
-            = @item.size
+
         %tr
           %th
             配送元
           %td
-            = @item.prefecture_id
+
         %tr
           %th
             配送料負担
           %td
-            = @item.shipping_cost
+
         %tr
           %th
             配送日数
           %td
-            = @item.shipping_days              
+          
 
 
     .showcontainer__itemContents__user-btn
