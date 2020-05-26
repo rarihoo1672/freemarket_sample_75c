@@ -140,16 +140,25 @@ body {
 }
 
 .card-info, .user-address {
-  line-height: 1.5;
   text-align: left;
   margin: 8px 0 0;
   font-size: 13px;
+  line-height: 1.5;
+  .register-text {
+    text-decoration: inherit;
+    vertical-align: inherit;
+    line-height: 1.5;
+  }
 }
 
 .info-right {
   display: block;
   float: right;
   font-weight: normal;
+  font-size: 14px;
+  line-height: 1.5;
+  text-decoration: inherit;
+  vertical-align: inherit;
 }
 .infomation-text {
   color: #888;
