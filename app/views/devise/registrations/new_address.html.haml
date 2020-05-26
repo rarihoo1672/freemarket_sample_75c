@@ -1,87 +1,55 @@
-%h2 Sign up
--#
-  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    = render "devise/shared/error_messages", resource: resource
-    .field
-      = f.label :名字
-      = f.label :名前
-      %br/
-      = f.text_field :last_name, autofocus: true, autocomplete: "family-name"
-      = f.text_field :first_name, autofocus: true, autocomplete: "given-name"
-    .field
-      = f.label :名字（カタカナ）
-      = f.label :名前（カタカナ）
-      %br/
-      = f.text_field :lastname_kana, autofocus: true, autocomplete: "family-name"
-      = f.text_field :firstname_kana, autofocus: true, autocomplete: "given-name"
-    .field
-      = f.label :郵便番号
-      %br/
-      = f.text_field :post_code, autofocus: true, placeholder: "例）123-4567", autocomplete: "postal-code"
-    .field
-      = f.label :都道府県
-      %br/
-      = f.select :prefecture, Address.prefectures.keys, {}, autocomplete: "address-level1"
-    .field
-      = f.label :市区町村
-      %br/
-      = f.text_field :city, autofocus: true, placeholder: "例）葛飾区", autocomplete: "address-level2"
-    .field
-      = f.label :番地
-      %br/
-      = f.text_field :address, autofocus: true, placeholder: "例）青戸1-1-1", autocomplete: "address-level3"
-    .field
-      = f.label :建物名
-      %br/
-      = f.text_field :building_name, autofocus: true, placeholder: "例）青戸ビル102号", autocomplete: "address-level4"
-    .field
-      = f.text_field :電話番号
-      %br/
-      = f.select :tel_number, autofocus: true, placeholder: "例）090-1234-5678", autocomplete: "tel"
-    .actions
-      = f.submit "新規登録"
-  = render "devise/shared/links"
+.wrapper
+  = render "header";
 
-
-
-= form_for(@address, url: addresses_path, method: :post, html: {class: 'last-main__box'}) do |f|
-  = render "devise/shared/error_messages", resource: @address
-  .field
-    = f.label :名字
-    = f.label :名前
-    %br/
-    = f.text_field :last_name, autofocus: true, autocomplete: "family-name"
-    = f.text_field :first_name, autofocus: true, autocomplete: "given-name"
-  .field
-    = f.label :名字（カタカナ）
-    = f.label :名前（カタカナ）
-    %br/
-    = f.text_field :lastname_kana, autofocus: true, autocomplete: "family-name"
-    = f.text_field :firstname_kana, autofocus: true, autocomplete: "given-name"
-  .field
-    = f.label :郵便番号
-    %br/
-    = f.text_field :post_code, autofocus: true, placeholder: "例）123-4567", autocomplete: "postal-code"
-  .field
-    = f.label :都道府県
-    %br/
-    = f.select :prefecture, Address.prefectures.keys, {}, autocomplete: "address-level1"
-  .field
-    = f.label :市区町村
-    %br/
-    = f.text_field :city, autofocus: true, placeholder: "例）葛飾区", autocomplete: "address-level2"
-  .field
-    = f.label :番地
-    %br/
-    = f.text_field :address, autofocus: true, placeholder: "例）青戸1-1-1", autocomplete: "address-level3"
-  .field
-    = f.label :建物名
-    %br/
-    = f.text_field :building_name, autofocus: true, placeholder: "例）青戸ビル102号", autocomplete: "address-level4"
-  .field
-    = f.label :電話番号
-    %br/
-    = f.text_field :tel_number, autofocus: true, placeholder: "例）090-1234-5678", autocomplete: "tel"
-  .actions
-    = f.submit "新規登録"
-= render "devise/shared/links"
+  .signin
+    .contents
+      .contents__top
+        %h2 会員情報入力
+      .contents__bottom
+        = form_for(@address, url: addresses_path, method: :post, html: {class: 'last-main__box'}) do |f|
+          = render "devise/shared/error_messages", resource: @address
+          .field
+            .title
+              = f.label :お名前（全角）
+              %span 必須
+            = f.text_field :last_name, placeholder: "例）田中", autofocus: true, autocomplete: "family-name"
+            %br/
+            = f.text_field :first_name, placeholder: "例）太郎", autofocus: true, autocomplete: "given-name"
+          .field
+            .title
+              = f.label :お名前カナ（全角）
+              %span 必須
+            = f.text_field :lastname_kana, autofocus: true, placeholder: "例）タナカ", autocomplete: "family-name"
+            %br/
+            = f.text_field :firstname_kana, autofocus: true, placeholder: "例）タロウ", autocomplete: "given-name"
+          .field
+            .title
+              = f.label :郵便番号
+              %span 必須
+            = f.text_field :post_code, autofocus: true, placeholder: "例）123-4567", autocomplete: "postal-code"
+          .field
+            .title
+              = f.label :都道府県
+              %span 必須
+            = f.select :prefecture, Address.prefectures.keys, {}, autocomplete: "address-level1"
+          .field
+            .title
+              = f.label :市区町村
+              %span 必須
+            = f.text_field :city, autofocus: true, placeholder: "例）葛飾区", autocomplete: "address-level2"
+          .field
+            .title
+              = f.label :番地
+              %span 必須
+            = f.text_field :address, autofocus: true, placeholder: "例）青戸1-1-1", autocomplete: "address-level3"
+          .field
+            .title
+              = f.label :建物名
+            = f.text_field :building_name, autofocus: true, placeholder: "例）青戸ビル102号", autocomplete: "address-level4"
+          .field
+            .title
+              = f.label :電話番号
+            = f.text_field :tel_number, autofocus: true, placeholder: "例）090-1234-5678", autocomplete: "tel"
+          .field
+            = f.submit "新規登録", class: "btn"
+        = render "devise/shared/links"
