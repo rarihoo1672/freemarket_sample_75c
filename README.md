@@ -9,7 +9,7 @@
 |email|string|null: false, unique: true|
 |encrypted_password|string|null: false|
 |user_image|string|
-|introduction|text| 
+|introduction|text|
 |last_name|string|null: false|
 |first_name|string|null: false|
 |lastname_kana|string|null: false|
@@ -25,7 +25,7 @@
 ## addressテーブル
 |Column|Type|Options|
 |------|----|-------|
-|last_name|string|null: false| 
+|last_name|string|null: false|
 |first_name|string|null: false|
 |lastname_kana|string|null: false|
 |firstname_kana|string|null: false|
@@ -69,17 +69,17 @@
 |price|integer|null:false|
 |introduction|text|null: false|
 |status|string|null: false|
-|size|string|null: false| 	
+|size|string|null: false|
 |shipping_cost|string|null: false|
 |shipping_days|string|null: false|
 |prefecture_id|string|null: false|
-|category|references|null: false, foreign_key: true|	
+|category|references|null: false, foreign_key: true
 |brand|references|null: false, foreign_key: true|
 |buyer|integer|foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 
-### Association 
- - belongs_to :user 
+### Association
+ - belongs_to :user
  - belongs_to :category
  - belongs_to :brand
  - has_many :images dependent: :destroy
