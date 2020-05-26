@@ -5,4 +5,7 @@ class ItemsController < ApplicationController
   def show
 
   end
+
+  def item_purchase
+  end
 end

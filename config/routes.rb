@@ -24,6 +24,11 @@ Rails.application.routes.draw do
       get "user_information"
     end
   end
-  resources :items 
+  resources :items do
+    collection do
+      get "item_purchase"
+    end
+  end
 end
+
 
