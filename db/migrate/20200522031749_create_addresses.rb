@@ -1,4 +1,7 @@
 class CreateAddresses < ActiveRecord::Migration[5.2]
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
+  
   def change
     create_table :addresses do |t|
       t.string :last_name, null: false
@@ -6,7 +9,7 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string :lastname_kana, null: false
       t.string :firstname_kana, null: false
       t.string :post_code, null: false
-      t.string :prefecture, null: false
+      t.string :prefecture_id, null: false
       t.string :city, null: false
       t.string :address, null: false
       t.string :building_name

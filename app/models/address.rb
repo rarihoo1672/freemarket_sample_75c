@@ -11,3 +11,8 @@ class Address < ApplicationRecord
   validates :address,        presence: true
   validates :user_id,        presence: true
 end
+
+class Letter < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
+end

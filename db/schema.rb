@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2020_05_22_032406) do
     t.string "size", null: false
     t.string "shipping_cost", null: false
     t.string "shipping_days", null: false
-    t.string "prefecture_id", null: false
     t.integer "user_id", null: false
     t.integer "buyer"
     t.datetime "created_at", null: false
