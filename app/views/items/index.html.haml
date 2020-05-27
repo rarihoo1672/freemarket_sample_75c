@@ -107,30 +107,16 @@
           ピックアップカテゴリー
         =link_to "新規投稿商品", root_path, class: "itemPick__text__new"
       .itemPick__images
-        .itemPick__image
-          = image_tag src='/assets/icon/member_photo_noimage_thumb.png', size:"220x150",class: 'pick-img'
-          %p
-            product
-          %p
-            price
-          %p.tax
-            (税込み)
-        .itemPick__image#itemPick-center
-          = image_tag src='/assets/icon/member_photo_noimage_thumb.png', size:"220x150",class: 'pick-img'
-          %p
-            product
-          %p
-            price
-          %p.tax
-            (税込み)
-        .itemPick__image
-          = image_tag src='/assets/icon/member_photo_noimage_thumb.png', size:"220x150",class: 'pick-img'
-          %p
-            product
-          %p
-            price
-          %p.tax
-            (税込み)
+        - @items.each do |item|
+          .itemPick__image
+            = link_to item_path(item.id) do
+              = image_tag ("#{item.images.first.image}"), size:"220x150",class: 'pick-img'
+            %p
+              = item.name
+            %p
+              = "¥" + item.price.to_s
+            %p.tax
+              (税込み)
 
     .brandPick
       .brandPick__text
