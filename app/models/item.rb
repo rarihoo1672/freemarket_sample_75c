@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_many :images
+  belongs_to :category
 
   validates :name,           presence: true
   validates :price,          presence: true
@@ -11,4 +12,5 @@ class Item < ApplicationRecord
   validates :shipping_days,  presence: true
   validates :prefecture_id,  presence: true
   validates :user_id,        presence: true
+  validates :category_id,    presence: true
 end
