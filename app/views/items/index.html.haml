@@ -5,7 +5,7 @@
         %h1.logo
           = image_tag src='/assets/logo/logo.png', size: "140x41"
         .searchForm
-          %input.searchForm__text{:name => "search", :placeholder => "キーワードから探す", :type => "text", :value => ""}/
+          %input.searchForm__text{name: "search", placeholder: "キーワードから探す", type: "text", value: ""}/
           .searchForm__submit
             = image_tag src='/assets/icon/icon-search 1.png', size: "20x20", class: ".searchForm__submit--btn"
       .headboxUnder
@@ -29,8 +29,8 @@
         %p.appInfo__sub
           FURIMAは誰でも簡単に出品・購入できる<br>フリマアプリです
       .banners
-        = link_to image_tag("app-store.svg", class:"ios"), "/"
-        = link_to image_tag("google-play.svg", class:"android"), "/"
+        = link_to image_tag("app-store.svg", class:"banners__ios"), "/"
+        = link_to image_tag("google-play.svg", class:"banners__android"), "/"
 
     .chosen
       %h3.chosen__tittle
@@ -76,9 +76,9 @@
             出品・購入回数も業界最多です！
             %br
             ほしかったあの商品に出会えるかもしれません。
-        .mdBanners
-          = link_to image_tag("app-store.svg", class:"ios"), "/"
-          = link_to image_tag("google-play.svg", class:"android"), "/"
+        .mdAppbox__banners
+          = link_to image_tag("app-store.svg", class:"mdAppbox__banners__ios"), "/"
+          = link_to image_tag("google-play.svg", class:"mdAppbox__banners__android"), "/"
 
     .attribute
       %h3.attribute__tittle
@@ -169,16 +169,16 @@
           %p.tax
             (税込み)
 
-  .suggestDl
-    .suggestInfo
-      .suggestApp
-        %h2.suggestApp__catch
+  .suggestApp
+    .suggestDl
+      .suggestDl__text
+        %h2.suggestDl__text__catch
           だれでもかんたん、人生を変えるフリマアプリ
-        %p.suggestApp__push
+        %p.suggestDl__text__push
           今すぐ無料ダウンロード！
-      .suggestBanners
-        = link_to image_tag("app-store.svg", class:"ios"), "/"
-        = link_to image_tag("google-play.svg", class:"android"), "/"
+      .suggestDl__banners
+        = link_to image_tag("app-store.svg", class:"suggestDl__ios"), "/"
+        = link_to image_tag("google-play.svg", class:"suggestDl__android"), "/"
 
   .footer
     .footerMenu
