@@ -63,20 +63,22 @@
         .details-inner__infomation
           %p.infomation-text
             郵便局/コンビニ受取をご希望の方は、購入後に取引画面から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
-          .input-form 
+          .input-form
             = form_with do |f|
               = f.submit '購入する', class: 'submit-btn'
 
-.footer
-  .nav
-    %ul.nav-lists
-      %li.list
-        プライバシーポリシー
-      %li.list
-        メルカリ利用規約
-      %li.list
-        特定商取引に関する表記
-  = link_to image_tag("/assets/logo/logo-white.png"), class: 'footer-logo'
-  %p
-    %small
-      © FURIMA
+.new-container__footer
+  %ul.new-container__footer__rules
+    %li.new-container__footer__rules--left
+      = link_to "プライバシーポリシー","#", class: "new-container__footer__rules--left__link rules__links"
+    %li.new-container__footer__rules--center
+      = link_to "メルカリ利用規約", "#", class: "new-container__footer__rules--center__link rules__links"
+    %li.new-container__footer__rules--right
+      = link_to "特定商取引に関する表記", "#", class: "new-container__footer__rules--right__ink rules__links"
+  .new-container__footer__bottom
+    = link_to "#", class: "new-container__footer__bottom__link" do
+      %i.fas.fa-cube.new-container__footer__bottom__link--icon
+      %p.new-container__footer__bottom__link--title
+        FURIMA
+  %p.new-container__footer__Incorporated
+    © FURIMA, Inc

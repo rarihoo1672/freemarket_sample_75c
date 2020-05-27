@@ -1,5 +1,5 @@
-%body
-  .header
+%body.top-body
+  .top-header
     .headerBox
       .headboxUpper
         %h1.logo
@@ -10,18 +10,14 @@
             = image_tag src='/assets/icon/icon-search 1.png', size: "20x20", class: ".searchForm__submit--btn"
       .headboxUnder
         .headboxUnder__search
-          %a.headboxUnder__search--left{ href: "/"}
-            カテゴリー
-          %a.headboxUnder__search--right{ href: "/"}
-            ブランド
+          = link_to "カテゴリー", root_path, class:"headboxUnder__search--left"
+          = link_to "ブランド", root_path, class:"headboxUnder__search--right"
         .headboxUnder__user
-          %a.headboxUnder__user__login{ href: "/"}
-            ログイン
-          %a.headboxUnder__user__register{ href: "/"}
-            新規会員登録
+          = link_to "ログイン", root_path, class:"headboxUnder__user__login"
+          = link_to "新規会員登録",root_path, class:"headboxUnder__user__register"
 
 
-  .contents
+  .top-contents
     .topInfo
       .appInfo
         %h2.appInfo__catch
@@ -109,8 +105,7 @@
       .itemPick__text
         .itemPick__text__cat
           ピックアップカテゴリー
-        %a.itemPick__text__new{ href: "/"}
-          新規投稿商品
+        =link_to "新規投稿商品", root_path, class: "itemPick__text__new"
       .itemPick__images
         .itemPick__image
           = image_tag src='/assets/icon/member_photo_noimage_thumb.png', size:"220x150",class: 'pick-img'
@@ -141,8 +136,7 @@
       .brandPick__text
         .brandPick__text__tittle
           ピックアップブランド
-        %a.brandPick__text__archive{ href: "/"}
-          アーカイブ
+        =link_to "アーカイブ", root_path, class:"brandPick__text__archive"
       .brandPick__images
         .brandPick__image
           = image_tag src='/assets/icon/member_photo_noimage_thumb.png', size:"220x150",class: 'pick-img'
@@ -180,7 +174,7 @@
         = link_to image_tag("app-store.svg", class:"suggestDl__ios"), "/"
         = link_to image_tag("google-play.svg", class:"suggestDl__android"), "/"
 
-  .footer
+  .top-footer
     .footerMenu
       %ul.footerLists
         %h2
