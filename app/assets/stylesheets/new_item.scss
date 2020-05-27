@@ -76,10 +76,40 @@
       width: 185px;
     }
   }
+
+
   &__body {
     max-width: 700px;
     margin: 0 auto;
     background-color: white;
+
+    &__image-box{
+      &__limit {
+        margin-bottom: 20px;
+      }
+      &__upload-form {
+        background-color: #f5f5f5;
+        height: 13rem;
+        border: 1px dashed #ccc;
+        position: relative;
+        text-align: center;
+        &__content {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          margin: auto;
+          height: 100px;
+
+          &__icon {
+            color: #3CCACE;
+            font-size: 20px;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
 
     &__intro-box {
       &__description {
@@ -99,6 +129,7 @@
         }
       }
     }
+
     &__price-box {
       &__selling-price {
         &__wrapper {
@@ -133,7 +164,6 @@
         }
       }
     }
-
 
     &__links-box {
       padding: 30px 30px 0;
