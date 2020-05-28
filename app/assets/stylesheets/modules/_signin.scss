@@ -29,9 +29,9 @@
       }
       &__bottom {
         height: auto;
-        width: 22em;
+        width: 24em;
         margin: auto;
-        padding: 2em 5em;
+        padding: 2em 0;
         .field {
           .title {
             margin-bottom: 0.5em;
@@ -68,7 +68,7 @@
           }
           select {
             height: 2em;
-            width: 6.8em;
+            width: 6.6em;
             margin-bottom: 1em;
           }
           .btn {

@@ -44,16 +44,16 @@
             カテゴリー
           %td
             .category
-            = link_to "仮置" , "#"
+            = link_to @grandparent_category.name , "#" unless @grandparent_category == nil
             .category
-            = link_to "仮置" , "#"
+            = link_to @parent_category.name , "#" unless @parent_category == nil
             .category
-            = link_to "仮置" , "#"
+            = link_to @this_category.name , "#"
         %tr
           %th
             ブランド
           %td
-            
+          
         %tr
           %th
             商品の状態
