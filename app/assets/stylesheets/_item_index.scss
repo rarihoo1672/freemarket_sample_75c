@@ -279,20 +279,15 @@
         color: #3CCACE;
       }
     }
-    &__text {
-      font-weight: bold;
-    }
     &__images {
     display: flex;
-    justify-content: center;
-    margin: 26px 0 auto;
-    padding: 0 0 26px;
+    justify-content: space-around;
+    margin: 0 auto;
+    width: 780px;
+    margin-top: 26px;
     }
     &__image {
       background-color: #fff;
-    }
-    #itemPick-center {
-      margin :0 40px;
     }
     .tax{
       font-size: 10px;
@@ -304,6 +299,7 @@
     height: 100%;
     background-color: #f8f8f8;
     padding-top: 80px;
+    padding-bottom: 80px;
     &__text {
       text-align: center;
       font-weight: bold;
@@ -319,9 +315,10 @@
     }
     &__images {
     display: flex;
-    justify-content: center;
-    margin: 26px 0 auto;
-    padding: 0 0 26px;
+    justify-content: space-around;
+    margin: 0 auto;
+    width: 780px;
+    margin-top: 26px;
     }
     &__image {
       background-color: #fff;
