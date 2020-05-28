@@ -13,8 +13,8 @@
           = link_to "カテゴリー", root_path, class:"headboxUnder__search--left"
           = link_to "ブランド", root_path, class:"headboxUnder__search--right"
         .headboxUnder__user
-          = link_to "ログイン", root_path, class:"headboxUnder__user__login"
-          = link_to "新規会員登録",root_path, class:"headboxUnder__user__register"
+          = link_to "ログイン", new_user_session_path, class:"headboxUnder__user__login"
+          = link_to "新規会員登録",new_user_registration_path, class:"headboxUnder__user__register"
 
 
   .top-contents
@@ -107,7 +107,7 @@
           ピックアップカテゴリー
         =link_to "新規投稿商品", root_path, class: "itemPick__text__new"
       .itemPick__images
-        - @items.each do |item|
+        - @items[0..2].each do |item|
           .itemPick__image
             = link_to item_path(item.id) do
               = image_tag ("#{item.images.first.image}"), size:"220x150",class: 'pick-img'
@@ -124,30 +124,16 @@
           ピックアップブランド
         =link_to "アーカイブ", root_path, class:"brandPick__text__archive"
       .brandPick__images
-        .brandPick__image
-          = image_tag src='/assets/icon/member_photo_noimage_thumb.png', size:"220x150",class: 'pick-img'
-          %p
-            product
-          %p
-            price
-          %p.tax
-            (税込み)
-        .brandPick__image#brandPick-center
-          = image_tag src='/assets/icon/member_photo_noimage_thumb.png', size:"220x150",class: 'pick-img'
-          %p
-            product
-          %p
-            price
-          %p.tax
-            (税込み)
-        .brandPick__image
-          = image_tag src='/assets/icon/member_photo_noimage_thumb.png', size:"220x150",class: 'pick-img'
-          %p
-            product
-          %p
-            price
-          %p.tax
-            (税込み)
+        - @items[3..5].each do |item|
+          .brandPick__image
+            = link_to item_path(item.id) do
+              = image_tag ("#{item.images.first.image}"), size:"220x150",class: 'pick-img'
+            %p
+              = item.name
+            %p
+              = "¥" + item.price.to_s
+            %p.tax
+              (税込み)
 
   .suggestApp
     .suggestDl

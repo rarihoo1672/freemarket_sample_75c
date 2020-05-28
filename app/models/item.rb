@@ -12,6 +12,6 @@ class Item < ApplicationRecord
   validates :prefecture_id,  presence: true
   validates :user_id,        presence: true
 
-  enum status: { sell: 0, buy: 1 }
+  enum status: { sell: 0, buy: 1}
   scope :on_sell, -> { where(status: 0) }
 end
