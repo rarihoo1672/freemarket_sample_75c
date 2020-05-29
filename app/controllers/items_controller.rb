@@ -6,8 +6,8 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    # エラー回避のため一時的にコメントアウトしてます
-    # @item.images.new
+    エラー回避のため一時的にコメントアウトしてます
+    @item.images.new
   end
 
   def create
