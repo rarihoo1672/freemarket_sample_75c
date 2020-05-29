@@ -99,3 +99,7 @@ gem 'active_hash'
 
 # ancestry(カテゴリを多階層で管理)
 gem 'ancestry'
+
+# carrierwave & mini_magic
+gem 'carrierwave'
+gem 'mini_magick'

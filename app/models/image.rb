@@ -3,4 +3,6 @@ class Image < ApplicationRecord
 
   validates :image,   presence: true
   validates :item_id, presence: true
+
+  mount_uploader :image, ImageUpLoader
 end
