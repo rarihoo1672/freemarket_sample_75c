@@ -58,7 +58,8 @@
                 %span.new-container__body__detail-box__category__label__text--need.content-label__text--need
                   必須
             .new-container__body__detail-box__category__select.form-select
-              = f.select( :category, @category_parent_array, {include_blank: true, prompt: true}, {class: "form_select_down"} )
+              -# = f.select( :category, @category_parent_array, {prompt: true}, {class: "content-form__input", id: "parent-form"} )
+              = f.collection_select( :category_id, @parents, :id, :name, {prompt: true}, class: "content-form__input", id: "parent-form", name: 'item[category_id][]' )
               %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
             .input-error#item_category_index_id_error
 
@@ -110,8 +111,8 @@
                   必須
 
             .new-container__body__delivary-box__shipping-cost__select.form-select
-              = f.select( :sipping_cost, [['送料込み（出品者負担）', 1], ['着払い（購入者負担）', 2]], {prompt: true}, {class: "form-select__down"} )
-              %i.fas.fa-angle-down.new-container__body__delivary-box__shipping-days__select--icon.form-select--icon
+              = f.select( :sipping_cost, [['送料込み（出品者負担）', 1], ['着払い（購入者負担）', 2]], {prompt: true}, {class: "form-select__down"} ) do
+                %i.fas.fa-angle-down.new-container__body__delivary-box__shipping-days__select--icon.form-select--icon
             .input-error#item_shipping-cost_error
 
 
