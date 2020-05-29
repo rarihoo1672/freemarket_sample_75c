@@ -46,7 +46,7 @@ $(function(){
         $('#grandchildren_wrapper').remove();
         $('#size_wrapper').remove();
         $('#brand_wrapper').remove();
-        var insertHTML = '';
+        let insertHTML = '';
         children.forEach(function(child){
           insertHTML += appendOption(child);
         });
@@ -62,7 +62,7 @@ $(function(){
       $('#brand_wrapper').remove();
     }
   });
-
+　
   $('.new-container__body__detail-box__category').on('change', '#child_form', function(){
     let childName = document.getElementById('child_form').value;
     if (childName != "---"){
