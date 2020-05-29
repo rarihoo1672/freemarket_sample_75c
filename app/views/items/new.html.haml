@@ -58,7 +58,7 @@
                 %span.new-container__body__detail-box__category__label__text--need.content-label__text--need
                   必須
             .new-container__body__detail-box__category__select.form-select
-              %select.new-container__body__detail-box__category__select__down.form-select__down
+              = f.select( :category, @category_parent_array, {include_blank: true, prompt: true}, {class: "form_select_down"} )
               %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
             .input-error#item_category_index_id_error
 
@@ -70,7 +70,8 @@
                 %span.new-container__body__detail-box__item-size__label__text--need.content-label__text--need
                   必須
             .new-container__body__detail-box__item-size__form.content-form
-              %input.new-container__body__detail-box__item-size__form__input.content-form__input{placeholder: "例）110cmやMサイズなど"}
+              = f.select( :size, [['S', 1], ['M', 2], ['L', 3], ['LL', 4]], {prompt: true}, {class: "content-form__input"} )
+              %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
             .input-error#item_item-size_error
 
 
@@ -81,7 +82,8 @@
                 %span.new-container__body__detail-box__brand__label__text--any.content-label__text--any
                   任意
             .new-container__body__detail-box__brand__form.content-form
-              %input.new-container__body__detail-box__brand__form__input.content-form__input{placeholder: "例）グッチ"}
+              = f.select( :size, [['S', 1], ['M', 2], ['L', 3], ['LL', 4]], {prompt: true}, {class: "content-form__input"} )
+              %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
 
 
           .new-container__body__detail-box__item-status
@@ -91,7 +93,8 @@
                 %span.new-container__body__detail-box__item-status__label__text--need.content-label__text--need
                   必須
             .new-container__body__detail-box__item-status__form.content-form
-              %input.new-container__body__detail-box__item-status__form__input.content-form__input{placeholder: "例）新品"}
+              = f.select( :status, [['新品、未使用', 1], ['未使用に近い', 2], ['目立った傷や汚れなし', 3], ['やや傷や汚れあり', 4], ['傷や汚れあり', 5], ['全体的に状態が悪い', 6]], {prompt: true}, {class: "content-form__input"} )
+              %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
             .input-error#item_item-status_error
 
 
@@ -159,9 +162,7 @@
               .new-container__body__price-box__selling-price__wrapper__form.content-form
                 %p
                   ¥
-                  = f.number_field :price, class:"new-container__body__price-box__selling-price__wrapper__form__input content-form__input", id:"item_price", placeholder: 0
-                  %span
-                    円
+                = f.number_field :price, class:"new-container__body__price-box__selling-price__wrapper__form__input content-form__input", id:"item_price", placeholder: 0
 
               .input-error#item_selling-price_error
 
