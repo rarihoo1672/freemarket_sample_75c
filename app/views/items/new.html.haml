@@ -14,11 +14,21 @@
               必須
         .new-container__body__image-box__limit
           最大10枚までアップロードできます
-        .new-container__body__image-box__upload-form
-          .new-container__body__image-box__upload-form__content
-            %i.fas.fa-camera.new-container__body__image-box__upload-form__content__icon
-            %p.new-container__body__image-box__upload-form__content__text
-              ドラッグアンドドロップ<br>またはクリックしてクリックしてファイルをアップロード
+        .newcontainer__drop-box#exhibit__drop-box
+          .exhibit__drop-box__previews#exhibit__drop-box__previews
+          .exhibit__drop-box__uploader#exhibit__drop-box__uploader
+            %label.exhibit__drop-box__uploader__label#exhibit__drop-box__uploader__label
+              =f.fields_for :images do |image|
+                .img-file_group{"data-index" => "#{image.index()}"}
+                  = image.file_field :image ,type: 'file',value: "",class: "secret-image img-file"
+            .exhibit__drop-box__uploader__text
+              写真を追加
+
+
+
+
+
+
         .input-error#item_image_error
 
 
