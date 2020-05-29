@@ -108,9 +108,9 @@
 
             .new-container__body__delivary-box__shipping-cost__select.form-select
               = f.select( :sipping_cost, [['送料込み（出品者負担）', 1], ['着払い（購入者負担）', 2]], {prompt: true}, {class: "form-select__down"} )
-              %i.fas.fa-angle-down.new-container__body__delivary-box__shipping-days__select--icon.form-select--icon
+              = icon('fas','angle-down', class: 'form-select--icon')
             .input-error#item_shipping-cost_error
-
+ 
 
           .new-container__body__delivary-box__prefecture.content-box
             .new-container__body__delivery-box__prefecture__label.content-label
@@ -121,7 +121,7 @@
 
             .new-container__body__delivary-box__prefecture__select.form-select
               = f.collection_select( :prefecture_id, Prefecture.all, :id, :name, {prompt: true}, {class: "form-select__down"} )
-              %i.fas.fa-angle-down.new-container__body__delivary-box__shipping-days__select--icon.form-select--icon
+              = icon('fas','angle-down', class: 'form-select--icon')
             .input-error#item_prefecture_error
 
 
@@ -134,7 +134,7 @@
 
             .new-container__body__delivary-box__shipping-days__select.form-select
               = f.select( :sipping_days, [['1~2日で発送', 1],['2~3日で発送', 2],['4~7日で発送', 3]], {prompt: true}, {class: "form-select__down"} )
-              %i.fas.fa-angle-down.new-container__body__delivary-box__shipping-days__select--icon.form-select--icon
+              = icon('fas','angle-down', class: 'form-select--icon')
             .input-error#item_shipping-days_error
 
 
@@ -181,7 +181,6 @@
             = f.submit value: "出品する",  class: "new-container__body__links-box__submit__btn"
           .new-container__body__links-box__back
             = link_to "戻る", "/", class: "new-container__body__links-box__back__btn"
-
 
       .new-container__body__report-box
         %p.new-container__body__report-box__text
