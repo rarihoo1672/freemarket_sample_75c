@@ -107,8 +107,8 @@
                   必須
 
             .new-container__body__delivary-box__shipping-cost__select.form-select
-              %select.new-container__body__delivary-box__shipping-cost__select__down.form-select__down
-              %i.fas.fa-angle-down.new-container__body__delivary-box__shipping-cost__select--icon.form-select--icon
+              = f.select( :sipping_cost, [['送料込み（出品者負担）', 1], ['着払い（購入者負担）', 2]], {prompt: true}, {class: "form-select__down"} )
+              %i.fas.fa-angle-down.new-container__body__delivary-box__shipping-days__select--icon.form-select--icon
             .input-error#item_shipping-cost_error
 
 
@@ -120,9 +120,8 @@
                   必須
 
             .new-container__body__delivary-box__prefecture__select.form-select
-              %select.new-container__body__delivary-box__prefecture__select__down.form-select__down
-              %i.fas.fa-angle-down.new-container__body__delivary-box__prefecture__select--icon.form-select--icon
-
+              = f.collection_select( :prefecture_id, Prefecture.all, :id, :name, {prompt: true}, {class: "form-select__down"} )
+              %i.fas.fa-angle-down.new-container__body__delivary-box__shipping-days__select--icon.form-select--icon
             .input-error#item_prefecture_error
 
 
@@ -134,13 +133,12 @@
                   必須
 
             .new-container__body__delivary-box__shipping-days__select.form-select
-              %select.new-container__body__delivary-box__shipping-days__select__down.form-select__down
+              = f.select( :sipping_days, [['1~2日で発送', 1],['2~3日で発送', 2],['4~7日で発送', 3]], {prompt: true}, {class: "form-select__down"} )
               %i.fas.fa-angle-down.new-container__body__delivary-box__shipping-days__select--icon.form-select--icon
-
             .input-error#item_shipping-days_error
 
 
-        .new-container__body__price-box.contents-box
+        .new-container__body__price-box.contents-box--price
           %p.new-container__body__price-box__box-label.box-label
             価格
             %span.new-container__body__price-box__box-label__limit
@@ -159,9 +157,7 @@
               .new-container__body__price-box__selling-price__wrapper__form.content-form
                 %p
                   ¥
-                  = f.number_field :price, class:"new-container__body__price-box__selling-price__wrapper__form__input content-form__input", id:"item_price", placeholder: 0
-                  %span
-                    円
+                = f.number_field :price, class:"new-container__body__price-box__selling-price__wrapper__form__input content-form__input", id:"item_price", placeholder: 0
 
               .input-error#item_selling-price_error
 
