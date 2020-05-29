@@ -123,7 +123,7 @@
           ピックアップブランド
         =link_to "アーカイブ", root_path, class:"brandPick__text__archive"
       .brandPick__images
-        - @items.each do |item|
+        - @items[3..5].each do |item|
           .brandPick__image
             = link_to item_path(item.id) do
               = image_tag ("#{item.images.first.image}"), size:"220x150",class: 'pick-img'

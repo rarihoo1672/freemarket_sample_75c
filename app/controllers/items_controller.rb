@@ -6,11 +6,10 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @parents = Category.where(ancestry: nil)
-    # @parents = ["---"]
-    # Category.where(ancestry: nil).each do |parent|
-      # @parents << parent.name
-    #end
+    @parents = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @parents << parent.name
+    end
     @item.images.new
   end
 
@@ -27,13 +26,12 @@ class ItemsController < ApplicationController
   def item_purchase
   end
 
-  def search
-    respond_to do |format|
-      format.html
-      format.json do
-        @children = Category.find(params[:parent_id]).children
-      end
-    end
+  def get_category_children
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  end
+
+  def get_category_grandchildren
+    @category_grandchildren = Category.find_by(name: "#{params[:child_name]}").children
   end
 
   private

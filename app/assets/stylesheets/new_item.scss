@@ -61,6 +61,33 @@
       position: absolute;
       right: 20px;
       top: 12px;
+      pointer-events: none;
+    }
+  }
+  #children_wrapper {
+    position: relative;
+    .form-select--icon {
+      font-size: 30px;
+      position: absolute;
+      right: 20px;
+      top: 12px;
+      pointer-events: none;
+    }
+    .form-select--icon:before {
+      content: "";
+    }
+  }
+  #grandchildren_wrapper {
+    position: relative;
+    .form-select--icon {
+      font-size: 30px;
+      position: absolute;
+      right: 20px;
+      top: 12px;
+      pointer-events: none;
+    }
+    .form-select--icon:before {
+      content: "";
     }
   }
 }
