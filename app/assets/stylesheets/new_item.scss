@@ -136,6 +136,7 @@
     }
 
     &__price-box {
+      border: none;
       &__selling-price {
         &__wrapper {
           display: flex;
@@ -175,7 +176,7 @@
     }
 
     &__links-box {
-      padding: 0px 30px 0;
+      padding: 40px 30px 40px;
       &__submit {
         width: 360px;
         margin: 0 auto;
