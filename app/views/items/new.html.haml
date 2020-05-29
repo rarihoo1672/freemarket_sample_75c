@@ -4,9 +4,9 @@
       = image_tag "logo/logo.png", class: "new-container__header__logo"
 
 
-  .new-container__body
-    .new-container__body__image-box.contents-box
-      = form_with model:@item do |f|
+  = form_with model:@item do |f|
+    .new-container__body
+      .new-container__body__image-box.contents-box
         .new-container__body__image-box__label.content-label
           %p.new-container__body__image-box__label__text.content-label__text
             出品画像
@@ -14,175 +14,189 @@
               必須
         .new-container__body__image-box__limit
           最大10枚までアップロードできます
-        .new-container__body__image-box__upload-form
-          .new-container__body__image-box__upload-form__content
-            %i.fas.fa-camera.new-container__body__image-box__upload-form__content__icon
-            %p.new-container__body__image-box__upload-form__content__text
-              ドラッグアンドドロップ<br>またはクリックしてクリックしてファイルをアップロード
+        .newcontainer__drop-box#exhibit__drop-box
+          .exhibit__drop-box__previews#exhibit__drop-box__previews
+          .exhibit__drop-box__uploader#exhibit__drop-box__uploader
+            %label.exhibit__drop-box__uploader__label#exhibit__drop-box__uploader__label
+              =f.fields_for :images do |image|
+                .img-file_group{"data-index" => "#{image.index()}"}
+                  = image.file_field :image ,type: 'file',value: "",class: "secret-image img-file"
+            .exhibit__drop-box__uploader__text
+              写真を追加
+
+
+
+
+
+
         .input-error#item_image_error
 
 
-        .new-container__body__intro-box.contents-box
-          .new-container__body__intro-box__item-name.content-box
-            .new-container__body__intro-box__item-name__label.content-label
-              %p.new-container__body__intro-box__item-name__label__text.content-label__text
-                商品名
-                %span.new-container__body__intro-box__item-name__label__text--need.content-label__text--need
-                  必須
-            .new-container__body__intro-box__item-name__form.content-form
-              = f.text_field :name, class: "new-container__body__intro-box__item-name__form__input content-form__input", placeholder: "40文字まで"
-            .input-error#item_title_error
+      .new-container__body__intro-box.contents-box
+        .new-container__body__intro-box__item-name.content-box
+          .new-container__body__intro-box__item-name__label.content-label
+            %p.new-container__body__intro-box__item-name__label__text.content-label__text
+              商品名
+              %span.new-container__body__intro-box__item-name__label__text--need.content-label__text--need
+                必須
+          .new-container__body__intro-box__item-name__form.content-form
+            = f.text_field :name, class: "new-container__body__intro-box__item-name__form__input content-form__input", placeholder: "40文字まで"
+          .input-error#item_title_error
 
-          .new-container__body__intro-box__description
-            .new-container__body__intro-box__description__label.content-label
-              %p.new-container__body__intro-box__description__label__text.content-label__text
-                商品の説明
-                %span.new-container__body__intro-box__description__label__text--need.content-label__text--need
-                  必須
-            .new-container__body__intro-box__description__form
-              = f.text_area :introduction, class:"new-container__body__intro-box__description__form__input-area", id:"js-counter", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）  2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: 5
-              .new-container__body__intro-box__description__form__counter.counter
-                %span.show-count
-                  0
-                &="/1000"
-            .input-error#item_description_error
-
-
-        .new-container__body__detail-box.contents-box
-          %p.new-container__body__detail-box__box-label.box-label
-            商品の詳細
-          .new-container__body__detail-box__category.content-box
-            .new-container__body__detail-box__category__label.content-label
-              %p.new-container__body__detail-box__category__label__text.content-label__text
-                カテゴリー
-                %span.new-container__body__detail-box__category__label__text--need.content-label__text--need
-                  必須
-            .new-container__body__detail-box__category__select.form-select
-              %select.new-container__body__detail-box__category__select__down.form-select__down
-              %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
-            .input-error#item_category_index_id_error
+        .new-container__body__intro-box__description
+          .new-container__body__intro-box__description__label.content-label
+            %p.new-container__body__intro-box__description__label__text.content-label__text
+              商品の説明
+              %span.new-container__body__intro-box__description__label__text--need.content-label__text--need
+                必須
+          .new-container__body__intro-box__description__form
+            = f.text_area :introduction, class:"new-container__body__intro-box__description__form__input-area", id:"js-counter", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）  2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: 5
+            .new-container__body__intro-box__description__form__counter.counter
+              %span.show-count
+                0
+              &="/1000"
+          .input-error#item_description_error
 
 
-          .new-container__body__detail-box__item-size.content-box
-            .new-container__body__detail-box__item-size__label.content-label
-              %p.new-container__body__detail-box__item-size__label__text.content-label__text
-                サイズ
-                %span.new-container__body__detail-box__item-size__label__text--need.content-label__text--need
-                  必須
-            .new-container__body__detail-box__item-size__form.content-form
-              %input.new-container__body__detail-box__item-size__form__input.content-form__input{placeholder: "例）110cmやMサイズなど"}
-            .input-error#item_item-size_error
+      .new-container__body__detail-box.contents-box
+        %p.new-container__body__detail-box__box-label.box-label
+          商品の詳細
+        .new-container__body__detail-box__category.content-box
+          .new-container__body__detail-box__category__label.content-label
+            %p.new-container__body__detail-box__category__label__text.content-label__text
+              カテゴリー
+              %span.new-container__body__detail-box__category__label__text--need.content-label__text--need
+                必須
+          .new-container__body__detail-box__category__select.form-select
+            = f.select( :category, @category_parent_array, {include_blank: true, prompt: true}, {class: "form_select_down"} )
+            %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
+          .input-error#item_category_index_id_error
 
 
-          .new-container__body__detail-box__brand.content-box
-            .new-container__body__detail-box__brand__label.content-label
-              %p.new-container__body__detail-box__brand__label__text.content-label__text
-                ブランド名
-                %span.new-container__body__detail-box__brand__label__text--any.content-label__text--any
-                  任意
-            .new-container__body__detail-box__brand__form.content-form
-              %input.new-container__body__detail-box__brand__form__input.content-form__input{placeholder: "例）グッチ"}
+        .new-container__body__detail-box__item-size.content-box
+          .new-container__body__detail-box__item-size__label.content-label
+            %p.new-container__body__detail-box__item-size__label__text.content-label__text
+              サイズ
+              %span.new-container__body__detail-box__item-size__label__text--need.content-label__text--need
+                必須
+          .new-container__body__detail-box__item-size__form.content-form.form-select
+            = f.select( :size, [['S', 1], ['M', 2], ['L', 3], ['LL', 4]], {prompt: true}, {class: "content-form__input"} )
+            %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
+          .input-error#item_item-size_error
 
 
-          .new-container__body__detail-box__item-status
-            .new-container__body__detail-box__item-status__label.content-label
-              %p.new-container__body__detail-box__item-status__label__text.content-label__text
-                商品の状態
-                %span.new-container__body__detail-box__item-status__label__text--need.content-label__text--need
-                  必須
-            .new-container__body__detail-box__item-status__form.content-form
-              %input.new-container__body__detail-box__item-status__form__input.content-form__input{placeholder: "例）新品"}
-            .input-error#item_item-status_error
+        .new-container__body__detail-box__brand.content-box
+          .new-container__body__detail-box__brand__label.content-label
+            %p.new-container__body__detail-box__brand__label__text.content-label__text
+              ブランド名
+              %span.new-container__body__detail-box__brand__label__text--any.content-label__text--any
+                任意
+          .new-container__body__detail-box__brand__form.content-form.form-select
+            = f.select( :size, [['S', 1], ['M', 2], ['L', 3], ['LL', 4]], {prompt: true}, {class: "content-form__input"} )
+            %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
 
 
-        .new-container__body__delivery-box.contents-box
-          %p.new-container__body__delivery-box__box-label.box-label
-            配送について
-
-          .new-container__body__delivary-box__shipping-cost.content-box
-            .new-container__body__delivery-box__shipping-cost__label.content-label
-              %p.new-container__body__delivery-box__shipping-cost__label__text.content-label__text
-                配送料の負担
-                %span.new-container__body__delivery-box__shipping-cost__label__text--need.content-label__text--need
-                  必須
-
-            .new-container__body__delivary-box__shipping-cost__select.form-select
-              = f.select( :sipping_cost, [['送料込み（出品者負担）', 1], ['着払い（購入者負担）', 2]], {prompt: true}, {class: "form-select__down"} )
-              = icon('fas','angle-down', class: 'form-select--icon')
-            .input-error#item_shipping-cost_error
- 
-
-          .new-container__body__delivary-box__prefecture.content-box
-            .new-container__body__delivery-box__prefecture__label.content-label
-              %p.new-container__body__delivery-box__prefecture__label__text.content-label__text
-                発送元の地域
-                %span.new-container__body__delivery-box__prefecture__label__text--need.content-label__text--need
-                  必須
-
-            .new-container__body__delivary-box__prefecture__select.form-select
-              = f.collection_select( :prefecture_id, Prefecture.all, :id, :name, {prompt: true}, {class: "form-select__down"} )
-              = icon('fas','angle-down', class: 'form-select--icon')
-            .input-error#item_prefecture_error
+        .new-container__body__detail-box__item-status
+          .new-container__body__detail-box__item-status__label.content-label
+            %p.new-container__body__detail-box__item-status__label__text.content-label__text
+              商品の状態
+              %span.new-container__body__detail-box__item-status__label__text--need.content-label__text--need
+                必須
+          .new-container__body__detail-box__item-status__form.content-form.form-select
+            = f.select( :status, [['新品、未使用', 1], ['未使用に近い', 2], ['目立った傷や汚れなし', 3], ['やや傷や汚れあり', 4], ['傷や汚れあり', 5], ['全体的に状態が悪い', 6]], {prompt: true}, {class: "content-form__input"} )
+            %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
+          .input-error#item_item-status_error
 
 
-          .new-container__body__delivary-box__shipping-days.content-box
-            .new-container__body__delivery-box__shipping-days__label.content-label
-              %p.new-container__body__delivery-box__shipping-days__label__text.content-label__text
-                発送までの日数
-                %span.new-container__body__delivery-box__shipping-days__label__text--need.content-label__text--need
-                  必須
+      .new-container__body__delivery-box.contents-box
+        %p.new-container__body__delivery-box__box-label.box-label
+          配送について
 
-            .new-container__body__delivary-box__shipping-days__select.form-select
-              = f.select( :sipping_days, [['1~2日で発送', 1],['2~3日で発送', 2],['4~7日で発送', 3]], {prompt: true}, {class: "form-select__down"} )
-              = icon('fas','angle-down', class: 'form-select--icon')
-            .input-error#item_shipping-days_error
+        .new-container__body__delivary-box__shipping-cost.content-box
+          .new-container__body__delivery-box__shipping-cost__label.content-label
+            %p.new-container__body__delivery-box__shipping-cost__label__text.content-label__text
+              配送料の負担
+              %span.new-container__body__delivery-box__shipping-cost__label__text--need.content-label__text--need
+                必須
 
-
-        .new-container__body__price-box.contents-box--price
-          %p.new-container__body__price-box__box-label.box-label
-            価格
-            %span.new-container__body__price-box__box-label__limit
-              （¥300〜9,999,999）
-            =link_to "" do
-              %i.far.fa-question-circle.new-container__body__price-box__box-label__icon
+          .new-container__body__delivary-box__shipping-cost__select.form-select
+            = f.select( :sipping_cost, [['送料込み（出品者負担）', 1], ['着払い（購入者負担）', 2]], {prompt: true}, {class: "form-select__down"} )
+            %i.fas.fa-angle-down.new-container__body__delivary-box__shipping-days__select--icon.form-select--icon
+          .input-error#item_shipping-cost_error
 
 
-          .new-container__body__price-box__selling-price.content-box
-            .new-container__body__price-box__selling-price__wrapper.content-label
-              %p.new-container__body__price-box__selling-price__wrapper__text.content-label__text
-                販売価格
-                %span.new-container__body__price-box__selling-price__wrapper__text--need.content-label__text--need
-                  必須
+        .new-container__body__delivary-box__prefecture.content-box
+          .new-container__body__delivery-box__prefecture__label.content-label
+            %p.new-container__body__delivery-box__prefecture__label__text.content-label__text
+              発送元の地域
+              %span.new-container__body__delivery-box__prefecture__label__text--need.content-label__text--need
+                必須
 
-              .new-container__body__price-box__selling-price__wrapper__form.content-form
-                %p
-                  ¥
-                = f.number_field :price, class:"new-container__body__price-box__selling-price__wrapper__form__input content-form__input", id:"item_price", placeholder: 0
-
-              .input-error#item_selling-price_error
-
-            .new-container__body__price-box__selling-price__fee
-              %p.new-container__body__price-box__selling-price__fee__text
-                販売手数料(10%)
-
-              .new-container__body__price-box__selling-price__fee__price#price_fee
-                ー
-
-            .new-container__body__price-box__selling-price__benefit
-              %p.new-container__body__price-box__selling-price__benefit__text
-                販売利益
-
-              .new-container__body__price-box__selling-price__benefit__price#price_benefit
-                ー
+          .new-container__body__delivary-box__prefecture__select.form-select
+            = f.collection_select( :prefecture_id, Prefecture.all, :id, :name, {prompt: true}, {class: "form-select__down"} )
+            %i.fas.fa-angle-down.new-container__body__delivary-box__shipping-days__select--icon.form-select--icon
+          .input-error#item_prefecture_error
 
 
-        .new-container__body__links-box
-          .new-container__body__links-box__submit
-            = f.submit value: "出品する",  class: "new-container__body__links-box__submit__btn"
-          .new-container__body__links-box__back
-            = link_to "戻る", "/", class: "new-container__body__links-box__back__btn"
+        .new-container__body__delivary-box__shipping-days.content-box
+          .new-container__body__delivery-box__shipping-days__label.content-label
+            %p.new-container__body__delivery-box__shipping-days__label__text.content-label__text
+              発送までの日数
+              %span.new-container__body__delivery-box__shipping-days__label__text--need.content-label__text--need
+                必須
 
-      .new-container__body__report-box
+          .new-container__body__delivary-box__shipping-days__select.form-select
+            = f.select( :sipping_days, [['1~2日で発送', 1],['2~3日で発送', 2],['4~7日で発送', 3]], {prompt: true}, {class: "form-select__down"} )
+            %i.fas.fa-angle-down.new-container__body__delivary-box__shipping-days__select--icon.form-select--icon
+          .input-error#item_shipping-days_error
+
+
+      .new-container__body__price-box.contents-box
+        %p.new-container__body__price-box__box-label.box-label
+          価格
+          %span.new-container__body__price-box__box-label__limit
+            （¥300〜9,999,999）
+          =link_to "" do
+            %i.far.fa-question-circle.new-container__body__price-box__box-label__icon
+
+
+        .new-container__body__price-box__selling-price.content-box
+          .new-container__body__price-box__selling-price__wrapper.content-label
+            %p.new-container__body__price-box__selling-price__wrapper__text.content-label__text
+              販売価格
+              %span.new-container__body__price-box__selling-price__wrapper__text--need.content-label__text--need
+                必須
+
+            .new-container__body__price-box__selling-price__wrapper__form.content-form
+              %p
+                ¥
+              = f.number_field :price, class:"new-container__body__price-box__selling-price__wrapper__form__input content-form__input", id:"item_price", placeholder: 0
+
+            .input-error#item_selling-price_error
+
+          .new-container__body__price-box__selling-price__fee
+            %p.new-container__body__price-box__selling-price__fee__text
+              販売手数料(10%)
+
+            .new-container__body__price-box__selling-price__fee__price#price_fee
+              ー
+
+          .new-container__body__price-box__selling-price__benefit
+            %p.new-container__body__price-box__selling-price__benefit__text
+              販売利益
+
+            .new-container__body__price-box__selling-price__benefit__price#price_benefit
+              ー
+
+
+      .new-container__body__links-box.contents-box
+        .new-container__body__links-box__submit
+          = f.submit "出品する",  class: "new-container__body__links-box__submit__btn"
+        .new-container__body__links-box__back
+          = link_to "戻る", "/", class: "new-container__body__links-box__back__btn"
+
+
+      .new-container__body__report-box.contents-box
         %p.new-container__body__report-box__text
           禁止されている
           = link_to "行為", "#"
