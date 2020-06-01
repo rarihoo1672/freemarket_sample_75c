@@ -92,9 +92,8 @@
               %span.new-container__body__detail-box__brand__label__text--any.content-label__text--any
                 任意
           .new-container__body__detail-box__brand__form.content-form.form-select
-            = f.select( :size, [['S', 1], ['M', 2], ['L', 3], ['LL', 4]], {prompt: true}, {class: "content-form__input"} )
-            %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
-
+            =f.fields_for :brands do |brand|
+              = brand.text_field :name, class: "new-container__body__intro-box__item-name__form__input content-form__input", placeholder: "例)シャネル"
 
         .new-container__body__detail-box__item-status
           .new-container__body__detail-box__item-status__label.content-label
