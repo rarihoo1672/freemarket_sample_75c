@@ -3,11 +3,11 @@
     .headerBox
       .headboxUpper
         %h1.logo
-          = image_tag src='/assets/logo/logo.png', size: "140x41"
+          = image_tag asset_path('/assets/logo/logo.png'), size: "140x41"
         .searchForm
           %input.searchForm__text{name: "search", placeholder: "キーワードから探す", type: "text", value: ""}/
           .searchForm__submit
-            = image_tag src='/assets/icon/icon-search 1.png', size: "20x20", class: ".searchForm__submit--btn"
+            = image_tag asset_path('/assets/icon/icon-search 1.png'), size: "20x20", class: ".searchForm__submit--btn"
       .headboxUnder
         .headboxUnder__search
           = link_to "カテゴリー", root_path, class:"headboxUnder__search--left"
@@ -24,8 +24,8 @@
         %p.appInfo__sub
           FURIMAは誰でも簡単に出品・購入できる<br>フリマアプリです
       .banners
-        = link_to image_tag("app-store.svg", class:"banners__ios"), "/"
-        = link_to image_tag("google-play.svg", class:"banners__android"), "/"
+        = link_to image_tag(asset_path("app-store.svg"), class:"banners__ios"), "/"
+        = link_to image_tag(asset_path("google-play.svg"), class:"banners__android"), "/"
 
     .chosen
       %h3.chosen__tittle
@@ -35,7 +35,7 @@
         .chosen__lists__text
           .chosen__lists__text__num 1
           .chosen__lists__text__image
-            = image_tag src='/assets/pict/pict-reason-01.jpg', size: '', class: 'chosen-img'
+            = image_tag asset_path('/assets/pict/pict-reason-01.jpg'), size: '', class: 'chosen-img'
           %h4
             %span.text-deco 3分
             ですぐに出品
@@ -44,7 +44,7 @@
         .chosen__lists__text#chosen-center
           .chosen__lists__text__num 2
           .chosen__lists__text__image
-          = image_tag src='/assets/pict/pict-reason-02.jpg', size: '', class: 'chosen-img'
+          = image_tag asset_path('/assets/pict/pict-reason-02.jpg'), size: '', class: 'chosen-img'
           %h4
             %span.text-deco シンプルで
             使いやすい
@@ -53,7 +53,7 @@
         .chosen__lists__text
           .chosen__lists__text__num 3
           .chosen__lists__text__image
-          = image_tag src='/assets/pict/pict-reason-03.jpg', size: '', class: 'chosen-img'
+          = image_tag asset_path('/assets/pict/pict-reason-03.jpg'), size: '', class: 'chosen-img'
           %h4
             手数料
             %span.text-deco 業界最安
@@ -72,8 +72,8 @@
             %br
             ほしかったあの商品に出会えるかもしれません。
         .mdAppbox__banners
-          = link_to image_tag("app-store.svg", class:"mdAppbox__banners__ios"), "/"
-          = link_to image_tag("google-play.svg", class:"mdAppbox__banners__android"), "/"
+          = link_to image_tag(asset_path("app-store.svg"), class:"mdAppbox__banners__ios"), "/"
+          = link_to image_tag(asset_path("google-play.svg"), class:"mdAppbox__banners__android"), "/"
 
     .attribute
       %h3.attribute__tittle
@@ -82,19 +82,19 @@
       .attribute__lists
         .attribute__lists__text
           .attribute__image
-            = image_tag src='/assets/icon/icon-01.png', size: '233x233', class: 'attribute-img'
+            = image_tag asset_path('/assets/icon/icon-01.png'), size: '233x233', class: 'attribute-img'
           %h4
             簡単に売り買いできる
           %P
             スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
         .attribute__lists__text#attribute-center
-          = image_tag src='/assets/icon/icon-03.png', size: '233x233', class: 'attribute-img'
+          = image_tag asset_path('/assets/icon/icon-03.png'), size: '233x233', class: 'attribute-img'
           %h4
             売上金は即日振込みに対応
           %p
             午前9時までに振り込みを依頼いただければ、翌日に指定の口座に入金いたします！
         .attribute__lists__text
-          = image_tag src='/assets/icon/icon-02.png', size: '233x233', class: 'attribute-img'
+          = image_tag asset_path('/assets/icon/icon-02.png'), size: '233x233', class: 'attribute-img'
           %h4
             様々な支払いに対応
           %p
@@ -142,8 +142,8 @@
         %p.suggestDl__text__push
           今すぐ無料ダウンロード！
       .suggestDl__banners
-        = link_to image_tag("app-store.svg", class:"suggestDl__ios"), "/"
-        = link_to image_tag("google-play.svg", class:"suggestDl__android"), "/"
+        = link_to image_tag(asset_path("app-store.svg"), class:"suggestDl__ios"), "/"
+        = link_to image_tag(asset_path("google-play.svg"), class:"suggestDl__android"), "/"
 
   .top-footer
     .footerMenu
@@ -175,11 +175,11 @@
         %li.footer_list
           お知らせ
     .footer__logo
-      = image_tag src='/assets/logo/logo-white.png', size: ""
+      = image_tag asset_path('/assets/logo/logo-white.png'), size: ""
     %P.copyright © FURIMA
 
 .sell-btn
   .btn-title
     出品する
     =link_to new_item_path, target:"_blank" do
-      = image_tag src="/assets/icon/icon_camera.png", size: "50"
+      = image_tag asset_path("/assets/icon/icon_camera.png"), size: "50"

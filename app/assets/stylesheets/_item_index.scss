@@ -77,7 +77,7 @@
   .topInfo {
     max-width: 100%;
     height: 560px;
-    background-image: url("/assets/pict/bg-mainVisual-pict_pc.jpg");
+    background-image: image-url("/assets/pict/bg-mainVisual-pict_pc.jpg");
     background-size: cover;
     background-position: center;
     color: white;
@@ -180,7 +180,7 @@
   .middleAppInfo {
     max-width: 100%;
     height: 400px;
-    background-image: url("/assets/pict/bg-topMiddleDl-pict.jpg");
+    background-image: image-url("/assets/pict/bg-topMiddleDl-pict.jpg");
     background-size: cover;
     background-position: center;
     color: white;
@@ -250,6 +250,7 @@
       .attribute-img {
         width: 100%;
         vertical-align: bottom;
+        object-fit: contain;
       }
       h4 {
         font-weight: bold;
@@ -334,7 +335,7 @@
   .suggestApp {
     max-width: 100%;
     height: 400px;
-    background-image: url("/assets/pict/bg-appBanner-pict.jpg");
+    background-image: image-url("/assets/pict/bg-appBanner-pict.jpg");
     background-size: cover;
     background-position: center;
     color: white;
