@@ -23,12 +23,6 @@
                   = image.file_field :image ,type: 'file',value: "",class: "secret-image img-file"
             .exhibit__drop-box__uploader__text
               写真を追加
-
-
-
-
-
-
         .input-error#item_image_error
 
 
@@ -57,21 +51,19 @@
               &="/1000"
           .input-error#item_description_error
 
-
-      .new-container__body__detail-box.contents-box
-        %p.new-container__body__detail-box__box-label.box-label
-          商品の詳細
-        .new-container__body__detail-box__category.content-box
-          .new-container__body__detail-box__category__label.content-label
-            %p.new-container__body__detail-box__category__label__text.content-label__text
-              カテゴリー
-              %span.new-container__body__detail-box__category__label__text--need.content-label__text--need
-                必須
-          .new-container__body__detail-box__category__select.form-select
-            = f.select( :category, @category_parent_array, {include_blank: true, prompt: true}, {class: "form_select_down"} )
-            %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
-          .input-error#item_category_index_id_error
-
+        .new-container__body__detail-box.contents-box
+          %p.new-container__body__detail-box__box-label.box-label
+            商品の詳細
+          .new-container__body__detail-box__category.content-box
+            .new-container__body__detail-box__category__label.content-label
+              %p.new-container__body__detail-box__category__label__text.content-label__text
+                カテゴリー
+                %span.new-container__body__detail-box__category__label__text--need.content-label__text--need
+                  必須
+            .new-container__body__detail-box__category__select.form-select
+              = f.select( :category, @parents, {prompt: true}, {class: "content-form__input", id: "parent-form"} )
+              %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
+            .input-error#item_category_index_id_error
 
         .new-container__body__detail-box__item-size.content-box
           .new-container__body__detail-box__item-size__label.content-label
@@ -83,7 +75,6 @@
             = f.select( :size, [['S', 1], ['M', 2], ['L', 3], ['LL', 4]], {prompt: true}, {class: "content-form__input"} )
             %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
           .input-error#item_item-size_error
-
 
         .new-container__body__detail-box__brand.content-box
           .new-container__body__detail-box__brand__label.content-label
@@ -105,7 +96,6 @@
             = f.select( :status, [['新品、未使用', 1], ['未使用に近い', 2], ['目立った傷や汚れなし', 3], ['やや傷や汚れあり', 4], ['傷や汚れあり', 5], ['全体的に状態が悪い', 6]], {prompt: true}, {class: "content-form__input"} )
             %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
           .input-error#item_item-status_error
-
 
       .new-container__body__delivery-box.contents-box
         %p.new-container__body__delivery-box__box-label.box-label
@@ -150,7 +140,7 @@
           .input-error#item_shipping-days_error
 
 
-      .new-container__body__price-box.contents-box
+      .new-container__body__price-box.contents-box--price
         %p.new-container__body__price-box__box-label.box-label
           価格
           %span.new-container__body__price-box__box-label__limit
@@ -188,9 +178,9 @@
               ー
 
 
-      .new-container__body__links-box.contents-box
+      .new-container__body__links-box
         .new-container__body__links-box__submit
-          = f.submit "出品する",  class: "new-container__body__links-box__submit__btn"
+          = f.submit value: "出品する",  class: "new-container__body__links-box__submit__btn"
         .new-container__body__links-box__back
           = link_to "戻る", "/", class: "new-container__body__links-box__back__btn"
 

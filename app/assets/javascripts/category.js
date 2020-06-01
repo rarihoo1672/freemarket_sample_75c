@@ -1,39 +1,44 @@
 $(function(){
   function appendOption(category){
-    var html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
+    let html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
     return html;
   }
 
   function appendChidrenBox(insertHTML){
-    var childSelectHtml = '';
-    childSelectHtml = `<div class='new-container__body__detail-box__category__select' class= 'form-select'>
-                        <select class="content-form__input" name="category_id">
-                          <option value="---" data-category="---">---</option>
-                          ${insertHTML}
-                        <select>
+    let childSelectHtml = '';
+    childSelectHtml = `<div class='new-container__body__detail-box__category__added' id= 'children_wrapper'>
+                        <div class='new-container__body__detail-box__category__select'>
+                          <select class="content-form__input" id="child_form" name="category_id">
+                            <option value="---" data-category="---">---</option>
+                            ${insertHTML}
+                          <select>
+                          <i class='fas fa-angle-down.new-container__body__detail-box__category__select--icon form-select--icon'></i>
+                        </div>
                       </div>`;
-    $('.new-container__body__detail-box__category__label').append(childSelectHtml);
+    $('.new-container__body__detail-box__category').append(childSelectHtml);
   }
 
   function appendGrandchidrenBox(insertHTML){
-    var grandchildSelectHtml = '';
-    grandchildSelectHtml = `<div class='new-container__body__detail-box__category__select' class= 'form-select'>
-                        <select class="content-form__input" name="category_id">
-                          <option value="---" data-category="---">---</option>
-                          ${insertHTML}
-                        <select>
-                      </div>`;
-    $('.new-container__body__detail-box__category__label').append(grandchildSelectHtml);
+    let grandchildSelectHtml = '';
+    grandchildSelectHtml = `<div class='new-container__body__detail-box__category__added' id= 'grandchildren_wrapper'>
+                              <div class='new-container__body__detail-box__category__select'>
+                                <select class="content-form__input" id="grandchild-form" name="category_id">
+                                  <option value="---" data-category="---">---</option>
+                                  ${insertHTML}
+                                <select>
+                                <i class='fas fa-angle-down.new-container__body__detail-box__category__select--icon form-select--icon'></i>
+                              </div>
+                            </div>`;
+    $('.new-container__body__detail-box__category').append(grandchildSelectHtml);
   }
 
-  $('.content-form__input').on('change', function(){
-    var parentCategory = document.getElementById('parent_category').value;
-    console.log(parentCategory);
+  $('#parent-form').on('change', function(){
+    let parentCategory = document.getElementById('parent-form').value;
     if (parentCategory != "---"){
       $.ajax({
         url: 'get_category_children',
         type: 'GET',
-        data: { name: parentCategory },
+        data: { parent_name: parentCategory },
         dataType: 'json'
       })
       .done(function(children){
@@ -41,7 +46,7 @@ $(function(){
         $('#grandchildren_wrapper').remove();
         $('#size_wrapper').remove();
         $('#brand_wrapper').remove();
-        var insertHTML = '';
+        let insertHTML = '';
         children.forEach(function(child){
           insertHTML += appendOption(child);
         });
@@ -57,14 +62,14 @@ $(function(){
       $('#brand_wrapper').remove();
     }
   });
-
-  $('.listing-product-detail__category').on('change', '#child_category', function(){
-    var childId = $('#child_category option:selected').data('category');
-    if (childId != "---"){
+　
+  $('.new-container__body__detail-box__category').on('change', '#child_form', function(){
+    let childName = document.getElementById('child_form').value;
+    if (childName != "---"){
       $.ajax({
         url: 'get_category_grandchildren',
         type: 'GET',
-        data: { child_id: childId },
+        data: { child_name: childName },
         dataType: 'json'
       })
       .done(function(grandchildren){
@@ -72,7 +77,7 @@ $(function(){
           $('#grandchildren_wrapper').remove();
           $('#size_wrapper').remove();
           $('#brand_wrapper').remove();
-          var insertHTML = '';
+          let insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
           });
