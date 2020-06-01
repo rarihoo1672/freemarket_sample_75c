@@ -4,6 +4,18 @@ class ItemsController < ApplicationController
     @items = Item.on_sell.includes([:images]).order(created_at: :desc)
   end
 
+  def new
+    @item = Item.new
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+       @category_parent_array << parent.name
+    end
+    @item.images.new
+  end
+
+  def create
+  end
+
   def show
     category_id = Item.find(params[:id]).category_id
     @this_category = Category.find(category_id)
@@ -12,5 +24,22 @@ class ItemsController < ApplicationController
   end
 
   def item_purchase
+  end
+
+  def get_category_children
+    @category_children = Category.find_by(name: "#{params[:name]}", ancestry: nil).children
+ end
+
+ def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+ end
+
+
+  private
+
+  def item_params
+    reject = %w()
+    columns = Item.column_symbolized_names(reject).push(images_attributes: [:image]).push(:prefecture_id)
+    params.require(:item).permit(*columns)
   end
 end
