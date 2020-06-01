@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_071320) do
+ActiveRecord::Schema.define(version: 2020_06_01_020938) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "last_name", null: false
@@ -18,15 +18,21 @@ ActiveRecord::Schema.define(version: 2020_05_27_071320) do
     t.string "lastname_kana", null: false
     t.string "firstname_kana", null: false
     t.string "post_code", null: false
-    t.string "prefecture_id", null: false
+    t.string "prefecture", null: false
     t.string "city", null: false
     t.string "address", null: false
     t.string "building_name"
     t.string "tel_number"
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -53,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_071320) do
     t.string "size", null: false
     t.string "shipping_cost", null: false
     t.string "shipping_days", null: false
+    t.string "prefecture_id", null: false
     t.integer "user_id", null: false
     t.integer "buyer"
     t.datetime "created_at", null: false
@@ -97,5 +104,4 @@ ActiveRecord::Schema.define(version: 2020_05_27_071320) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "images", "items"
-  add_foreign_key "items", "categories"
 end
