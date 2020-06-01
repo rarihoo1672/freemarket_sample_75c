@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many :images
   belongs_to :category
-  belongs_to :brand
+  has_one :brand
 
   validates :name,           presence: true
   validates :price,          presence: true
