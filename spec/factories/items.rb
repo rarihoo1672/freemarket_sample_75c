@@ -3,9 +3,9 @@ FactoryBot.define do
   factory :item do
     name                  {"テスト"}
     introduction          {"テストです"}
-    category              {""}
+    category              {""}？？
     size                  {"S"}
-    brand                 {"テスト"}
+    brand                 {"テスト"}？？
     status                {"新品、未使用"}
     sipping_cost          {"送料込み（出品者負担）"}
     prefecture_id         {1}
@@ -32,5 +32,9 @@ FactoryBot.define do
 
   factory :image do
     image                 {"hogehoge"}
+  end
+
+  factory :category do
+    
   end
 end
