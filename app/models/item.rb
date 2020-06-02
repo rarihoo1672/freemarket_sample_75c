@@ -17,8 +17,6 @@ class Item < ApplicationRecord
   validates :user_id,        presence: true
   validates :category_id,    presence: true
 
-
-  enum status: { sell: 0, buy: 1}
-  scope :on_sell, -> { where(status: 0) }
-
+  enum buyer: { sell: 0, buy: 1}
+  scope :on_sell, -> { where(buyer: 0) }
 end
