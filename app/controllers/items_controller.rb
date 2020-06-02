@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
 
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @items = Item.on_sell.includes([:images]).order(created_at: :desc)
   end
