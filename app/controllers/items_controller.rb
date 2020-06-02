@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
       @parents << parent.name
     end
     @item.images.new
-    @item.brands.build
+    # @item.brands.build
   end
 
   def create
