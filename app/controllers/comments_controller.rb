@@ -1,7 +1,13 @@
 class CommentsController < ApplicationController
   def create
-    @comment = Comment.create(comment_params)
-    redirect_to item_path(@comment.item.id)
+    if @comment = Comment.create(comment_params)
+      respond_to do |format|
+        format.html{ redirect_to item_path(@comment.item.id) }
+        format.json
+      end
+    else
+      redirect_to item_path(@comment.item.id)
+    end
   end
 
   private
