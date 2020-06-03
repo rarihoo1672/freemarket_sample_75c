@@ -23,10 +23,15 @@ class ItemsController < ApplicationController
   end
 
   def show
-    category_id = Item.find(params[:id]).category_id
-    @this_category = Category.find(category_id)
+    @item = Item.find(params[:id])
+    @brand = Brand.find(@item.brand_id)
+    @this_category = @item.category
     @parent_category = @this_category.parent unless @this_category == nil
     @grandparent_category = @parent_category.parent unless @parent_category == nil
+    @user = @item.user
+    @prefecture = @user.address.prefecture
+    @comment = Comment.new
+    @comments = @item.comments  
   end
 
   def item_purchase
