@@ -28,3 +28,6 @@
 
 # DS_Storeを除外
 .DS_Store
+
+# envを除外
+/.env

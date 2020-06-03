@@ -36,11 +36,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :card, only: [:new, :show] do
+  resources :card, only: [:create, :show, :edit] do
     collection do
-      post 'show', to: 'card#show'
-      post 'pay', to: 'card#pay'
-      post 'delete', to: 'card#delete'
+      delete 'delete', to: 'card#delete'
+      post 'show'
+    end
+    member do
+      get 'confirmation'
     end
   end
 end

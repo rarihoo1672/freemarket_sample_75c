@@ -106,3 +106,6 @@ gem 'mini_magick'
 
 # payjp(クレジットカード情報を管理)
 gem 'payjp'
+
+# dotenv(環境変数を管理)
+gem 'dotenv-rails'
