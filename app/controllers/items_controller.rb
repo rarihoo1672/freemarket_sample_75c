@@ -11,10 +11,17 @@ class ItemsController < ApplicationController
       @parents << parent.name
     end
     @item.images.new
+    # brandカラムは別途実装予定
     # @item.brands.build
   end
 
   def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -38,8 +45,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    reject = %w()
-    columns = Item.column_symbolized_names(reject).push(images_attributes: [:image]).push(:prefecture_id)
-    params.require(:item).permit(*columns)
+    params.require(:item).permit(:name, :price, :introduction, :status, :size, :shipping_cost, :shipping_days, :prefecture_id, :category_id, :brand_id, :buyer, images_attributes: [:image, :id]).merge(user_id: current_user.id)
   end
 end
