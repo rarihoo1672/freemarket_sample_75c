@@ -4,7 +4,7 @@
       = image_tag "logo/logo.png", class: "new-container__header__logo"
 
 
-  = form_with model:@item do |f|
+  = form_with model: @item, local: true do |f|
     .new-container__body
       .new-container__body__image-box.contents-box
         .new-container__body__image-box__label.content-label

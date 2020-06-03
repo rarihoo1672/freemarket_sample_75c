@@ -20,6 +20,11 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
+    @parents = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @parents << parent.name
+    end
+    @item.images.new
       render :new
     end
   end
@@ -45,6 +50,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :introduction, :status, :size, :shipping_cost, :shipping_days, :prefecture_id, :category_id, :brand_id, :buyer, images_attributes: [:image, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :price, :introduction, :status, :size, :shipping_cost, :shipping_days, :prefecture_id, :category_id, :brand_id, :buyer, images_attributes: [:image]).merge(user_id: current_user.id)
   end
 end
