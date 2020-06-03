@@ -103,3 +103,6 @@ gem 'ancestry'
 # carrierwave & mini_magic
 gem 'carrierwave'
 gem 'mini_magick'
+
+# payjp(クレジットカード情報を管理)
+gem 'payjp'
