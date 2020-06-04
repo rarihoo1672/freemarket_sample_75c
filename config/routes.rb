@@ -26,6 +26,9 @@ Rails.application.routes.draw do
       get "delivery_address"
       get "user_information"
     end
+    member do
+      get "add_card"
+    end
   end
 
   resources :items do
@@ -36,7 +39,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :card, only: [:create, :edit] do
+  resources :card, only: :create do
     collection do
       delete 'delete', to: 'card#delete'
     end

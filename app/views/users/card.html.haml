@@ -69,7 +69,7 @@
           %span 支払い方法について
         .add-card
           .card-form
-            = link_to edit_card_path(current_user), class: 'submit-btn', data: {"turbolinks" => false}  do
+            = link_to add_card_user_path(current_user), class: 'submit-btn', data: {"turbolinks" => false}  do
               = icon('far', 'credit-card', class: 'icon')
               クレジットカードを追加する
 

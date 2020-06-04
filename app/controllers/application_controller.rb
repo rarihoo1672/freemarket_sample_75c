@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   before_action :authenticate_user!
+  before_action :secret_key
 
   #protected
 
@@ -14,6 +15,14 @@ class ApplicationController < ActionController::Base
     authenticate_or_request_with_http_basic do |username, password|
       username == Rails.application.credentials[:basic_auth][:user] &&
       password == Rails.application.credentials[:basic_auth][:pass]
+    end
+  end
+
+  def secret_key
+    if Rails.env == 'development'
+      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    else
+      Payjp.api_key = Rails.application.credentials.payjp[:payjp][:PAYJP_PRIVATE_KEY]
     end
   end
 

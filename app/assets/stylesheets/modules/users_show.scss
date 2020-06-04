@@ -351,6 +351,119 @@ body {
         }
       }
     }
+    .edit__card {
+      height: 500px;
+      .chapter__container {
+        %h2 {
+        }
+        &__inner {
+          max-width: 320px;
+          margin: 0 auto;
+          .form__main__container {
+            .form__content {
+              margin-top: 1em;
+              .payment__card {
+    
+              }
+              .require__form {
+                background-color: red;
+                padding: 0.2em 0.5em;
+                border-radius: 0.2em;
+                color: #fff;
+                font-size: 12px;
+              }
+              .number {
+                width: 100%;
+              }
+              .card__list {
+                &__picture {
+    
+                }
+              }
+            }
+            .top__margin {
+              margin-top: 1em;
+              .payment__card{
+    
+              }
+              .require__form {
+                background-color: red;
+                padding: 0.2em 0.5em;
+                border-radius: 0.2em;
+                color: #fff;
+                font-size: 12px;
+              }
+              .select__box {
+                &__half {
+                  position: relative;
+                  .select__default {
+                    width: 10%;
+                    -webkit-appearance: none;
+                  }
+                  %select {
+                    width: 300px;
+                  }
+                  %i {
+                    position: absolute;
+                    right: 20px;
+                    top: 12px;
+                    pointer-events: none;
+                  }
+                  %span {
+  
+                  }
+                }
+              }
+            }
+            .bottom__margin {
+              margin-top: 1em;
+              %label {
+    
+              }
+              .require__form {
+                background-color: red;
+                padding: 0.2em 0.5em;
+                border-radius: 0.2em;
+                color: #fff;
+                font-size: 12px;
+              }
+              .cvc {
+                width: 100%;
+              }
+              .single__code {
+                &__text {
+    
+                }
+              }
+            }
+            .add-card {
+              margin-top: 1em;
+              padding: 24px 0;
+              border-top: 1px solid #eee;
+              .card-form {
+                max-width: 320px;
+                margin: 0 auto;
+                #card_token {
+                  margin: 0;
+                  background: #3CCACE;
+                  border: 1px solid #3CCACE;
+                  color: #fff;
+                  display: block;
+                  width: 100%;
+                  line-height: 48px;
+                  font-size: 14px;
+                  transition: all ease-out .3s;
+                  cursor: pointer;
+                  text-align: center;
+                  #token_submit {
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
 

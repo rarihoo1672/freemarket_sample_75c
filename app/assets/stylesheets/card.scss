@@ -1,3 +1,62 @@
-// Place all the styles related to the card controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.edit__card {
+  .chapter__container {
+    %h2 {
+
+    }
+    &__inner {
+      .form__main__container {
+        .form__content {
+          .payment__card {
+
+          }
+          .require__form {
+
+          }
+          .card__list {
+            &__picture {
+
+            }
+          }
+        }
+        .top__margin {
+          .payment__card{
+
+          }
+          .require__form {
+            .select__box {
+              &__half {
+                .select__default {
+
+                }
+                %i {
+
+                }
+                %span {
+
+                }
+              }
+            }
+          }
+        }
+        .bottom__margin {
+          %label {
+
+          }
+          .require__form {
+
+          }
+          .single__code {
+            &__text {
+
+            }
+          }
+        }
+        #card_token {
+          #token_submit {
+
+          }
+        }
+      }
+    }
+  }
+}

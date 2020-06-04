@@ -1,27 +1,4 @@
 class CardController < ApplicationController
-  # before_action :get_user_params, only: [:edit, :confirmation, :show]
-  before_action :secret_key
-
-  def edit
-  end
-
-  def create
-    if params['payjp-token'].blank?
-      redirect_to action: "edit", id: current_user.id
-    else
-      customer = Payjp::Customer.create(
-      email: current_user.email,
-      card: params['payjp-token'],
-      metadata: {user_id: current_user.id}
-      )
-      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
-      if @card.save
-        redirect_to card_users_path
-      else
-        redirect_to action: "edit", id: current_user.id
-      end
-    end
-  end
 
   def delete
     card = current_user.cards.first
@@ -31,15 +8,5 @@ class CardController < ApplicationController
       card.delete
     end
       redirect_to card_users_path
-  end
-
-  private
-
-  def secret_key
-    if Rails.env == 'development'
-      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-    else
-      Payjp.api_key = Rails.application.credentials.payjp[:payjp][:PAYJP_PRIVATE_KEY]
-    end
   end
 end
