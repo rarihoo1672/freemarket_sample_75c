@@ -26,6 +26,21 @@
   }
 }
 
+.comment-display {
+  border-bottom: 1px solid rgba(230,230,230,1);
+  &__name {
+    margin-top: 5px;
+    margin-left: 20px;
+    opacity: 0.7;
+
+  }
+  &__message {
+    text-align: center;
+    margin: 12px 40px 8px;
+  }
+
+}
+
 .showcontainer {
   background: #f5f5f5;
   width: 100%;
@@ -45,6 +60,7 @@
       font-size: 40px;
       margin-bottom: 6%;
     }
+
 
     &__images {
       width: 100%;
@@ -67,18 +83,21 @@
     &__price {
       margin-bottom: 6%;
       text-align: center;
-      font-size: 16px;
+
       &__amount {
-        margin: 0 16px 0 0;
         font-size:40px;
         font-weight: bold;
         letter-spacing: 2px;
         &__tax {
-          font-size: 10px;
+          font-size: 20px;
+          letter-spacing: 0;
+        }
+        &__shippingConst {
+          font-size: 20px;
+          letter-spacing: 0;
         }
       }
     }
-
 
 
     &__item-btns {
@@ -94,6 +113,7 @@
         color: white;
         font-size: 18px;
       }
+
       &--right {
         padding: 10px 30px;
         background-color: #3CCACE;
@@ -101,6 +121,7 @@
         color: white;
         font-size: 18px;
       }
+
       &--center {
         margin: 0 auto;
         width: 80%;
@@ -111,6 +132,7 @@
         font-size: 18px;
       }
     }
+
 
     &__item-introduction {
       margin-bottom: 6%;
@@ -149,7 +171,6 @@
     }
 
 
-
     &__user-btn {
       display: flex;
       justify-content: space-between;
@@ -166,7 +187,7 @@
           margin: 1px 0 0 8px;
         }
       }
-      
+
       &__right {
         border-radius: 4px;
         border: 1px solid gray;
@@ -179,23 +200,22 @@
 
 
 
-
-
   &__messages {
     width: 700px;
     background: white;
     margin: 0 auto 3%;
     padding: 24px;
 
+
     &__box {
-      padding: 24px;
+
       &__form {
         &__text {
-          margin: 8px 0 0;
           width: 100%;
           max-width: 100%;
           min-height: 104px;
-          padding: 10px;
+          padding: 20px;
+          text-align: center;
           border: 1px solid gray;
           font-size: 16px;
           line-height: 1.5;
@@ -223,6 +243,7 @@
   }
 
 
+
   &__prevLink {
     margin: 0 auto 3%;
     width: 700px;
@@ -232,8 +253,10 @@
   }
 
 
+
   &__related-item {
     margin: 0 auto;
+    padding: 0 0 30px;
     width: 700px;
 
 
