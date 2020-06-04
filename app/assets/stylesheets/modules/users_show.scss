@@ -187,9 +187,53 @@ body {
         &__content {
           max-width: 320px;
           margin: 0 auto;
+          text-align: center;
           .sub-head {
             font-size: 16px;
             font-weight: bold;
+          }
+        }
+        .card__payment {
+          max-width: 320px;
+          margin: 0 auto;
+          &__list {
+            padding-top: 1em;
+            &--content {
+              float: left;
+              font-weight: bold;
+              .card__list {
+
+              }
+              .card__number {
+
+              }
+              .expire__date {
+                font-size: 0.8em;
+              }
+            }
+            #charge-form {
+              float: right;
+              .delete__button {
+                padding: 0.3em 1em;
+                background: #fff;
+                border-radius: 3px;
+                border: 0.1em solid #ea352d;
+                color: #ea352d;
+                cursor: pointer;
+              }
+            }
+          }
+          &__list:after{
+            content:" ";
+            display: block;
+            clear: both;
+          }
+        }
+        .how__not__regist {
+          max-width: 320px;
+          margin: 3em auto 0;
+          border-top: 1px solid #eee;
+          %span {
           }
         }
       }
