@@ -100,6 +100,7 @@ gem 'active_hash'
 # ancestry(カテゴリを多階層で管理)
 gem 'ancestry'
 
-# carrierwave & mini_magic
+# carrierwave & mini_magic with AWS S3
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog-aws'
