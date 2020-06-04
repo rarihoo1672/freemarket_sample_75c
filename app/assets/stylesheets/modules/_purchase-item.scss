@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+
+.purchase--item {
+  height: 100vh;
+  width: 100%;
+  padding-top: 3em;
+  .content {
+    background-color: white;
+    width: 60%;
+    margin: auto;
+    h2 {
+    }
+    &__main {
+      padding: 1em 10%;
+      border-top: 1px solid #f5f5f5;
+      text-align: center;
+      p {
+        font-size: large;
+        font-weight: bold;
+      }
+      h3 {
+      }
+      .button {
+        margin: 0;
+        background: #3CCACE;
+        border: 1px solid #3CCACE;
+        color: #fff;
+        display: block;
+        width: 100%;
+        line-height: 48px;
+        font-size: 14px;
+        transition: all ease-out .3s;
+        cursor: pointer;
+        text-align: center;
+      }
+    }
+    .price {
+      display: flex;
+      justify-content: space-between;
+      &__display {
+        display: flex;
+        justify-content: right;
+        font-size: large;
+        font-weight: bold;
+        p {
+        }
+        span {
+          margin-left: 1em;
+        }
+      }
+    }
+    .payment {
+      display: flex;
+      justify-content: space-between;
+      span {
+        font-size: large;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+// .purchase--item
+//   %h2
+//     購入を確定しますか？
+//   %p
+//     @item.image
+//   %p
+//     @item.name
+//   %p
+//     @item.price
+//   %br
+//   %h3 支払い方法
+//   - if @card_information.blank?
+//   %br
+//   - else
+//     = "**** **** **** " + @card_information.last4
+//     %br
+//     - exp_month = @card_information.exp_month.to_s
+//     - exp_year = @card_information.exp_year.to_s.slice(2,3)
+//     = exp_month + " / " + exp_year
+//   %br
+//   = form_tag(action: :pay, method: :post) do
+//     %button 購入する

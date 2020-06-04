@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'purchase/index'
+  get 'purchase/done'
   get 'card/new'
   get 'card/show'
   get 'card/delete'
@@ -37,6 +39,11 @@ Rails.application.routes.draw do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
+    member do
+      get 'purchase', to: 'items#purchase'
+      post 'pay', to: 'items#pay'
+      get 'done', to: 'items#done'
+    end
   end
 
   resources :card, only: :create do
@@ -44,6 +51,16 @@ Rails.application.routes.draw do
       delete 'delete', to: 'card#delete'
     end
   end
+
+  # resources :purchase, only: :index do
+  #   collection do
+  #     post 'pay', to: 'purchase#pay'
+  #     get 'done', to: 'purchase#done'
+  #   end
+  #   member do
+  #     get 'index', to: 'purchase#index'
+  #   end
+  # end
 end
 
 
