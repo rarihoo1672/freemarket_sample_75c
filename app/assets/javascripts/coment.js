@@ -2,22 +2,22 @@ $(function(){
   function buildHTML(comment) {
     if ( comment.user_id == comment.exhibitor_id) {
       var html = `
-        <div class="detail-comment-box__inner">
-          <div class="detail-comment-box__inner__name">
+        <div class="detail-comment-box__inner comment-display">
+          <div class="detail-comment-box__inner__name comment-display__name">
             出品者: 
           </div>
-          <div class="detail-comment-box__inner__text">
+          <div class="detail-comment-box__inner__text comment-display__message">
             ${comment.message}
           </div>
         </div>`
       return html;
     } else {
       var html = `
-        <div class="detail-comment-box__inner">
-          <div class="detail-comment-box__inner__name">
+        <div class="detail-comment-box__inner comment-display">
+          <div class="detail-comment-box__inner__name comment-display__name">
             ${comment.name}: 
           </div>
-          <div class="detail-comment-box__inner__text">
+          <div class="detail-comment-box__inner__text comment-display__message">
             ${comment.message}
           </div>
         </div>`
