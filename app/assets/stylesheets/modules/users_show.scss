@@ -233,13 +233,13 @@ body {
           max-width: 320px;
           margin: 3em auto 0;
           border-top: 1px solid #eee;
-          %span {
+          .purchase {
+            float: right;
           }
         }
       }
       .add-card {
-        padding: 24px 0;
-        border-bottom: 1px solid #eee;
+        padding: 45px 0 24px;
         .card-form {
           max-width: 320px;
           margin: 0 auto;

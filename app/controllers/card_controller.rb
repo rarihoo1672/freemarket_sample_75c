@@ -20,6 +20,7 @@ class CardController < ApplicationController
 
 
   def delete
+    #選択したカードを削除する
     card = current_user.cards.first
     if card.present?
       customer = Payjp::Customer.retrieve(card.customer_id)

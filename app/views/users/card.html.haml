@@ -66,7 +66,7 @@
                   %input{ type: "hidden", name: "card_id", value: "" }
                   %button.delete__button 削除する
         .how__not__regist
-          %span 支払い方法について
+          = link_to "支払い方法について", "#", class: "purchase"
         .add-card
           .card-form
             = link_to add_card_user_path(current_user), class: 'submit-btn', data: {"turbolinks" => false}  do
