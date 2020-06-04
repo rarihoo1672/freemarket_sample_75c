@@ -1,7 +1,7 @@
 $(function(){
   function buildHTML(comment) {
     if ( comment.user_id == comment.exhibitor_id) {
-      var html = `
+      let html = `
         <div class="detail-comment-box__inner comment-display">
           <div class="detail-comment-box__inner__name comment-display__name">
             出品者: 
@@ -12,7 +12,7 @@ $(function(){
         </div>`
       return html;
     } else {
-      var html = `
+      let html = `
         <div class="detail-comment-box__inner comment-display">
           <div class="detail-comment-box__inner__name comment-display__name">
             ${comment.name}: 
@@ -26,8 +26,8 @@ $(function(){
   }
   $('#new_comment').on('submit', function (e) {
     e.preventDefault();
-    var formData = new FormData(this);
-    var url = $(this).attr('action');
+    let formData = new FormData(this);
+    let url = $(this).attr('action');
     $.ajax({
       url: url,
       type: "POST",
