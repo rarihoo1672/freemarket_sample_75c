@@ -16,7 +16,7 @@ class CardController < ApplicationController
       )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to action: "show"
+        redirect_to card_users_path
       else
         redirect_to action: "edit", id: current_user.id
       end
@@ -30,26 +30,7 @@ class CardController < ApplicationController
       customer.delete
       card.delete
     end
-      redirect_to action: "confirmation", id: current_user.id
-  end
-
-  def show
-    card = current_user.cards.first
-    if card.present?
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
-    else
-      redirect_to action: "confirmation", id: current_user.id
-    end
-  end
-
-  def confirmation
-    card = current_user.cards
-    if card.exists?
-      redirect_to action: "show"
-    else
       redirect_to card_users_path
-    end
   end
 
   private

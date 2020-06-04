@@ -36,13 +36,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :card, only: [:create, :show, :edit] do
+  resources :card, only: [:create, :edit] do
     collection do
       delete 'delete', to: 'card#delete'
-      post 'show'
-    end
-    member do
-      get 'confirmation'
     end
   end
 end
