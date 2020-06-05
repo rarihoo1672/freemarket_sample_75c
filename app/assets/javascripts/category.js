@@ -38,7 +38,7 @@ $(function(){
 
   $('#parent-form').on('change', function(){
     let parentCategory = document.getElementById('parent-form').value;
-    if (parentCategory != "---"){
+    if (parentCategory !== "---"){
       $.ajax({
         url: '/items/get_category_children',
         type: 'GET',
@@ -65,7 +65,7 @@ $(function(){
 
   $('.new-container__body__detail-box__category').on('change', '#child_form', function(){
     let childName = document.getElementById('child_form').value;
-    if (childName != "---"){
+    if (childName !== "---"){
       $.ajax({
         url: '/items/get_category_grandchildren',
         type: 'GET',
