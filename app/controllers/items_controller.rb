@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @parents = ["---"]
     Category.where(ancestry: nil).each do |parent|
-      @parents << parent.name
+      @parents << parent
     end
     @item.images.new
     # brandカラムは別途実装予定
@@ -40,11 +40,13 @@ class ItemsController < ApplicationController
   end
 
   def get_category_children
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+    @category_children = Category.find_by(ancestry: "#{params[:parent_name]}", ancestry: nil).children
   end
 
   def get_category_grandchildren
-    @category_grandchildren = Category.find_by(name: "#{params[:child_name]}").children
+    @child_category = Category.find(params[:child_name])
+    @category_grandchildren = @child_category.children
+    # @category_grandchildren = Category.find_by(ancestry: "#{params[:child_name]}").children
   end
 
   private

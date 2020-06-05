@@ -1,6 +1,6 @@
 $(function(){
   function appendOption(category){
-    let html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
+    let html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
     return html;
   }
 
@@ -14,8 +14,10 @@ $(function(){
                           <select>
                           <i class='fas fa-angle-down.new-container__body__detail-box__category__select--icon form-select--icon'></i>
                         </div>
+                        <div class ='new-container__body__detail-box__category__select__grandchildren'
+                        </div>
                       </div>`;
-    $('.new-container__body__detail-box__category').append(childSelectHtml);
+    $('.new-container__body__detail-box__category__select').append(childSelectHtml);
   }
 
   function appendGrandchidrenBox(insertHTML){
@@ -29,7 +31,7 @@ $(function(){
                                 <i class='fas fa-angle-down.new-container__body__detail-box__category__select--icon form-select--icon'></i>
                               </div>
                             </div>`;
-    $('.new-container__body__detail-box__category').append(grandchildSelectHtml);
+    $('.new-container__body__detail-box__category__select__grandchildren').append(grandchildSelectHtml);
   }
 
   $('#parent-form').on('change', function(){
@@ -44,8 +46,6 @@ $(function(){
       .done(function(children){
         $('#children_wrapper').remove();
         $('#grandchildren_wrapper').remove();
-        $('#size_wrapper').remove();
-        $('#brand_wrapper').remove();
         let insertHTML = '';
         children.forEach(function(child){
           insertHTML += appendOption(child);
@@ -58,8 +58,6 @@ $(function(){
     }else{
       $('#children_wrapper').remove();
       $('#grandchildren_wrapper').remove();
-      $('#size_wrapper').remove();
-      $('#brand_wrapper').remove();
     }
   });
 　
@@ -75,8 +73,6 @@ $(function(){
       .done(function(grandchildren){
         if (grandchildren.length != 0) {
           $('#grandchildren_wrapper').remove();
-          $('#size_wrapper').remove();
-          $('#brand_wrapper').remove();
           let insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
@@ -89,8 +85,6 @@ $(function(){
       })
     }else{
       $('#grandchildren_wrapper').remove();
-      $('#size_wrapper').remove();
-      $('#brand_wrapper').remove();
     }
   });
 });

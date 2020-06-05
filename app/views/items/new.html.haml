@@ -20,7 +20,7 @@
             %label.exhibit__drop-box__uploader__label#exhibit__drop-box__uploader__label
               =f.fields_for :images do |image|
                 .img-file_group{"data-index" => "#{image.index()}"}
-                  = image.file_field :image ,type: 'file',value: "",class: "secret-image img-file"
+                  = image.file_field :image ,type: 'file', value: "",class: "secret-image img-file"
             .exhibit__drop-box__uploader__text
               写真を追加
         .input-error#item_image_error
@@ -61,7 +61,7 @@
                 %span.new-container__body__detail-box__category__label__text--need.content-label__text--need
                   必須
             .new-container__body__detail-box__category__select.form-select
-              = f.select( :category_id, @parents, {prompt: true}, {class: "content-form__input", id: "parent-form"} )
+              = f.collection_select :category_id, Category.roots, :id , :name, {prompt: true}, {class: "content-form__input", id: "parent-form"} 
               %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
             .input-error#item_category_index_id_error
 
@@ -76,15 +76,15 @@
             %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
           .input-error#item_item-size_error
 
-        .new-container__body__detail-box__brand.content-box
-          .new-container__body__detail-box__brand__label.content-label
-            %p.new-container__body__detail-box__brand__label__text.content-label__text
-              ブランド名
-              %span.new-container__body__detail-box__brand__label__text--any.content-label__text--any
-                任意
-          .new-container__body__detail-box__brand__form.content-form.form-select
-            =f.fields_for :brands do |brand|
-              = brand.text_field :name, class: "new-container__body__intro-box__item-name__form__input content-form__input", placeholder: "例)シャネル"
+        -# .new-container__body__detail-box__brand.content-box
+        -#   .new-container__body__detail-box__brand__label.content-label
+        -#     %p.new-container__body__detail-box__brand__label__text.content-label__text
+        -#       ブランド名
+        -#       %span.new-container__body__detail-box__brand__label__text--any.content-label__text--any
+        -#         任意
+        -#   .new-container__body__detail-box__brand__form.content-form.form-select
+        -#     =f.fields_for :brands do |brand|
+        -#       = brand.text_field :name, class: "new-container__body__intro-box__item-name__form__input content-form__input", placeholder: "例)シャネル"
 
         .new-container__body__detail-box__item-status
           .new-container__body__detail-box__item-status__label.content-label
