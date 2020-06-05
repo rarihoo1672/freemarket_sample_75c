@@ -7,28 +7,34 @@
       %ul.showcontainer__itemContents__images__display-up.slick
         %li.fade-list
           = image_tag "mypage.jpg", class: "fade-list__image"
-          %span.fade-list__image__badge
-            = @item.buyer
+          - if @item.buyer == "sell"
+            %span.fade-list__image__badge
+              = @item.buyer
         %li.fade-list
           = image_tag "adidas.cap.jpg", class: "fade-list__image"
-          %span.fade-list__image__badge
-            sell
+          - if @item.buyer == "sell"
+            %span.fade-list__image__badge
+              = @item.buyer
         %li.fade-list
           = image_tag "pict/pict-reason-01.jpg", class: "fade-list__image"
-          %span.fade-list__image__badge
-            sell
+          - if @item.buyer == "sell"
+            %span.fade-list__image__badge
+              = @item.buyer
         %li.fade-list
           = image_tag "pict/pict-reason-02.jpg", class: "fade-list__image"
-          %span.fade-list__image__badge
-            sell
+          - if @item.buyer == "sell"
+            %span.fade-list__image__badge
+              = @item.buyer
         %li.fade-list
           = image_tag "pict/pict-reason-02.jpg", class: "fade-list__image"
-          %span.fade-list__image__badge
-            sell
+          - if @item.buyer == "sell"
+            %span.fade-list__image__badge
+              = @item.buyer
         %li.fade-list
           = image_tag "pict/pict-reason-03.jpg", class: "fade-list__image"
-          %span.fade-list__image__badge
-            sell
+          - if @item.buyer == "sell"
+            %span.fade-list__image__badge
+              = @item.buyer
 
       %ul.showcontainer__itemContents__images__display-down.thumbnail
         %li.display-down__image
@@ -64,7 +70,8 @@
 
 
     .showcontainer__itemContents__item-introduction
-      = @item.introduction
+      %p.showcontainer__itemContents__item-introduction__text
+        = @item.introduction
 
     %table.showcontainer__itemContents__details
       %tbody
