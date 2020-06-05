@@ -100,12 +100,16 @@ gem 'active_hash'
 # ancestry(カテゴリを多階層で管理)
 gem 'ancestry'
 
-# carrierwave & mini_magic
+# carrierwave & mini_magic with AWS S3
 gem 'carrierwave'
 gem 'mini_magick'
+
 
 # payjp(クレジットカード情報を管理)
 gem 'payjp'
 
 # dotenv(環境変数を管理)
 gem 'dotenv-rails'
+
+gem 'fog-aws'
+
