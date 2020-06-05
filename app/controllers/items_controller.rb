@@ -17,8 +17,7 @@ class ItemsController < ApplicationController
       @parents << parent
     end
     @item.images.new
-    # brandカラムは別途実装予定
-    # @item.brands.build
+    @item.brands.build
   end
 
   def create
