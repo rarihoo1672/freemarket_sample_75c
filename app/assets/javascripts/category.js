@@ -8,13 +8,13 @@ $(function(){
     let childSelectHtml = '';
     childSelectHtml = `<div class='new-container__body__detail-box__category__added' id= 'children_wrapper'>
                         <div class='new-container__body__detail-box__category__select'>
-                          <select class="content-form__input" id="child_form" name="category_id">
+                          <select class="content-form__input" id="child_form" name="item[category_id]">
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
                           <select>
                           <i class='fas fa-angle-down.new-container__body__detail-box__category__select--icon form-select--icon'></i>
                         </div>
-                        <div class ='new-container__body__detail-box__category__select__grandchildren'
+                        <div class ='new-container__body__detail-box__category__select__grandchildren'>
                         </div>
                       </div>`;
     $('.new-container__body__detail-box__category__select').append(childSelectHtml);
@@ -24,11 +24,13 @@ $(function(){
     let grandchildSelectHtml = '';
     grandchildSelectHtml = `<div class='new-container__body__detail-box__category__added' id= 'grandchildren_wrapper'>
                               <div class='new-container__body__detail-box__category__select'>
-                                <select class="content-form__input" id="grandchild-form" name="category_id">
+                                <select class="content-form__input" id="grandchild-form" name="item[category_id]">
                                   <option value="---" data-category="---">---</option>
                                   ${insertHTML}
                                 <select>
                                 <i class='fas fa-angle-down.new-container__body__detail-box__category__select--icon form-select--icon'></i>
+                              </div>
+                              <div class ='new-container__body__detail-box__category__select__grandchildren'>
                               </div>
                             </div>`;
     $('.new-container__body__detail-box__category__select__grandchildren').append(grandchildSelectHtml);
@@ -60,7 +62,7 @@ $(function(){
       $('#grandchildren_wrapper').remove();
     }
   });
-　
+
   $('.new-container__body__detail-box__category').on('change', '#child_form', function(){
     let childName = document.getElementById('child_form').value;
     if (childName != "---"){
