@@ -1,6 +1,4 @@
 class CreateAddresses < ActiveRecord::Migration[5.2]
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :prefecture
   
   def change
     create_table :addresses do |t|

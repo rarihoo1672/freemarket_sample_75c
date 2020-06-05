@@ -1,5 +1,7 @@
 class Address < ApplicationRecord
   belongs_to :user, optional: true
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
 
   validates :last_name,      presence: true
   validates :first_name,     presence: true
@@ -20,9 +22,4 @@ class Address < ApplicationRecord
     徳島県:36,香川県:37,愛媛県:38,高知県:39,
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
   }
-end
-
-class Letter < ApplicationRecord
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :prefecture
 end

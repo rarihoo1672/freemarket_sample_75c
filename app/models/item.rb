@@ -2,6 +2,8 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many :images
   belongs_to :category
+  has_one :brand
+
   accepts_nested_attributes_for :images, allow_destroy:true
 
   validates :name,           presence: true
@@ -17,5 +19,4 @@ class Item < ApplicationRecord
 
   enum buyer: { sell: 0, buy: 1}
   scope :on_sell, -> { where(buyer: 0) }
-
 end
