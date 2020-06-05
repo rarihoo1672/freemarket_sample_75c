@@ -19,11 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def secret_key
-    if Rails.env == 'development'
-      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-    else
-      Payjp.api_key = Rails.application.credentials.payjp[:payjp][:PAYJP_PRIVATE_KEY]
-    end
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
   end
 
   def production?
