@@ -51,7 +51,7 @@
               &="/1000"
           .input-error#item_description_error
 
-        .new-container__body__detail-box.contents-box
+        .new-container__body__detail-box.content-box
           %p.new-container__body__detail-box__box-label.box-label
             商品の詳細
           .new-container__body__detail-box__category.content-box
@@ -76,15 +76,15 @@
             %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
           .input-error#item_item-size_error
 
-        -# .new-container__body__detail-box__brand.content-box
-        -#   .new-container__body__detail-box__brand__label.content-label
-        -#     %p.new-container__body__detail-box__brand__label__text.content-label__text
-        -#       ブランド名
-        -#       %span.new-container__body__detail-box__brand__label__text--any.content-label__text--any
-        -#         任意
-        -#   .new-container__body__detail-box__brand__form.content-form.form-select
-        -#     =f.fields_for :brands do |brand|
-        -#       = brand.text_field :name, class: "new-container__body__intro-box__item-name__form__input content-form__input", placeholder: "例)シャネル"
+        .new-container__body__detail-box__brand.content-box
+          .new-container__body__detail-box__brand__label.content-label
+            %p.new-container__body__detail-box__brand__label__text.content-label__text
+              ブランド名
+              %span.new-container__body__detail-box__brand__label__text--any.content-label__text--any
+                任意
+          .new-container__body__detail-box__brand__form.content-form.form-select
+            =f.fields_for :brands do |brand|
+              = brand.text_field :name, class: "new-container__body__intro-box__item-name__form__input content-form__input", placeholder: "例)シャネル"
 
         .new-container__body__detail-box__item-status
           .new-container__body__detail-box__item-status__label.content-label
@@ -140,7 +140,7 @@
           .input-error#item_shipping-days_error
 
 
-      .new-container__body__price-box.contents-box--price
+      .new-container__body__price-box.contents-box
         %p.new-container__body__price-box__box-label.box-label
           価格
           %span.new-container__body__price-box__box-label__limit
