@@ -67,8 +67,7 @@ class ItemsController < ApplicationController
   def done
     @image = Image.find(params[:id])
     @item = Item.find(params[:id])
-    # 購入が完了したらbuyerカラムに1をいれる！！
-    # Item.find(params[:id]).buyer = 1
+    @item.update_attribute(:buyer, 1)
   end
 
 
@@ -80,7 +79,4 @@ class ItemsController < ApplicationController
     params.require(:item).permit(*columns)
   end
 
-  def sold_out
-
-  end
 end

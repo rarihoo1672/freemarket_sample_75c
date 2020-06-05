@@ -352,18 +352,19 @@ body {
       }
     }
     .edit__card {
-      height: 500px;
+      height: 550px;
       .chapter__container {
-        %h2 {
+        h2 {
+          border-bottom:  1px solid #eee;
         }
         &__inner {
           max-width: 320px;
           margin: 0 auto;
           .form__main__container {
+            padding: 5px 0;
             .form__content {
-              margin-top: 1em;
+              margin-top: 15px;
               .payment__card {
-    
               }
               .require__form {
                 background-color: red;
@@ -373,18 +374,17 @@ body {
                 font-size: 12px;
               }
               .number {
+                margin-top: 5px;
                 width: 100%;
               }
               .card__list {
                 &__picture {
-    
                 }
               }
             }
             .top__margin {
-              margin-top: 1em;
+              margin-top: 15px;
               .payment__card{
-    
               }
               .require__form {
                 background-color: red;
@@ -394,31 +394,32 @@ body {
                 font-size: 12px;
               }
               .select__box {
+                margin-top: 5px;
                 &__half {
                   position: relative;
                   .select__default {
-                    width: 10%;
+                    width: 25%;
                     -webkit-appearance: none;
+                    border: 1px solid #cccccc;
+                    border-radius: 4px;
+                    height: 48px;
+                    padding-left: 16px;
                   }
-                  %select {
-                    width: 300px;
-                  }
-                  %i {
+                  .fas {
+                    font-size: 20px;
                     position: absolute;
-                    right: 20px;
-                    top: 12px;
+                    left: 15%;
+                    top: 15px;
                     pointer-events: none;
                   }
-                  %span {
-  
+                    %span {
                   }
                 }
               }
             }
             .bottom__margin {
-              margin-top: 1em;
+              margin-top: 15px;
               %label {
-    
               }
               .require__form {
                 background-color: red;
@@ -428,22 +429,21 @@ body {
                 font-size: 12px;
               }
               .cvc {
+                margin-top: 5px;
                 width: 100%;
               }
               .single__code {
-                &__text {
-    
+                margin: 5px 0;
+                .card-number {
+                  float: right;
                 }
               }
             }
             .add-card {
-              margin-top: 1em;
+              margin-top: 40px;
               padding: 24px 0;
-              border-top: 1px solid #eee;
-              .card-form {
-                max-width: 320px;
-                margin: 0 auto;
-                #card_token {
+              #card_token {
+                #token_submit {
                   margin: 0;
                   background: #3CCACE;
                   border: 1px solid #3CCACE;
@@ -455,8 +455,8 @@ body {
                   transition: all ease-out .3s;
                   cursor: pointer;
                   text-align: center;
-                  #token_submit {
-                  }
+                  border: none;
+                  color: #fff;
                 }
               }
             }

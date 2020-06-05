@@ -77,7 +77,6 @@
                   %i.fas.fa-angle-down
                   %span 月
                 .select__box__half
-                  .icon
                   %select.select__default#exp_year{name: "exp_year", type: "text"}
                     %option{value: ""} --
                     %option{value: "2020"}20
@@ -91,22 +90,18 @@
                     %option{value: "2028"}28
                     %option{value: "2029"}29
                     %option{value: "2030"}30
-                  %i
-                    = icon('fas', 'chevron-down')
+                  %i.fas.fa-angle-down
                   %span  年
             .form__content.bottom__margin
               %label セキュリティーコード
               %span.require__form 必須
               %br/
-              = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", id: "cvc"
+              = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面の4桁もしくは3桁の番号", maxlength: "4", id: "cvc"
               .single__code
-                .single__code__text
-                %span カードの裏面の番号とは？
+                = link_to "カード背面の番号とは？", "#", class: "card-number"
             .add-card
-              .card-form
-                #card_token
-                  = icon('far', 'credit-card', class: 'icon')
-                  = submit_tag "クレジットカードを追加する", id: "token_submit", class: "top__margin"
+              #card_token
+                = submit_tag "クレジットカードを登録する", id: "token_submit", class: "top__margin"
 
 .sell-btn
   .btn-title
