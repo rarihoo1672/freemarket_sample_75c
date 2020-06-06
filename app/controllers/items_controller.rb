@@ -12,9 +12,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @parents = ["---"]
-    @parents = Category.where(ancestry: nil).pluck(:name)
-    @parents.unshift("---")
+    @parents = Category.where(ancestry: nil).pluck(:name).unshift("---")
     @item.images.new
     @item.build_brand
   end
@@ -24,8 +22,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      @parents = Category.where(ancestry: nil).pluck(:name)
-      @parents.unshift("---")
+      @parents = Category.where(ancestry: nil).pluck(:name).unshift("---")
       @item.images.new
       render :new
     end
