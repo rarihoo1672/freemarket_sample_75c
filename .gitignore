@@ -31,3 +31,5 @@
 
 # envを除外
 /.env
+
+public/uploads/*
