@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_item, only: [:show, :purchase, :pay, :done]
   before_action :set_image, only: [:purchase, :done]
+  before_action :set_card, only: [:purchase, :pay]
 
   def index
     @items = Item.on_sell.includes([:images]).order(created_at: :desc)
@@ -43,7 +44,6 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-    card = Card.find_by(user_id: current_user.id)
     if card.blank?
       redirect_to controller: "user", action: "add_card"
     else
@@ -53,7 +53,6 @@ class ItemsController < ApplicationController
   end
 
   def pay
-    card = Card.find_by(user_id: current_user.id)
     Payjp::Charge.create(
     amount: @item.price,
     customer: card.customer_id,
@@ -81,6 +80,10 @@ class ItemsController < ApplicationController
 
   def set_image
     @image = Image.find(params[:id])
+  end
+
+  def set_card
+    card = Card.find_by(user_id: current_user.id)
   end
 
 end

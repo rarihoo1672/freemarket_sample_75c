@@ -21,7 +21,7 @@
 .mypage-nav
   %ul.page-lists
     %li.page-lists__list
-      = link_to "/" do
+      = link_to root_path do
         freemarket
         = icon('fa', 'angle-right', class: 'icon')
     %li.page-lists__list--2
@@ -33,15 +33,15 @@
         設定
       %ul.menu-lists
         %li.menu-lists__list
-          =link_to "root_path" do
+          =link_to user_path(current_user.id) do
             プロフィール
             = icon('fa', 'angle-right', class: 'icon')
         %li.menu-lists__list
-          =link_to "delivery_address" do
+          =link_to delivery_address_users_path do
             発送元・お届け先住所変更
             = icon('fa', 'angle-right', class: 'icon')
         %li.menu-lists__list
-          =link_to "card" do
+          =link_to card_users_path do
             支払い方法
             = icon('fa', 'angle-right', class: 'icon')
         %li.menu-lists__list
@@ -49,7 +49,7 @@
             メール/パスワード
             = icon('fa', 'angle-right', class: 'icon')
         %li.menu-lists__list
-          =link_to "user_information" do
+          =link_to user_information_users_path do
             本人情報
             = icon('fa', 'angle-right', class: 'icon')
         %li.menu-lists__list
@@ -57,7 +57,7 @@
             電話番号の確認
             = icon('fa', 'angle-right', class: 'icon')
         %li.menu-lists__list
-          =link_to "log_out" do
+          =link_to log_out_users_path do
             ログアウト
             = icon('fa', 'angle-right', class: 'icon')
   .main__right
