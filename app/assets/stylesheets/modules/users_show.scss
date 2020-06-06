@@ -250,15 +250,57 @@
         &__content {
           max-width: 320px;
           margin: 0 auto;
+          text-align: center;
           .sub-head {
             font-size: 16px;
             font-weight: bold;
           }
         }
+        .card__payment {
+          max-width: 320px;
+          margin: 0 auto;
+          &__list {
+            padding-top: 1em;
+            &--content {
+              float: left;
+              font-weight: bold;
+              .card__list {
+              }
+              .card__number {
+              }
+              .expire__date {
+                font-size: 0.8em;
+              }
+            }
+            #charge-form {
+              float: right;
+              .delete__button {
+                padding: 0.3em 1em;
+                background: #fff;
+                border-radius: 3px;
+                border: 0.1em solid #ea352d;
+                color: #ea352d;
+                cursor: pointer;
+              }
+            }
+          }
+          &__list:after{
+            content:" ";
+            display: block;
+            clear: both;
+          }
+        }
+        .how__not__regist {
+          max-width: 320px;
+          margin: 3em auto 0;
+          border-top: 1px solid #eee;
+          .purchase {
+            float: right;
+          }
+        }
       }
       .add-card {
-        padding: 24px 0;
-        border-bottom: 1px solid #eee;
+        padding: 45px 0 24px;
         .card-form {
           max-width: 320px;
           margin: 0 auto;
@@ -377,6 +419,119 @@
               transition: all ease-out .3s;
               cursor: pointer;
               text-align: center;
+          }
+        }
+      }
+    }
+    .edit__card {
+      height: 550px;
+      .chapter__container {
+        h2 {
+          border-bottom:  1px solid #eee;
+        }
+        &__inner {
+          max-width: 320px;
+          margin: 0 auto;
+          .form__main__container {
+            padding: 5px 0;
+            .form__content {
+              margin-top: 15px;
+              .payment__card {
+              }
+              .require__form {
+                background-color: red;
+                padding: 0.2em 0.5em;
+                border-radius: 0.2em;
+                color: #fff;
+                font-size: 12px;
+              }
+              .number {
+                margin-top: 5px;
+                width: 100%;
+              }
+              .card__list {
+                &__picture {
+                }
+              }
+            }
+            .top__margin {
+              margin-top: 15px;
+              .payment__card{
+              }
+              .require__form {
+                background-color: red;
+                padding: 0.2em 0.5em;
+                border-radius: 0.2em;
+                color: #fff;
+                font-size: 12px;
+              }
+              .select__box {
+                margin-top: 5px;
+                &__half {
+                  position: relative;
+                  .select__default {
+                    width: 25%;
+                    -webkit-appearance: none;
+                    border: 1px solid #cccccc;
+                    border-radius: 4px;
+                    height: 48px;
+                    padding-left: 16px;
+                  }
+                  .fas {
+                    font-size: 20px;
+                    position: absolute;
+                    left: 15%;
+                    top: 15px;
+                    pointer-events: none;
+                  }
+                    %span {
+                  }
+                }
+              }
+            }
+            .bottom__margin {
+              margin-top: 15px;
+              %label {
+              }
+              .require__form {
+                background-color: red;
+                padding: 0.2em 0.5em;
+                border-radius: 0.2em;
+                color: #fff;
+                font-size: 12px;
+              }
+              .cvc {
+                margin-top: 5px;
+                width: 100%;
+              }
+              .single__code {
+                margin: 5px 0;
+                .card-number {
+                  float: right;
+                }
+              }
+            }
+            .add-card {
+              margin-top: 40px;
+              padding: 24px 0;
+              #card_token {
+                #token_submit {
+                  margin: 0;
+                  background: #3CCACE;
+                  border: 1px solid #3CCACE;
+                  color: #fff;
+                  display: block;
+                  width: 100%;
+                  line-height: 48px;
+                  font-size: 14px;
+                  transition: all ease-out .3s;
+                  cursor: pointer;
+                  text-align: center;
+                  border: none;
+                  color: #fff;
+                }
+              }
+            }
           }
         }
       }

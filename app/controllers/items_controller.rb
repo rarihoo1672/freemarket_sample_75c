@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
-
+  require 'payjp'
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_item, only: [:show, :purchase, :pay, :done]
+  before_action :set_image, only: [:purchase, :done]
+  before_action :set_card, only: [:purchase, :pay]
 
   def index
     @items = Item.on_sell.includes([:images]).order(created_at: :desc)
@@ -29,13 +32,35 @@ class ItemsController < ApplicationController
   end
 
   def show
-    category_id = Item.find(params[:id]).category_id
+    category_id = @item.category_id
     @this_category = Category.find(category_id)
     @parent_category = @this_category.parent unless @this_category == nil
     @grandparent_category = @parent_category.parent unless @parent_category == nil
   end
 
   def item_purchase
+  end
+
+  def purchase
+    if card.blank?
+      redirect_to controller: "user", action: "add_card"
+    else
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @card_information = customer.cards.retrieve(card.card_id)
+    end
+  end
+
+  def pay
+    Payjp::Charge.create(
+    amount: @item.price,
+    customer: card.customer_id,
+    currency: 'jpy',
+    )
+    redirect_to action: 'done'
+  end
+
+  def done
+    @item.update_attribute(:buyer, 1)
   end
 
   def get_category_children
@@ -52,4 +77,17 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :price, :introduction, :status, :size, :shipping_cost, :shipping_days, :prefecture_id, :category_id, :buyer, brand_attributes: [:id, :name], images_attributes: [:image]).merge(user_id: current_user.id)
   end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def set_image
+    @image = Image.find(params[:id])
+  end
+
+  def set_card
+    card = Card.find_by(user_id: current_user.id)
+  end
+
 end

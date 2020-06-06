@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   before_action :authenticate_user!
+  before_action :secret_key
 
   #protected
 
@@ -15,6 +16,10 @@ class ApplicationController < ActionController::Base
       username == Rails.application.credentials[:basic_auth][:user] &&
       password == Rails.application.credentials[:basic_auth][:pass]
     end
+  end
+
+  def secret_key
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
   end
 
   def production?
