@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-    card = Card.where(user_id: current_user.id).first
+    card = Card.find_by(user_id: current_user.id)
     if card.blank?
       redirect_to controller: "user", action: "add_card"
     else
