@@ -53,7 +53,7 @@ class ItemsController < ApplicationController
   end
 
   def pay
-    card = Card.where(user_id: current_user.id).first
+    card = Card.find_by(user_id: current_user.id)
     Payjp::Charge.create(
     amount: @item.price,
     customer: card.customer_id,
