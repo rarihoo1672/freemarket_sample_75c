@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   require 'payjp'
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_item, only: [:show, :purchase, :pay, :done]
+  before_action :set_image, only: [:purchase, :done]
 
   def index
     @items = Item.on_sell.includes([:images]).order(created_at: :desc)
@@ -23,7 +25,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     category_id = @item.category_id
     @this_category = Category.find(category_id)
     @parent_category = @this_category.parent unless @this_category == nil
@@ -42,8 +43,6 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-    @image = Image.find(params[:id])
-    @item = Item.find(params[:id])
     card = Card.where(user_id: current_user.id).first
     if card.blank?
       redirect_to controller: "user", action: "add_card"
@@ -55,7 +54,6 @@ class ItemsController < ApplicationController
 
   def pay
     card = Card.where(user_id: current_user.id).first
-    @item = Item.find(params[:id])
     Payjp::Charge.create(
     amount: @item.price,
     customer: card.customer_id,
@@ -65,8 +63,6 @@ class ItemsController < ApplicationController
   end
 
   def done
-    @image = Image.find(params[:id])
-    @item = Item.find(params[:id])
     @item.update_attribute(:buyer, 1)
   end
 
@@ -77,6 +73,14 @@ class ItemsController < ApplicationController
     reject = %w()
     columns = Item.column_symbolized_names(reject).push(images_attributes: [:image]).push(:prefecture_id)
     params.require(:item).permit(*columns)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def set_image
+    @image = Image.find(params[:id])
   end
 
 end
