@@ -42,18 +42,18 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-    if card.blank?
+    if @card.blank?
       redirect_to controller: "user", action: "add_card"
     else
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @card_information = customer.cards.retrieve(card.card_id)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @card_information = customer.cards.retrieve(@card.card_id)
     end
   end
 
   def pay
     Payjp::Charge.create(
     amount: @item.price,
-    customer: card.customer_id,
+    customer: @card.customer_id,
     currency: 'jpy',
     )
     redirect_to action: 'done'
@@ -87,7 +87,7 @@ class ItemsController < ApplicationController
   end
 
   def set_card
-    card = Card.find_by(user_id: current_user.id)
+    @card = Card.find_by(user_id: current_user.id)
   end
 
 end
