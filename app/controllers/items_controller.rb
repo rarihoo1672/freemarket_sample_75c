@@ -12,14 +12,20 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|
-       @category_parent_array << parent.name
-    end
+    @parents = Category.where(ancestry: nil).pluck(:name).unshift("---")
     @item.images.new
+    @item.build_brand
   end
 
   def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      @parents = Category.where(ancestry: nil).pluck(:name).unshift("---")
+      @item.images.new
+      render :new
+    end
   end
 
   def show
@@ -33,19 +39,17 @@ class ItemsController < ApplicationController
   end
 
   def get_category_children
-    @category_children = Category.find_by(name: "#{params[:name]}", ancestry: nil).children
- end
+    @category_children = Category.find_by(id: "#{params[:parent_name]}", ancestry: nil).children
+  end
 
- def get_category_grandchildren
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
- end
-
+  def get_category_grandchildren
+    @child_category = Category.find(params[:child_name])
+    @category_grandchildren = @child_category.children
+  end
 
   private
 
   def item_params
-    reject = %w()
-    columns = Item.column_symbolized_names(reject).push(images_attributes: [:image]).push(:prefecture_id)
-    params.require(:item).permit(*columns)
+    params.require(:item).permit(:name, :price, :introduction, :status, :size, :shipping_cost, :shipping_days, :prefecture_id, :category_id, :buyer, brand_attributes: [:id, :name], images_attributes: [:image]).merge(user_id: current_user.id)
   end
 end
