@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', ()=> {
   function buildHTML(comment) {
     if ( comment.user_id == comment.exhibitor_id) {
       let html = `
