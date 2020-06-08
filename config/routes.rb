@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -23,7 +24,11 @@ Rails.application.routes.draw do
       get "delivery_address"
       get "user_information"
     end
+    member do
+      get "add_card"
+    end
   end
+
   resources :items do
     collection do
       get "item_purchase"
@@ -31,6 +36,17 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
     resources :comments, only: :create
+    member do
+      get 'purchase', to: 'items#purchase'
+      post 'pay', to: 'items#pay'
+      get 'done', to: 'items#done'
+    end
+  end
+
+  resources :card, only: :create do
+    collection do
+      delete 'delete', to: 'card#delete'
+    end
   end
 end
 

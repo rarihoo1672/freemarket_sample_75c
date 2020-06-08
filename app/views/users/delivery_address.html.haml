@@ -1,7 +1,27 @@
+.top-header
+  .headerBox
+    .headboxUpper
+      %h1.logo
+        = image_tag asset_path('logo/logo.png'), size: "140x41"
+      .searchForm
+        %input.searchForm__text{name: "search", placeholder: "キーワードから探す", type: "text", value: ""}/
+        .searchForm__submit
+          = image_tag asset_path('icon/icon-search 1.png'), size: "20x20", class: ".searchForm__submit--btn"
+    .headboxUnder
+      .headboxUnder__search
+        = link_to "カテゴリー", root_path, class:"headboxUnder__search--left"
+        = link_to "ブランド", root_path, class:"headboxUnder__search--right"
+      .headboxUnder__user
+        - if user_signed_in?
+          = link_to "マイページ", "/users/#{current_user.id}", class:"headboxUnder__user__mypage"
+        - else
+          = link_to "ログイン", new_user_session_path, class:"headboxUnder__user__login"
+          = link_to "新規会員登録",new_user_registration_path, class:"headboxUnder__user__register"
+
 .mypage-nav
   %ul.page-lists
     %li.page-lists__list
-      = link_to "/" do
+      = link_to root_path do
         freemarket
         = icon('fa', 'angle-right', class: 'icon')
     %li.page-lists__list--2
@@ -13,15 +33,15 @@
         設定
       %ul.menu-lists
         %li.menu-lists__list
-          =link_to "root_path" do
+          =link_to user_path(current_user.id) do
             プロフィール
             = icon('fa', 'angle-right', class: 'icon')
         %li.menu-lists__list
-          =link_to "delivery_address" do
+          =link_to delivery_address_users_path do
             発送元・お届け先住所変更
             = icon('fa', 'angle-right', class: 'icon')
         %li.menu-lists__list
-          =link_to "card" do
+          =link_to card_users_path do
             支払い方法
             = icon('fa', 'angle-right', class: 'icon')
         %li.menu-lists__list
@@ -29,7 +49,7 @@
             メール/パスワード
             = icon('fa', 'angle-right', class: 'icon')
         %li.menu-lists__list
-          =link_to "user_information" do
+          =link_to user_information_users_path do
             本人情報
             = icon('fa', 'angle-right', class: 'icon')
         %li.menu-lists__list
@@ -37,7 +57,7 @@
             電話番号の確認
             = icon('fa', 'angle-right', class: 'icon')
         %li.menu-lists__list
-          =link_to "log_out" do
+          =link_to log_out_users_path do
             ログアウト
             = icon('fa', 'angle-right', class: 'icon')
   .main__right
@@ -46,61 +66,106 @@
         発送元・お届け先住所変更
       .form
         = form_with class: 'form-content' do |f|
-          .field
-            .field-label
+          .mypage-field
+            .mypage-label
               = f.label :name, "お名前（全角）"
               %span<必須
-            .field-input
+            .mypage-input
               = f.text_field :firstname, autofocus: true,  placeholder:"例）山田"
               = f.text_field :lastname, autofocus: true, placeholder:"例）太郎"
-          .field
-            .field-label
+          .mypage-field
+            .mypage-label
               = f.label :name, "お名前カナ（全角）"
               %span<必須
-            .field-input
+            .mypage-input
               = f.text_field :firstname_kana, autofocus: true, placeholder:"例）ヤマダ"
               = f.text_field :lastname_kana, autofocus: true, placeholder:"例）タロウ"
-          .field
-            .field-label
+          .mypage-field
+            .mypage-label
               = f.label :post_nunber, "郵便番号"
               %span<必須
-            .field-input
+            .mypage-input
               = f.text_field :post_nunber, placeholder: "例)123-4567"
-          .field
-            .field-label
+          .mypage-field
+            .mypage-label
               = f.label :prefecture_id, "都道府県"
               %span<必須
-            .field-input
-              = f.collection_select :prefecture_id, Prefecture.all, :id, :name
-          .field
-            .field-label
+            .mypage-input
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: true}
+              = icon('fa', 'angle-down', class: 'mypage-input__icon')
+          .mypage-field
+            .mypage-label
               = f.label :city, "市区町村"
               %span<必須
-            .field-input
+            .mypage-input
               = f.text_field :city, placeholder: "例)渋谷区"
-          .field
-            .field-label
+          .mypage-field
+            .mypage-label
               = f.label :address, "番地"
               %span<必須
-            .field-input
+            .mypage-input
               = f.text_field :address, placeholder: "例)道玄坂3-2"
-          .field
-            .field-label
+          .mypage-field
+            .mypage-label
               = f.label :apartment, "建物名"
               %span.no2<任意
-            .field-input
+            .mypage-input
               = f.text_field :apartment, placeholder: "例)フォンティスビル7F"
-          .field
-            .field-label
+          .mypage-field
+            .mypage-label
               = f.label :tel_number, "電話番号"
               %span.no2<任意
-            .field-input
+            .mypage-input
               = f.text_field :tel_number, autofocus: true, placeholder: "ハイフンなし10~11桁"
           .actions
             = f.submit "変更する", class: 'btn'
 
+.suggestApp
+  .suggestDl
+    .suggestDl__text
+      %h2.suggestDl__text__catch
+        だれでもかんたん、人生を変えるフリマアプリ
+      %p.suggestDl__text__push
+        今すぐ無料ダウンロード！
+    .suggestDl__banners
+      = link_to image_tag(asset_path("app-store.svg"), class:"suggestDl__ios"), "/"
+      = link_to image_tag(asset_path("google-play.svg"), class:"suggestDl__android"), "/"
+
+.top-footer
+  .footerMenu
+    %ul.footerLists
+      %h2
+        FURIMAについて
+      %li.footer_list
+        会社概要（運営会社）
+      %li.footer_list
+        プライバシーポリシー
+      %li.footer_list
+        FURIMA利用規約
+      %li.footer_list
+        ポイントに関する特約
+    %ul.footerLists
+      %h2
+        FURIMAを見る
+      %li.footer_list
+        カテゴリー一覧
+      %li.footer_list
+        ブランド一覧
+    %ul.footerLists
+      %h2
+        ヘルプ＆ガイド
+      %li.footer_list
+        FURIMAガイド
+      %li.footer_list
+        FURIMAロゴ利用ガイドライン
+      %li.footer_list
+        お知らせ
+  .footer__logo
+    = image_tag asset_path('logo/logo-white.png'), size: ""
+  %P.copyright © FURIMA
+
 .sell-btn
   .btn-title
     出品する
-    = image_tag src="/assets/icon/icon_camera.png", size: "60"
-
+    =link_to new_item_path, target:"_blank" do
+      = image_tag src="/assets/icon/icon_camera.png", size: "60"

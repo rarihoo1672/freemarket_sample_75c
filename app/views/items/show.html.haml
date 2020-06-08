@@ -66,7 +66,7 @@
         = link_to "商品を削除する", "#", class: "showcontainer__itemContents__item-btns--left show-a"
         = link_to "商品を編集する", "#", class: "showcontainer__itemContents__item-btns--right show-a"
       - elsif user_signed_in? && current_user.id
-        = link_to "購入画面に進む", "#", class: "showcontainer__itemContents__item-btns--center show-a"
+        = link_to "購入画面に進む", purchase_item_path(@item), class: "showcontainer__itemContents__item-btns--center show-a"
 
 
     .showcontainer__itemContents__item-introduction
