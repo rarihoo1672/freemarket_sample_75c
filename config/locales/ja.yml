@@ -32,6 +32,9 @@
 ja:
   enums:
     item:
+      buyer:
+        buy: "SOLD"
+        sell: "SELL"
       status:
         brand_new: '新品、未使用'
         near_to_unused: '未使用に近い'
