@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
-  has_many :images
+  has_many :images, dependent: :destroy
   belongs_to :category
   has_one :brand
   accepts_nested_attributes_for :brand, allow_destroy:true
