@@ -47,4 +47,5 @@ class Item < ApplicationRecord
   enum status:   { brand_new: "1", near_to_unused: "2", no_scrach: "3", slight_scrach: "4", has_scrach: "5", bad_state: "6" }
   enum shipping_cost:  { listing_person: "1", buyer_burden: "2" }
   enum shipping_days:    { early_ship: "1", mid_ship: "2", late_ship: "3" }
+  enum size:  {S: "1", M: "2", L: "3", LL: "4" }
 end
