@@ -113,6 +113,9 @@ $(document).on('turbolinks:load', ()=> {
         $('.form-wrap').append(html);
         $("#form-input").val("");
         $('.form-submit').prop('disabled', false);
+        $(".form-wrap").scroll(function() {
+          
+      });
       })
       .fail(function (data) {
         alert("エラーが発生したためメッセージは送信できませんでした。")
