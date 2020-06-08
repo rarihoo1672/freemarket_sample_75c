@@ -5,50 +5,18 @@
       = @item.name
     .showcontainer__itemContents__images
       %ul.showcontainer__itemContents__images__display-up.slick
-        %li.fade-list
-          = image_tag "mypage.jpg", class: "fade-list__image"
-          - if @item.buyer == "sell"
-            %span.fade-list__image__badge
-              = @item.buyer
-        %li.fade-list
-          = image_tag "adidas.cap.jpg", class: "fade-list__image"
-          - if @item.buyer == "sell"
-            %span.fade-list__image__badge
-              = @item.buyer
-        %li.fade-list
-          = image_tag "pict/pict-reason-01.jpg", class: "fade-list__image"
-          - if @item.buyer == "sell"
-            %span.fade-list__image__badge
-              = @item.buyer
-        %li.fade-list
-          = image_tag "pict/pict-reason-02.jpg", class: "fade-list__image"
-          - if @item.buyer == "sell"
-            %span.fade-list__image__badge
-              = @item.buyer
-        %li.fade-list
-          = image_tag "pict/pict-reason-02.jpg", class: "fade-list__image"
-          - if @item.buyer == "sell"
-            %span.fade-list__image__badge
-              = @item.buyer
-        %li.fade-list
-          = image_tag "pict/pict-reason-03.jpg", class: "fade-list__image"
-          - if @item.buyer == "sell"
-            %span.fade-list__image__badge
-              = @item.buyer
+        - @item.images.each do |thumbnail| 
+          %li.fade-list
+            = image_tag thumbnail.image_url, class: "fade-list__image"
+            - if @item.buyer == "buy"
+              %span.fade-list__image__badge
+                = @item.buyer_i18n
 
       %ul.showcontainer__itemContents__images__display-down.thumbnail
-        %li.display-down__image
-          = image_tag "mypage.jpg", size: "120x123"
-        %li.display-up__image
-          = image_tag "adidas.cap.jpg", size: "120x123"
-        %li.display-up__image
-          = image_tag "pict/pict-reason-01.jpg", size: "120x123"
-        %li.display-up__image
-          = image_tag "pict/pict-reason-02.jpg", size: "120x123"
-        %li.display-up__image
-          = image_tag "pict/pict-reason-02.jpg", size: "120x123"
-        %li.display-up__image
-          = image_tag "pict/pict-reason-03.jpg", size: "120x123"
+        - @item.images.each do |thumbnail| 
+          %li.display-down__image
+            = image_tag thumbnail.image_url, size: "120x123"
+
 
 
     .showcontainer__itemContents__price
