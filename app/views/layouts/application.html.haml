@@ -6,8 +6,12 @@
     %script{src: "https://js.pay.jp/", type: "text/javascript"}
     = csrf_meta_tags
     = csp_meta_tag
+    %link{ rel: "stylesheet", type: "text/css", href: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" }
+    %link{rel: "stylesheet", type: "text/css", href: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"}
+    %link{rel: "stylesheet", href: "https://use.fontawesome.com/releases/v5.8.2/css/all.css"}
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %script{ type: "text/javascript", src: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"}
   %body
     -# 画面最上部にリンクが表示されるため、フロント実装時点ではコメントアウトで対応。今後については検討中
     -# %header

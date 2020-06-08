@@ -7,11 +7,9 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.on_sell.includes([:images]).order(created_at: :desc)
-    # @ladies_items = Item.where(category_id: 1..199).limit(3)
-    # @adidas_items = Item.where(brand_id: 3).limit(3)
+    @ladies_items = Item.where(category_id: 1..199).limit(3)
+    @mens_items = Item.where(category_id: 200..345).limit(3)
   end
-
-
 
   def new
     @item = Item.new
@@ -46,10 +44,33 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
     category_id = @item.category_id
     @this_category = Category.find(category_id)
     @parent_category = @this_category.parent unless @this_category == nil
     @grandparent_category = @parent_category.parent unless @parent_category == nil
+    @user = @item.user
+    @prefecture = @user.address.prefecture
+    @comment = Comment.new
+    @comments = @item.comments  
+  end
+
+  def destroy
+    if user_signed_in? && current_user.id == @item.user_id
+      @item.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
+  end
+
+  def destroy
+    if user_signed_in? && current_user.id == @item.user_id
+      @item.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
   end
 
   def item_purchase
