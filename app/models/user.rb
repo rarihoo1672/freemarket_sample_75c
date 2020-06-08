@@ -14,6 +14,7 @@ class User < ApplicationRecord
   validates :password_confirmation,       presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,100}+\z/i }
 
   has_many :items
-  has_one  :address
+  has_one :address
+  has_many :comments
   has_many :cards
 end
