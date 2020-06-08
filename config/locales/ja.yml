@@ -30,6 +30,25 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 ja:
+  enums:
+    item:
+      buyer:
+        buy: "SOLD"
+        sell: "SELL"
+      status:
+        brand_new: '新品、未使用'
+        near_to_unused: '未使用に近い'
+        no_scrach: '目立った傷や汚れなし'
+        slight_scrach: 'やや傷や汚れあり'
+        has_scrach: '傷や汚れあり'
+        bad_state: '全体的に状態が悪い'
+      shipping_cost:
+        listing_person: '送料込み（出品者負担）'
+        buyer_burden: '着払い（購入者負担）'
+      shipping_days:
+        early_ship: '1~2日で発送'
+        mid_ship: '2~3日で発送'
+        late_ship: '4~7日で発送'
   activerecord:
     errors:
       messages:
