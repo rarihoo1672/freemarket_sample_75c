@@ -43,4 +43,8 @@ class Item < ApplicationRecord
     徳島県:36,香川県:37,愛媛県:38,高知県:39,
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
   }
+
+  enum status:   { brand_new: "1", near_to_unused: "2", no_scrach: "3", slight_scrach: "4", has_scrach: "5", bad_state: "6" }
+  enum shipping_cost:  { listing_person: "1", buyer_burden: "2" }
+  enum shipping_days:    { early_ship: "1", mid_ship: "2", late_ship: "3" }
 end
