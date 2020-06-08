@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def secret_key
-    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+    # Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
   end
 
   def production?

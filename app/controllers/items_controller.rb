@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   require 'payjp'
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_item, only: [:show, :purchase, :pay, :done]
+  before_action :set_item, only: [:edit, :update, :show, :purchase, :pay, :done]
   before_action :set_image, only: [:purchase, :done]
   before_action :set_card, only: [:purchase, :pay]
 
@@ -28,6 +28,17 @@ class ItemsController < ApplicationController
       @parents = Category.where(ancestry: nil).pluck(:name).unshift("---")
       @item.images.new
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @item.update
+      redirect_to root_path
+    else
+      render :edit
     end
   end
 
@@ -75,7 +86,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :introduction, :status, :size, :shipping_cost, :shipping_days, :prefecture_id, :category_id, :buyer, brand_attributes: [:id, :name], images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :price, :introduction, :status, :size, :shipping_cost, :shipping_days, :prefecture_id, :category_id, :buyer, brand_attributes: [:id, :name], images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def set_item
