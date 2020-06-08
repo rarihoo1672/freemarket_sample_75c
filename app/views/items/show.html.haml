@@ -108,20 +108,45 @@
       .showcontianer__messages__box__comment.form-wrap
         - @comments.each do |comment|
           .detail-comment-box__inner.comment-display
-            .detail-comment-box__inner__name.comment-display__name
-              - if comment.user_id == @item.user_id
-                出品者:
-              - else
-                ="#{comment.user.nickname}: "
-            .detail-comment-box__inner__text.comment-display__message
-              = comment.message
+            -if comment.user_id == @item.user_id
+              .detail-comment-box__inner.comment-display__comment-box.exhibitor-box
+                .detail-comment-box__inner.comment-display__comment-box__name
+                  %p.exhibitor-comment
+                    出品者
+                .detail-comment-box__inner.comment-display__comment-box__message
+                  %p
+                    = comment.message
+              .detail-comment-box__inner.comment-display__image-box
+                .detail-comment-box__inner.comment-display__image-box__exhibitor
+                  - if @user.user_image.present?
+                    = image_tag @user.image_url, class: "user-thumbnail"
+                  - else
+                    = image_tag "adidas.cap.jpg", class: "user-thumbnail"
+        
+            -else
+              .detail-comment-box__inner.comment-display__comment-box.buyer-box
+                .detail-comment-box__inner.comment-display__comment-box__name
+                  %p.user-comment
+                    ="#{comment.user.nickname}"
+                .detail-comment-box__inner.comment-display__comment-box__message
+                  %p
+                    = comment.message
+              .detail-comment-box__inner.comment-display__image-box
+                .detail-comment-box__inner.comment-display__image-box__user
+                  - if @user.user_image.present?
+                    = image_tag @user.image_url, class: "user-thumbnail"
+                  - else
+                    = image_tag "adidas.cap.jpg", class: "user-thumbnail"
+            
       .showcontianer__messages__box__form
         = form_with model: [@item, @comment],id:"new_comment", local: true do |f|
-          = f.text_field :message,  class:"showcontainer__messages__box__form__text", id: "form-input", placeholder: "35文字以内",maxlength:"35"
+          %input{name: "current_user_nickname", type: "hidden", value: current_user.user_image, id: 'current_user' }
           %p.showcontainer__messages__box__form__notice
             相手のことを考え丁寧なコメントを心がけましょう。
             %br
-            不快な言葉遣いなどは利用制限や退会処分となることがあります。
+              不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          = f.text_field :message,  class:"showcontainer__messages__box__form__text", id: "form-input", placeholder: "35文字以内",maxlength:"35"
+
           - if user_signed_in?
             %button{ type: "submit", class: "showcontainer__messages__box__form__btn form-submit show-a" }
               %i.fas.fa-comment
