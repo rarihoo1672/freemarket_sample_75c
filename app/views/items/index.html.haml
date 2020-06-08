@@ -109,7 +109,7 @@
           ピックアップカテゴリー
         =link_to "レディースアイテム", root_path, class: "itemPick__text__new"
       .itemPick__images
-        - @items.each do |item|
+        - @ladies_items.each do |item|
           .itemPick__image
             = link_to item_path(item.id) do
               = image_tag ("#{item.images.first.image}"), size:"220x150",class: 'pick-img'
@@ -123,10 +123,10 @@
     .brandPick
       .brandPick__text
         .brandPick__text__tittle
-          ピックアップブランド
-        =link_to "adidasアイテム", root_path, class:"brandPick__text__archive"
+          -# ピックアップブランド
+        =link_to "メンズアイテム", root_path, class:"brandPick__text__archive"
       .brandPick__images
-        - @items.each do |item|
+        - @mens_items.each do |item|
           .brandPick__image
             = link_to item_path(item.id) do
               = image_tag ("#{item.images.first.image}"), size:"220x150",class: 'pick-img'

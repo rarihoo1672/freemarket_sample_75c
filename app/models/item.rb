@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many :images, dependent: :destroy
   belongs_to :category
-  has_one :brand
+  has_one :brand, dependent: :destroy
   accepts_nested_attributes_for :brand, allow_destroy:true
 
   extend ActiveHash::Associations::ActiveRecordExtensions
