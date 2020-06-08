@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   require 'payjp'
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_item, only: [:show, :purchase, :pay, :done]
+  before_action :set_item, only: [:show, :purchase, :pay, :done, :destroy]
   before_action :set_image, only: [:purchase, :done]
   before_action :set_card, only: [:purchase, :pay]
 
@@ -41,6 +41,15 @@ class ItemsController < ApplicationController
     @prefecture = @user.address.prefecture
     @comment = Comment.new
     @comments = @item.comments  
+  end
+
+  def destroy
+    if user_signed_in? && current_user.id == @item.user_id
+      @item.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
   end
 
   def item_purchase
