@@ -26,19 +26,62 @@
   }
 }
 
+
 .comment-display {
   border-bottom: 1px solid rgba(230,230,230,1);
-  &__name {
-    margin-top: 5px;
-    margin-left: 20px;
-    opacity: 0.7;
-
+  padding: 10px;
+  height: 150px;
+  position:relative;
+  .exhibitor-box {
+    float: right;
   }
-  &__message {
-    text-align: center;
-    margin: 12px 40px 8px;
+  .buyer-box {
+    float: left;
   }
+  &__comment-box {
+    width: 85%;
+    &__name {
+      margin-bottom: 5px;
+      font-weight: bold;
+      .exhibitor-comment {
+        
+      }
+      .user-comment {
+        text-align: end;
+        margin-right: 10px;
+      }
+    }
+    &__message {
+      padding:20px;
+      height: 100px;
+      background-color: rgba(240, 221, 195, 0.4);
+      border-radius: 15px;
+    }
+  }
+  &__image-box {
+    width: 15%;
+    &__exhibitor {
+      position: absolute;
+      top: 30px;
+      left: 15px;
+    }
+    &__user {
+      position: absolute;
+      top: 30px;
+      right: 15px;
+    }
+  }
+}
 
+.user-thumbnail {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
+
+.form-wrap {
+  overflow: scroll;
+  max-height: 500px;
 }
 
 .showcontainer {
