@@ -113,3 +113,6 @@ gem 'dotenv-rails'
 
 gem 'fog-aws'
 
+#enumをi18nに対応させる
+gem 'enum_help'
+
