@@ -4,8 +4,8 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.on_sell.includes([:images]).order(created_at: :desc)
-    @ladies_items = Item.where(category_id: 1..199).limit(3)
-    @adidas_items = Item.where(brand_id: 3).limit(3)
+    # @ladies_items = Item.where(category_id: 1..199).limit(3)
+    # @adidas_items = Item.where(brand_id: 3).limit(3)
   end
 
 
@@ -49,3 +49,4 @@ class ItemsController < ApplicationController
     params.require(:item).permit(*columns)
   end
 end
+
