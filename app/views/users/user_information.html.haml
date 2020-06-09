@@ -1,6 +1,5 @@
 = render partial: "shared/header"
 
-
 .mypage-nav
   %ul.page-lists
     %li.page-lists__list
@@ -54,15 +53,18 @@
           .mypage-field
             .mypage-label
               = f.label :name, "お名前（全角）"
-              %p.info<柏井麻希
+              %p.info
+                = @user.last_name + @user.first_name
           .mypage-field
             .mypage-label
               = f.label :name, "お名前カナ（全角）"
-              %p.info<カシワイマキ
+              %p.info
+                = @user.lastname_kana + @user.firstname_kana
           .mypage-field
             .mypage-label
               = f.label :birth_year, "生年月日"
-              %p.info<1994/05/29
+              %p.info
+                = @user.birth_day
           .mypage-field
             .mypage-label
               = f.label :post_nunber, "郵便番号"

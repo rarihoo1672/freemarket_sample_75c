@@ -34,25 +34,24 @@
             .title
               = f.label :都道府県
               %span 必須
-            -# = f.select :prefecture_id,Prefecture.all, {}, autocomplete: "address-level1"
             = f.collection_select :prefecture_id, Prefecture.all, :id, :name
           %br/
           .field
             .title
               = f.label :市区町村
               %span 必須
-            = f.text_field :city, autofocus: true, placeholder: "例）葛飾区", autocomplete: "address-level2"
+            = f.text_field :city, autofocus: true, placeholder: "例)渋谷区", autocomplete: "address-level2"
           %br/
           .field
             .title
               = f.label :番地
               %span 必須
-            = f.text_field :address, autofocus: true, placeholder: "例）青戸1-1-1", autocomplete: "address-level3"
+            = f.text_field :address, autofocus: true, placeholder: "例)道玄坂3-2", autocomplete: "address-level3"
           %br/
           .field
             .title
               = f.label :建物名
-            = f.text_field :building_name, autofocus: true, placeholder: "例）青戸ビル102号", autocomplete: "address-level4"
+            = f.text_field :building_name, autofocus: true, placeholder: "例)フォンティスビル7F", autocomplete: "address-level4"
           %br/
           .field
             .title

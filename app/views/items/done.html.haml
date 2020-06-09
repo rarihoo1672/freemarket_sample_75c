@@ -1,3 +1,5 @@
+= render partial: "devise/shared/header";
+
 .done--purchase
   .content
     %h2 購入が完了しました
@@ -13,3 +15,5 @@
         %span 円
     .content__main
       = link_to 'ホーム画面に戻る', root_path, class: 'submit-btn'
+
+= render partial: "devise/shared/footer";

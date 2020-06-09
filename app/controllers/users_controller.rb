@@ -43,6 +43,7 @@ class UsersController < ApplicationController
   end
 
   def user_information
+    @user = User.find(current_user.id)
   end
 
 end
