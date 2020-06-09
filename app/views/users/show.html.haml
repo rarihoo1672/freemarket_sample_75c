@@ -65,7 +65,7 @@
     .mypage-user
       = link_to root_path do
         .user-face
-          = image_tag src="/assets/icon/member_photo_noimage_thumb.png", size: "60x60"
+          = image_tag asset_path("icon/member_photo_noimage_thumb.png"), size: "60x60"
         %h2.user-name
           = current_user.nickname
         .user-information
