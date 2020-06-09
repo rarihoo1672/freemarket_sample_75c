@@ -1,5 +1,5 @@
 .wrapper
-  = render "header";
+  = render "devise/shared/header";
 
   .signin
     .contents
@@ -62,3 +62,5 @@
           .field
             = f.submit "新規登録", class: "btn"
         = render "devise/shared/links"
+
+  = render "devise/shared/footer";

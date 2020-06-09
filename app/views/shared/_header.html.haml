@@ -2,7 +2,7 @@
   .headerBox
     .headboxUpper
       %h1.logo
-        = image_tag asset_path('logo/logo.png'), size: "140x41"
+        = link_to image_tag(asset_path('logo/logo.png'), size: "140x41"), root_path
       .searchForm
         %input.searchForm__text{name: "search", placeholder: "キーワードから探す", type: "text", value: ""}/
         .searchForm__submit
