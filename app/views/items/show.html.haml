@@ -1,3 +1,5 @@
+= render partial: "devise/shared/header";
+
 .showcontainer
   .showcontainer__itemContents
     %h2.showcontainer__itemContents__item-name
@@ -29,25 +31,24 @@
 
 
     .showcontainer__itemContents__item-btns
-      - if user_signed_in? && current_user.id == @item.user_id
-        = link_to "商品を削除する", item_path(@item.id), method: :delete, class: "showcontainer__itemContents__item-btns--left show-a"
-        = link_to "商品を編集する", "#", class: "showcontainer__itemContents__item-btns--right show-a"
-      - elsif user_signed_in? && current_user.id
-        = link_to "購入画面に進む", purchase_item_path(@item), class: "showcontainer__itemContents__item-btns--center show-a"
+      -if @item.buyer == "sell"
+        - if user_signed_in? && current_user.id == @item.user_id 
+          = link_to "商品を削除する", item_path(@item.id), method: :delete, class: "showcontainer__itemContents__item-btns--left show-a"
+          = link_to "商品を編集する", "#", class: "showcontainer__itemContents__item-btns--right show-a"
+        - elsif user_signed_in? && current_user.id
+          = link_to "購入画面に進む", purchase_item_path(@item), class: "showcontainer__itemContents__item-btns--center show-a"
 
 
     .showcontainer__itemContents__item-introduction
       %p.showcontainer__itemContents__item-introduction__text
         = @item.introduction
-
     %table.showcontainer__itemContents__details
       %tbody
         %tr
           %th
             出品者
           %td
-            = link_to "#{@user.nickname}", users_path(@user), class: "show-a" 
-  
+            = link_to "#{@user.nickname}", user_path(@item.user_id), class: "show-a" 
         %tr
           %th
             カテゴリー
@@ -108,21 +109,47 @@
       .showcontianer__messages__box__comment.form-wrap
         - @comments.each do |comment|
           .detail-comment-box__inner.comment-display
-            .detail-comment-box__inner__name.comment-display__name
-              - if comment.user_id == @item.user_id
-                出品者:
-              - else
-                ="#{comment.user.nickname}: "
-            .detail-comment-box__inner__text.comment-display__message
-              = comment.message
+            -if comment.user_id == @item.user_id
+              .detail-comment-box__inner.comment-display__comment-box.exhibitor-box
+                .detail-comment-box__inner.comment-display__comment-box__name
+                  %p.exhibitor-comment
+                    出品者
+                .detail-comment-box__inner.comment-display__comment-box__message
+                  %p
+                    = comment.message
+              .detail-comment-box__inner.comment-display__image-box
+                .detail-comment-box__inner.comment-display__image-box__exhibitor
+                  - if @user.user_image.present?
+                    = image_tag @user.image_url, class: "user-thumbnail"
+                  - else
+                    = image_tag asset_path("icon/member_photo_noimage_thumb.png"), class: "user-thumbnail"
+        
+            -else
+              .detail-comment-box__inner.comment-display__comment-box.buyer-box
+                .detail-comment-box__inner.comment-display__comment-box__name
+                  %p.user-comment
+                    ="#{comment.user.nickname}"
+                .detail-comment-box__inner.comment-display__comment-box__message
+                  %p
+                    = comment.message
+              .detail-comment-box__inner.comment-display__image-box
+                .detail-comment-box__inner.comment-display__image-box__user
+                  - if @user.user_image.present?
+                    = image_tag asset_path(@user.image_url), class: "user-thumbnail"
+                  - else
+                    = image_tag asset_path("icon/member_photo_noimage_thumb.png"), class: "user-thumbnail"
+            
       .showcontianer__messages__box__form
         = form_with model: [@item, @comment],id:"new_comment", local: true do |f|
-          = f.text_field :message,  class:"showcontainer__messages__box__form__text", id: "form-input", placeholder: "35文字以内",maxlength:"35"
           %p.showcontainer__messages__box__form__notice
             相手のことを考え丁寧なコメントを心がけましょう。
             %br
-            不快な言葉遣いなどは利用制限や退会処分となることがあります。
+              不快な言葉遣いなどは利用制限や退会処分となることがあります。
           - if user_signed_in?
+            %input{name: "current_user_nickname", type: "hidden", value: current_user.user_image, id: 'current_user' }
+            = f.text_field :message,  class:"showcontainer__messages__box__form__text", id: "form-input", placeholder: "35文字以内",maxlength:"35"
+
+        
             %button{ type: "submit", class: "showcontainer__messages__box__form__btn form-submit show-a" }
               %i.fas.fa-comment
               コメントする
@@ -150,3 +177,4 @@
   .showcontainer__related-item
     = link_to "#{@this_category.name}", "#" ,{class: "showcontainer__related-item__link show-a"}
 
+= render partial: "shared/footer"
