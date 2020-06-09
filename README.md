@@ -64,9 +64,10 @@
 |birth_day|date|null: false|
 
 ### Association
- - has_many :items dependent: :destroy
- - has_one :address dependent: :destroy
- - has_one :card dependent: :destroy
+ - has_many :items    dependent: :destroy
+ - has_many :comments dependent: :destroy
+ - has_one :address   dependent: :destroy
+ - has_one :card      dependent: :destroy
 
 
 ## addressテーブル
@@ -86,6 +87,7 @@
 
 ### Association
  - belongs_to :user
+ - belongs_to_active_hash :prefecture
 
 
 ## cardテーブル #payjp
@@ -130,6 +132,7 @@
  - belongs_to :category
  - belongs_to :brand
  - has_many :images dependent: :destroy
+ - has_many :comments dependent: :destroy
  - belongs_to_active_hash :prefecture
 
 
@@ -147,6 +150,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|index: true|
+|item|references|
 
 ### Association
- - has_many :items
+ - belongs_to :items
