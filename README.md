@@ -1,7 +1,7 @@
 # README
 
 # 💻 Project Title
-## freemarket_sample_75c
+## *freemarket_sample_75c*
 [![Screenshot from Gyazo](https://gyazo.com/efb0d8057ffc5c77f03620802bbd690e/raw)](https://gyazo.com/efb0d8057ffc5c77f03620802bbd690e)
 
 # 💬 Description
@@ -22,10 +22,12 @@
 **購入者用アカウント**
  - Email：
  - Pass：
+
 **クレジットカード**
  - 番号：4242424242424242
  - 期限：12月/30年
  - cvcコード：123
+
 **出品者用アカウント**
  - Email：
  - Pass：
