@@ -16,19 +16,19 @@
           最大10枚までアップロードできます
         .newcontainer__drop-box#exhibit__drop-box
           .exhibit__drop-box__previews#exhibit__drop-box__previews
-            - if @item.images.presisted?
+            - if @item.persisted?
               - @item.images.each_with_index do |image, i|
-                = image_tag image.src.url, data: { index: i }, width: "100", height: "100"
+                = image_tag image.image.url , data: { index: i }, width: "100", height: "100"
           .exhibit__drop-box__uploader#exhibit__drop-box__uploader
             %label.exhibit__drop-box__uploader__label#exhibit__drop-box__uploader__label
               =f.fields_for :images do |image|
                 .img-file_group{"data-index" => "#{image.index()}"}
                   = image.file_field :image ,type: 'file', value: "",class: 'secret-image img-file'
-                - if @item.images.presisted?
+                - if @item.persisted?
                   =image.check_box :_destroy, data: { index: image.index }, class: 'hidden-destroy'
-                - if @item.images.presisted?
+                - if @item.persisted?
                   .img-file_group{"data-index" => "#{@item.images.count}"}
-                    = file_field_tag :image name:"item[images_attributes][{#{@item.images.count}][image]", class: 'img-file'
+                    = file_field_tag :image, name:"item[images_attributes][{#{@item.images.count}][image]", class: 'img-file'
                     .img-remove
                       削除
         .input-error#item_image_error
@@ -188,7 +188,7 @@
 
       .new-container__body__links-box
         .new-container__body__links-box__submit
-          = f.submit value: "出品する",  class: "new-container__body__links-box__submit__btn"
+          = f.submit value: "編集する",  class: "new-container__body__links-box__submit__btn"
         .new-container__body__links-box__back
           = link_to "戻る", "/", class: "new-container__body__links-box__back__btn"
 
