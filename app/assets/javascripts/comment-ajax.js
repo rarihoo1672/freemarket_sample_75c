@@ -20,7 +20,7 @@ $(document).on('turbolinks:load', ()=> {
             </div>
             <div class="detail-comment-box__inner comment-display__image-box">
               <div class="detail-comment-box__inner comment-display__image-box__exhibitor">
-                <img class="user-thumbnail" src="/assets/adidas.cap-3e39fd851cc3c67bca93be545ce2366e1ace8fdc214047c9eeb58c25b57ba1b6.jpg">
+                <img class="user-thumbnail" src="/assets/icon/member_photo_noimage_thumb-3f5db95de8bc1582908f994329d16ed91cf4398c2e3e0cc7387e0f2f8f0c88a9.png">
               </div>
             </div>
           </div>`
@@ -42,7 +42,7 @@ $(document).on('turbolinks:load', ()=> {
             </div>
             <div class="detail-comment-box__inner comment-display__image-box">
               <div class="detail-comment-box__inner comment-display__image-box__user">
-                <img class="user-thumbnail" src="/assets/adidas.cap-3e39fd851cc3c67bca93be545ce2366e1ace8fdc214047c9eeb58c25b57ba1b6.jpg">
+                <img class="user-thumbnail" src="/assets/icon/member_photo_noimage_thumb-3f5db95de8bc1582908f994329d16ed91cf4398c2e3e0cc7387e0f2f8f0c88a9.png">
               </div>
             </div>
           </div>`

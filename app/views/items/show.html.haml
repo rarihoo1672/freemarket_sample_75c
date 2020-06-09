@@ -121,7 +121,7 @@
                   - if @user.user_image.present?
                     = image_tag @user.image_url, class: "user-thumbnail"
                   - else
-                    = image_tag "adidas.cap.jpg", class: "user-thumbnail"
+                    = image_tag asset_path("icon/member_photo_noimage_thumb.png"), class: "user-thumbnail"
         
             -else
               .detail-comment-box__inner.comment-display__comment-box.buyer-box
@@ -134,9 +134,9 @@
               .detail-comment-box__inner.comment-display__image-box
                 .detail-comment-box__inner.comment-display__image-box__user
                   - if @user.user_image.present?
-                    = image_tag @user.image_url, class: "user-thumbnail"
+                    = image_tag asset_path(@user.image_url), class: "user-thumbnail"
                   - else
-                    = image_tag "adidas.cap.jpg", class: "user-thumbnail"
+                    = image_tag asset_path("icon/member_photo_noimage_thumb.png"), class: "user-thumbnail"
             
       .showcontianer__messages__box__form
         = form_with model: [@item, @comment],id:"new_comment", local: true do |f|
