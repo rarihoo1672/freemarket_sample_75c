@@ -1,7 +1,55 @@
 # README
 
-# DataBase Disign
+# 💻 Project Title
+## *freemarket_sample_75c*
+[![Screenshot from Gyazo](https://gyazo.com/efb0d8057ffc5c77f03620802bbd690e/raw)](https://gyazo.com/efb0d8057ffc5c77f03620802bbd690e)
 
+# 💬 Description
+  フリーマーケットサイトのアプリケーションです。  
+  誰でも簡単に商品の出品・販売をすることができます。  
+  **※実際に取引を行うことはできません。**
+
+  開発チーム人数：4名  
+  開発言語：haml,scss,JavaScript,Ruby(Ruby on Rails)  
+  開発体制：スクラムを用いたアジャイル開発  
+  制作期間：5月20日〜6月10日  
+
+# 🌐 App URL
+**http://18.178.241.167**
+### Basic認証
+ - ID：admin
+ - Pass：tech5admin777
+### テストユーザー情報
+**購入者用アカウント**
+ - Email：
+ - Pass：
+
+**クレジットカード**
+ - 番号：4242424242424242
+ - 期限：12月/30年
+ - cvcコード：123
+
+**出品者用アカウント**
+ - Email：
+ - Pass：
+
+# 👤 Development Member
+## 岩田 聖大
+  実装内容：
+
+## 瀬戸 彩人
+  実装内容：
+
+## 柏井 麻希
+  実装内容：
+
+## 川畑 拓也
+  実装内容：
+
+# 📝 ER Diagram
+
+
+# 🎨 DataBase Disign
 ## userテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -17,9 +65,10 @@
 |birth_day|date|null: false|
 
 ### Association
- - has_many :items dependent: :destroy
- - has_one :address dependent: :destroy
- - has_one :card dependent: :destroy
+ - has_many :items    dependent: :destroy
+ - has_many :comments dependent: :destroy
+ - has_one :address   dependent: :destroy
+ - has_one :card      dependent: :destroy
 
 
 ## addressテーブル
@@ -39,6 +88,7 @@
 
 ### Association
  - belongs_to :user
+ - belongs_to_active_hash :prefecture
 
 
 ## cardテーブル #payjp
@@ -83,6 +133,7 @@
  - belongs_to :category
  - belongs_to :brand
  - has_many :images dependent: :destroy
+ - has_many :comments dependent: :destroy
  - belongs_to_active_hash :prefecture
 
 
@@ -100,27 +151,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|index: true|
+|item|references|
 
 ### Association
- - has_many :items
-
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ - belongs_to :items
