@@ -141,14 +141,15 @@
             
       .showcontianer__messages__box__form
         = form_with model: [@item, @comment],id:"new_comment", local: true do |f|
-          %input{name: "current_user_nickname", type: "hidden", value: current_user.user_image, id: 'current_user' }
           %p.showcontainer__messages__box__form__notice
             相手のことを考え丁寧なコメントを心がけましょう。
             %br
               不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          = f.text_field :message,  class:"showcontainer__messages__box__form__text", id: "form-input", placeholder: "35文字以内",maxlength:"35"
-
           - if user_signed_in?
+            %input{name: "current_user_nickname", type: "hidden", value: current_user.user_image, id: 'current_user' }
+            = f.text_field :message,  class:"showcontainer__messages__box__form__text", id: "form-input", placeholder: "35文字以内",maxlength:"35"
+
+        
             %button{ type: "submit", class: "showcontainer__messages__box__form__btn form-submit show-a" }
               %i.fas.fa-comment
               コメントする
