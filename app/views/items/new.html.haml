@@ -21,8 +21,6 @@
               =f.fields_for :images do |image|
                 .img-file_group{"data-index" => "#{image.index()}"}
                   = image.file_field :image ,type: 'file', value: "",class: "secret-image img-file"
-            .exhibit__drop-box__uploader__text
-              写真を追加
         .input-error#item_image_error
 
 
