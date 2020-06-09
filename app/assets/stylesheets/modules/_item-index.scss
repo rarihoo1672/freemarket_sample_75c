@@ -1,0 +1,367 @@
+.top-body {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+
+  .top-header {
+    padding: 0 60px;
+    margin-top: 25px;
+
+    .headerBox {
+      max-width: 1040px;
+      width: 100%;
+      min-height: 82px;
+      margin: 0 auto;
+      display: block;
+      text-align: center;
+
+      .headboxUpper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        .searchForm {
+          width: 100%;
+          display: flex;
+          &__text {
+            width: calc(100% - 26px);
+            height:30px;
+            margin-left: 30px;
+          }
+          &__submit {
+            width: 30px;
+            height: 30px;
+            background-color: #3CCACE;
+            padding: 4px 6px;
+            &--btn {
+              display: inline-block;
+            }
+            &__img {
+              padding-top: 7px;
+            }
+          }
+        }
+      }
+      .headboxUnder {
+        color: #333;
+        font-size: 13px;
+        display: flex;
+        padding-bottom: 15px;
+        &__search {
+          display: flex;
+          &--left {
+            margin-right: 46px;
+          }
+        }
+        &__user {
+          display: flex;
+          margin-left: auto;
+          &__login {
+            margin-right: 20px;
+          }
+        }
+        a {
+          text-decoration: none;
+          color: #333;
+        }
+      }
+    }
+  }
+  //メインコンテンツ
+  .top-contents {
+    width: 100%;
+    height: 100%;
+  }
+
+  //トップアプリ紹介
+  .topInfo {
+    max-width: 100%;
+    height: 560px;
+    background-image: image-url("pict/bg-mainVisual-pict_pc.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 0 60px;
+  }
+
+  .appInfo {
+    padding-top: 140px;
+    align-items: center;
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+
+    &__catch{
+      width: 100%;
+      font-size: 60px;
+      font-weight: normal;
+    }
+  }
+
+  .banners {
+    margin-top: 25px;
+    display: flex;
+    &__ios {
+      width: 180px;
+      height: 50px;
+      }
+    &__android {
+      width: 180px;
+      height: 50px;
+    }
+  }
+
+  //選ばれる理由
+  .chosen {
+    width: 100%;
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+    &__tittle {
+      font-size: 26px;
+      line-height: 1.4;
+      font-weight: bold;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+    }
+    &__border {
+      width: 70px;
+      height: 4px;
+      background-color: #3CCACE;
+      position: absolute;
+      top: 110px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &__lists {
+      max-width: 1020px;
+      width: 100%;
+      display: flex;
+      margin: 0 auto;
+      .chosen-img {
+        width: 100%;
+        vertical-align: bottom;
+      }
+      &__text {
+        width: calc(1 / 3 * 100%);
+        position: relative;
+        &__num {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 4%;
+            font-size: 30px;
+            text-align: center;
+            margin: 0 5px 0 0;
+            padding: 10px 20px;
+            background-color: #3CCACE;
+            color: #fff;
+        }
+        &__image{
+          width: 100%;
+        }
+      }
+      #chosen-center{
+        margin: 0 40px;
+      }
+      h4 {
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 50px;
+        margin: 0 0 0 2px;
+      }
+    }
+  }
+
+  .text-deco {
+    color: #3CCACE;
+  }
+
+  //中間アプリ紹介
+  .middleAppInfo {
+    max-width: 100%;
+    height: 400px;
+    background-image: image-url("pict/bg-topMiddleDl-pict.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+
+  }
+  .mdAppbox {
+    max-width: 1040px;
+    padding-top: 90px;
+    align-items: center;
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    margin: 0 auto;
+    text-align: left;
+    &__text {
+      &__catch{
+        width: 100%;
+        font-size: 27px;
+        font-weight: bold;
+      }
+      &__sub {
+      font-size: 18px;
+      margin: 20px 0 30px;
+      }
+    }
+    &__banners{
+    margin-top: 25px;
+    display: flex;
+      img {
+        width: 180px;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  //フリマの特徴
+  .attribute {
+    width: 100%;
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+    &__tittle {
+      font-size: 26px;
+      line-height: 1.4;
+      font-weight: bold;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+    }
+    &__border {
+      width: 70px;
+      height: 4px;
+      background-color: #3CCACE;
+      position: absolute;
+      top: 110px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &__lists {
+      max-width: 1020px;
+      width: 100%;
+      display: flex;
+      margin: 0 auto;
+      &__text {
+        width: calc(1 / 3 * 100%);
+      }
+      #attribute-center{
+        margin: 0 40px;
+      }
+      .attribute-img {
+        width: 100%;
+        vertical-align: bottom;
+        object-fit: contain;
+      }
+      h4 {
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 50px;
+        margin: 0 0 0 2px;
+      }
+    }
+  }
+
+  //新規投稿商品
+  .itemPick {
+    width: 100%;
+    height: 100%;
+    background-color: #f8f8f8;
+    padding-top: 80px;
+    &__text {
+      text-align: center;
+      font-weight: bold;
+      &__cat {
+        font-size: 28px;
+        line-height: 1.4;
+      }
+      &__new {
+        font-size: 24px;
+        text-decoration: none;
+        color: #3CCACE;
+      }
+    }
+    &__images {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    width: 780px;
+    margin-top: 26px;
+    }
+    &__image {
+      background-color: #fff;
+    }
+    .tax{
+      font-size: 10px;
+    }
+  }
+  //ピックアップブランド
+  .brandPick {
+    width: 100%;
+    height: 100%;
+    background-color: #f8f8f8;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    &__text {
+      text-align: center;
+      font-weight: bold;
+      &__tittle {
+        font-size: 28px;
+        line-height: 1.4;
+      }
+      &__archive {
+        font-size: 24px;
+        text-decoration: none;
+        color: #3CCACE;
+      }
+    }
+    &__images {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    width: 780px;
+    margin-top: 26px;
+    }
+    &__image {
+      background-color: #fff;
+    }
+    #brandPick-center {
+      margin :0 40px;
+    }
+    .tax{
+      font-size: 10px;
+    }
+  }
+  //ダウンロードしよう！
+  .suggestApp {
+    max-width: 100%;
+    height: 400px;
+    background-image: image-url("pict/bg-appBanner-pict.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+  }
+
+  .suggestDl {
+    padding-top: 90px;
+    text-align: center;
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    &__text {
+      &__catch{
+        width: 100%;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      &__push {
+      font-size: 35px;
+      margin: 10px 0 20px;
+      }
+    }
+    &__banners {
+      margin-top: 25px;
+      img {
+        width: 180px;
+        height: 50px;
+      }
+    }
+  }
+}
