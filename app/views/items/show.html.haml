@@ -29,11 +29,12 @@
 
 
     .showcontainer__itemContents__item-btns
-      - if user_signed_in? && current_user.id == @item.user_id
-        = link_to "商品を削除する", item_path(@item.id), method: :delete, class: "showcontainer__itemContents__item-btns--left show-a"
-        = link_to "商品を編集する", "#", class: "showcontainer__itemContents__item-btns--right show-a"
-      - elsif user_signed_in? && current_user.id
-        = link_to "購入画面に進む", purchase_item_path(@item), class: "showcontainer__itemContents__item-btns--center show-a"
+      -if @item.buyer == "sell"
+        - if user_signed_in? && current_user.id == @item.user_id 
+          = link_to "商品を削除する", item_path(@item.id), method: :delete, class: "showcontainer__itemContents__item-btns--left show-a"
+          = link_to "商品を編集する", "#", class: "showcontainer__itemContents__item-btns--right show-a"
+        - elsif user_signed_in? && current_user.id
+          = link_to "購入画面に進む", purchase_item_path(@item), class: "showcontainer__itemContents__item-btns--center show-a"
 
 
     .showcontainer__itemContents__item-introduction
