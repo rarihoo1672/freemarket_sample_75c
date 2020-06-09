@@ -40,15 +40,13 @@
     .showcontainer__itemContents__item-introduction
       %p.showcontainer__itemContents__item-introduction__text
         = @item.introduction
-
     %table.showcontainer__itemContents__details
       %tbody
         %tr
           %th
             出品者
           %td
-            = link_to "#{@user.nickname}", user_path(@user), class: "show-a" 
-  
+            = link_to "#{@user.nickname}", user_path(@item.user_id), class: "show-a" 
         %tr
           %th
             カテゴリー
