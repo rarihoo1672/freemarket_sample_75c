@@ -73,7 +73,7 @@
               %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
               .new-container__body__detail-box__category__added#children_wrapper
                 .new-container__body__detail-box__category__select
-                  = f.collection_select :category_id, @item.category.parent.parent.children, :id, :name, {selected: @item.category.parent.id, prompt: true}, {class: "content-form__input", id: "child-form"}
+                  = f.collection_select :category_id, @item.category.parent.parent.children, :id, :name, {selected: @item.category.parent.id, prompt: true}, {class: "content-form__input", id: "child_form"}
                   %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
                 .new-container__body__detail-box__category__select__grandchildren
                   .new-container__body__detail-box__category__added#grandchildren_wrapper
