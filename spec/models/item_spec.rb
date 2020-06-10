@@ -1,6 +1,6 @@
 require 'rails_helper'
 describe Item do
-  describe '#create' do
+  describe '#create#update' do
     it "brandとbuyer以外の項目が入力されていれば登録できること" do
       user = create(:user)
       category = create(:category)
