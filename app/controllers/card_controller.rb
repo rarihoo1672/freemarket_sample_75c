@@ -2,7 +2,7 @@ class CardController < ApplicationController
 
   def create
     if params['payjp-token'].blank?
-      redirect_to add_card_users_path(), id: current_user.id
+      redirect_to add_card_user_path(current_user)
     else
       customer = Payjp::Customer.create(
       email: current_user.email,

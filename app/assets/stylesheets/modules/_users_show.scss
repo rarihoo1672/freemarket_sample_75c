@@ -475,49 +475,92 @@
     .mypage-contents {
       margin: 0;
       background: #fff;
-      .mypage-tabs {
-        border: 0;
-        background: #eee;
-        font-size: 0;
+      .mypage-tabs {  
+        background: #fff;
+        font-size: 18px;
         list-style: none;
-        &__tab {
-          background: #fff;
+        height: 100px;
+        border-bottom: 1px solid #cccccc;
+        display: flex;
+        font-weight: bold;
+        margin: 0 auto;
+        &__now {
+          float: left;
           width: 50%;
-          display: inline-block;
           text-align: center;
-          vertical-align: top;
-          h3 {
-            font-size: 22px;
-            font-weight: bold;
-            a {
-              position: relative;
-              display: block;
-              color: #333;
-              font-size: 16px;
-              line-height: 72px;
-              text-decoration: none;
-              border-top: 2px solid #3CCACE;;
+          border-right: 1px solid #cccccc;
+          padding-top: 35px;
+        }
+        &__old {
+          float: right;
+          width: 50%;
+          text-align: center;
+          padding-top: 35px;
+        }
+          .tab {
+            background: #fff;
+            width: 50%;
+            display: inline-block;
+            text-align: center;
+            vertical-align: top;
+            &__link {
+              font-size: 22px;
+              font-weight: bold;
+              a {
+                position: relative;
+                display: block;
+                color: #333;
+                font-size: 16px;
+                line-height: 72px;
+                text-decoration: none;
+              }
             }
           }
         }
-      }
       .tab-content {
         display: block;
-        ul {
-          list-style: none;
-          background: url(/assets/logo/logo.png);
-          background-repeat: no-repeat;
-          background-position: center 40px;
-          background-size: 150px 40px;
+        margin: 0 auto;
+        &__left{
+          float: left;
+          width: 50%;
           text-align: center;
-          font-size: 16px;
-          .not-found {
-            border: 0;
-            position: relative;
-            border-bottom: 1px solid #eee;
-            padding: 160px 0 60px;
-            color: #ccc;
-            font-weight: bold;
+          padding: 30px 0 30px 0;
+        }
+        &__right{
+          float: right;
+          width: 50%;
+          text-align: center;
+          padding: 30px 0 30px 0;
+        }
+          .notfound-action {
+            list-style: none;
+            background: url(/assets/logo/logo.png);
+            background-repeat: no-repeat;
+            background-position: center 40px;
+            background-size: 150px 40px;
+            text-align: center;
+            font-size: 16px;
+            .not-found {
+              border: 0;
+              position: relative;
+              border-bottom: 1px solid #eee;
+              padding: 160px 0 60px;
+              color: #ccc;
+              font-weight: bold;
+        }
+      }
+      .found-action {
+        list-style: none;
+        background-repeat: no-repeat;
+        background-position: center 40px;
+        background-size: 150px 40px;
+        text-align: center;
+        font-size: 16px;
+        .found {
+          border: 0;
+          position: relative;
+          color: #ccc;
+          font-weight: bold;
         }
       }
     }
