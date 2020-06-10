@@ -1,3 +1,4 @@
+- console
 .new-container
   %header.new-container__header
     = link_to "/" do
@@ -16,21 +17,21 @@
           最大10枚までアップロードできます
         .newcontainer__drop-box#exhibit__drop-box
           .exhibit__drop-box__previews#exhibit__drop-box__previews
-            - if @item.persisted?
-              - @item.images.each_with_index do |image, i|
+            -# - if @item.images.persisted?
+            - @item.images.each_with_index do |image, i|
+              - if image.persisted?
                 = image_tag image.image.url , data: { index: i }, width: "100", height: "100"
           .exhibit__drop-box__uploader#exhibit__drop-box__uploader
             %label.exhibit__drop-box__uploader__label#exhibit__drop-box__uploader__label
               =f.fields_for :images do |image|
-                .img-file_group{"data-index" => "#{image.index()}"}
-                  = image.file_field :image ,type: 'file', value: "",class: 'secret-image img-file'
                 - if @item.persisted?
                   =image.check_box :_destroy, data: { index: image.index }, class: 'hidden-destroy'
-                - if @item.persisted?
-                  .img-file_group{"data-index" => "#{@item.images.count}"}
-                    = file_field_tag :image, name:"item[images_attributes][{#{@item.images.count}][image]", class: 'img-file'
-                    .img-remove
-                      削除
+                  -# .img-file_group{"data-index" => "#{@item.images.count}"}
+                  -#   = file_field_tag :image, name:"item[images_attributes][#{@item.images.count}][image]", class: 'img-file'
+                .img-file_group{"data-index" => "#{image.index()}"}
+                  = image.file_field :image ,type: 'file', value: "",class: 'secret-image img-file'
+                  .img-remove
+                    削除
         .input-error#item_image_error
 
 
