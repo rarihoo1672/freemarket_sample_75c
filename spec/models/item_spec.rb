@@ -1,6 +1,6 @@
 require 'rails_helper'
 describe Item do
-  describe '#create' do
+  describe '#create#update' do
     it "brandとbuyer以外の項目が入力されていれば登録できること" do
       user = create(:user)
       category = create(:category)
@@ -52,7 +52,7 @@ describe Item do
       item.valid?
       expect(item.errors[:user_id]).to include("を入力してください")
     end
-    it "category_ideがない場合は登録できないこと" do
+    it "category_idがない場合は登録できないこと" do
       item = build(:item, category_id: "")
       item.valid?
       expect(item.errors[:category_id]).to include("を入力してください")
