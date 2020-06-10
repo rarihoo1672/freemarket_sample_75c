@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', ()=> {
     const html = `
         <div class="exhibit__drop-box__previews" id="exhibit__drop-box__previews"></div>
         <div data-index="${index}" class="img-file_group">
-          <input class="img-file" type="file" name="item[item_images_attributes][${index}][image]" id=#item_images_attributes_${index}_image"><br>
+          <input class="img-file" type="file" name="item[images_attributes][${index}][image]" id=#item_images_attributes_${index}_image"><br>
           <div class="exhibit__drop-box__previews__preview__delete img-remove">
             削除
           </div>
