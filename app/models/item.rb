@@ -4,7 +4,6 @@ class Item < ApplicationRecord
   belongs_to :category
   has_one :brand, dependent: :destroy
   has_many :comments, dependent: :destroy
-
   accepts_nested_attributes_for :brand, allow_destroy:true
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -22,7 +21,7 @@ class Item < ApplicationRecord
   validates :prefecture_id,  presence: true
   validates :user_id,        presence: true
   validates :category_id,    presence: true
-
+  validates :images, length: {minimum: 1, maximum: 10}
   enum buyer: { sell: 0, buy: 1}
   scope :on_sell, -> { where(buyer: 0) }
 
