@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   require 'payjp'
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_item, only: [:show, :purchase, :pay, :done, :destroy]
-  before_action :set_image, only: [:purchase, :done]
   before_action :set_card, only: [:purchase, :pay]
 
   def index
@@ -101,10 +100,6 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
-  end
-
-  def set_image
-    @image = Image.find(params[:id])
   end
 
   def set_card
