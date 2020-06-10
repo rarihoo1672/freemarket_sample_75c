@@ -60,20 +60,85 @@
             %span 0
     .mypage-contents
       %ul.mypage-tabs
-        %li.mypage-tabs__tab
-          %h3
-            = link_to "#" do
-              取引中
-        %li.mypage-tabs__tab
-          %h3
-            = link_to "#" do
-              過去の取引
+        %li.mypage-tabs__now
+          取引中
+        %li.mypage-tabs__old
+          過去の取引
       .tab-content
-        %ul.content-action-now
-          %li.not-found
-            取引中の商品がありません
-        %ul.content-action-old
-          %li.not-found
-            過去に取引した商品がありません
+        .tab-content__left
+          - if @sell_items != ""
+            %ul.found-action
+              %li.found
+                - @sell_items.each do |sell|
+                  = link_to user_path(@user.id), class: 'tab__link' do
+                    = image_tag ("#{sell.images.first.image}"), size:"220x150",class: 'pick-img'
+          - else
+            %ul.notfound-action
+              %li.not-found
+              取引中の商品がありません
 
+        .tab-content__right
+          - if @sold_items != ""
+            %ul.found-action
+              %li.found
+                - @sold_items.each do |sold|
+                  = link_to user_path(@user.id) do
+                    = image_tag ("#{sold.images.first.image}"), size:"220x150",class: 'pick-img'
+          - else
+            %ul.notfound-action
+              = image_tag asset_path('logo/logo.png'), size: "150×40",class: 'pick-img'
+              %li.not-found
+                過去に取引した商品がありません
+                    
+.suggestApp
+  .suggestDl
+    .suggestDl__text
+      %h2.suggestDl__text__catch
+        だれでもかんたん、人生を変えるフリマアプリ
+      %p.suggestDl__text__push
+        今すぐ無料ダウンロード！
+    .suggestDl__banners
+      = link_to image_tag(asset_path("app-store.svg"), class:"suggestDl__ios"), "/"
+      = link_to image_tag(asset_path("google-play.svg"), class:"suggestDl__android"), "/"
+
+.top-footer
+  .footerMenu
+    %ul.footerLists
+      %h2
+        FURIMAについて
+      %li.footer_list
+        会社概要（運営会社）
+      %li.footer_list
+        プライバシーポリシー
+      %li.footer_list
+        FURIMA利用規約
+      %li.footer_list
+        ポイントに関する特約
+    %ul.footerLists
+      %h2
+        FURIMAを見る
+      %li.footer_list
+        カテゴリー一覧
+      %li.footer_list
+        ブランド一覧
+    %ul.footerLists
+      %h2
+        ヘルプ＆ガイド
+      %li.footer_list
+        FURIMAガイド
+      %li.footer_list
+        FURIMAロゴ利用ガイドライン
+      %li.footer_list
+        お知らせ
+  .footer__logo
+    = image_tag asset_path('logo/logo-white.png'), size: ""
+  %P.copyright © FURIMA
+
+
+
+.sell-btn
+  .btn-title
+    出品する
+    =link_to new_item_path, target:"_blank" do
+      = image_tag src="/assets/icon/icon_camera.png", size: "60"
 = render partial: "shared/footer"

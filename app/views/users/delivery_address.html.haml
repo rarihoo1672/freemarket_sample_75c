@@ -53,15 +53,15 @@
               = f.label :name, "お名前（全角）"
               %span<必須
             .mypage-input
-              = f.text_field :firstname, autofocus: true,  placeholder:"例）山田"
-              = f.text_field :lastname, autofocus: true, placeholder:"例）太郎"
+              = f.text_field :firstname, value: current_user.first_name
+              = f.text_field :lastname, value: current_user.last_name
           .mypage-field
             .mypage-label
               = f.label :name, "お名前カナ（全角）"
               %span<必須
             .mypage-input
-              = f.text_field :firstname_kana, autofocus: true, placeholder:"例）ヤマダ"
-              = f.text_field :lastname_kana, autofocus: true, placeholder:"例）タロウ"
+              = f.text_field :firstname_kana, value: current_user.firstname_kana
+              = f.text_field :lastname_kana, value: current_user.lastname_kana
           .mypage-field
             .mypage-label
               = f.label :post_nunber, "郵便番号"
