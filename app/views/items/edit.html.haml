@@ -16,11 +16,18 @@
           最大10枚までアップロードできます
         .newcontainer__drop-box#exhibit__drop-box
           .exhibit__drop-box__previews#exhibit__drop-box__previews
+            - @item.images.each_with_index do |image, i|
+              - if image.persisted?
+                = image_tag image.image.url , data: { index: i }, width: "100", height: "100"
           .exhibit__drop-box__uploader#exhibit__drop-box__uploader
             %label.exhibit__drop-box__uploader__label#exhibit__drop-box__uploader__label
               =f.fields_for :images do |image|
+                - if @item.persisted?
+                  =image.check_box :_destroy, data: { index: image.index }, class: 'hidden-destroy'
                 .img-file_group{"data-index" => "#{image.index()}"}
-                  = image.file_field :image ,type: 'file', value: "",class: "secret-image img-file"
+                  = image.file_field :image ,type: 'file', value: "",class: 'secret-image img-file'
+                  .img-remove
+                    削除
         .input-error#item_image_error
 
 
@@ -59,10 +66,20 @@
                 %span.new-container__body__detail-box__category__label__text--need.content-label__text--need
                   必須
             .new-container__body__detail-box__category__select.form-select
-              = f.collection_select :category_id, Category.roots, :id , :name, {prompt: true}, {class: "content-form__input", id: "parent-form"} 
+              = f.collection_select :category_id, Category.roots, :id, :name, {selected: @item.category.parent.parent.id, prompt: true}, {class: "content-form__input", id: "parent-form"}
               %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
-            .input-error#item_category_index_id_error
+              .new-container__body__detail-box__category__added#children_wrapper
+                .new-container__body__detail-box__category__select
+                  = f.collection_select :category_id, @item.category.parent.parent.children, :id, :name, {selected: @item.category.parent.id, prompt: true}, {class: "content-form__input", id: "child_form"}
+                  %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
+                .new-container__body__detail-box__category__select__grandchildren
+                  .new-container__body__detail-box__category__added#grandchildren_wrapper
+                    .new-container__body__detail-box__category__select
+                      = f.collection_select :category_id, @item.category.parent.children, :id, :name, {selected: @item.category.id, prompt: true}, {class: "content-form__input", id: "grandchild-form"}
+                      %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
+                      .new-container__body__detail-box__category__select__grandchildren
 
+            .input-error#item_category_index_id_error
         .new-container__body__detail-box__item-size.content-box
           .new-container__body__detail-box__item-size__label.content-label
             %p.new-container__body__detail-box__item-size__label__text.content-label__text
@@ -70,7 +87,7 @@
               %span.new-container__body__detail-box__item-size__label__text--need.content-label__text--need
                 必須
           .new-container__body__detail-box__item-size__form.content-form.form-select
-            = f.select( :size, [['S', 1], ['M', 2], ['L', 3], ['LL', 4]], {prompt: true}, {class: "content-form__input"} )
+            = f.select( :size, [['S', 1], ['M', 2], ['L', 3], ['LL', 4]], {prompt: true, selected: @size}, {class: "content-form__input"} )
             %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
           .input-error#item_item-size_error
 
@@ -91,7 +108,7 @@
               %span.new-container__body__detail-box__item-status__label__text--need.content-label__text--need
                 必須
           .new-container__body__detail-box__item-status__form.content-form.form-select
-            = f.select( :status, [['新品、未使用', 1], ['未使用に近い', 2], ['目立った傷や汚れなし', 3], ['やや傷や汚れあり', 4], ['傷や汚れあり', 5], ['全体的に状態が悪い', 6]], {prompt: true}, {class: "content-form__input"} )
+            = f.select( :status, [['新品、未使用', 1], ['未使用に近い', 2], ['目立った傷や汚れなし', 3], ['やや傷や汚れあり', 4], ['傷や汚れあり', 5], ['全体的に状態が悪い', 6]], {prompt: true, selected: @status}, {class: "content-form__input"} )
             %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
           .input-error#item_item-status_error
 
@@ -107,7 +124,7 @@
                 必須
 
           .new-container__body__delivary-box__shipping-cost__select.form-select
-            = f.select( :shipping_cost, [['送料込み（出品者負担）', 1], ['着払い（購入者負担）', 2]], {prompt: true}, {class: "form-select__down"} )
+            = f.select( :shipping_cost, [['送料込み（出品者負担）', 1], ['着払い（購入者負担）', 2]], {prompt: true, selected: @shipping_cost}, {class: "form-select__down"} )
             %i.fas.fa-angle-down.new-container__body__delivary-box__shipping-days__select--icon.form-select--icon
           .input-error#item_shipping-cost_error
 
@@ -133,7 +150,7 @@
                 必須
 
           .new-container__body__delivary-box__shipping-days__select.form-select
-            = f.select( :shipping_days, [['1~2日で発送', 1],['2~3日で発送', 2],['4~7日で発送', 3]], {prompt: true}, {class: "form-select__down"} )
+            = f.select( :shipping_days, [['1~2日で発送', 1],['2~3日で発送', 2],['4~7日で発送', 3]], {prompt: true, selected: @shipping_days}, {class: "form-select__down"} )
             %i.fas.fa-angle-down.new-container__body__delivary-box__shipping-days__select--icon.form-select--icon
           .input-error#item_shipping-days_error
 
@@ -178,7 +195,7 @@
 
       .new-container__body__links-box
         .new-container__body__links-box__submit
-          = f.submit value: "出品する",  class: "new-container__body__links-box__submit__btn"
+          = f.submit value: "編集する",  class: "new-container__body__links-box__submit__btn"
         .new-container__body__links-box__back
           = link_to "戻る", "/", class: "new-container__body__links-box__back__btn"
 

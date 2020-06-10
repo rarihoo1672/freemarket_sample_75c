@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   it "message,user_id,item_idがあれば有効" do
-    user = FactoryBot.build(:user)
-    item = FactoryBot.build(:item)
+    user = create(:user)
+    category = create(:category)
+    item = create(:item, user_id: user.id, category_id: category.id)
     comment = Comment.new(
       message: "test",
       user_id: user.id,

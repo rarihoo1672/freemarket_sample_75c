@@ -3,10 +3,10 @@ FactoryBot.define do
     name           {"ピーコート"}
     price          {"1000"}
     introduction   {"これはTシャツです。"}
-    status         {"新品"}
-    size           {"L"}
-    shipping_cost  {"送料込み"}
-    shipping_days  {"3〜4日で発送"}
+    status         {"1"}
+    size           {"1"}
+    shipping_cost  {"1"}
+    shipping_days  {"1"}
     user_id        {"1"}
     prefecture_id  {"1"}
   end
