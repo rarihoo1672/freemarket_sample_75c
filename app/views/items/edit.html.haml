@@ -69,11 +69,28 @@
                 %span.new-container__body__detail-box__category__label__text--need.content-label__text--need
                   必須
             .new-container__body__detail-box__category__select.form-select
-              = f.collection_select :category_id, Category.roots, :id , :name, {prompt: true}, {class: "content-form__input", id: "parent-form"} 
+              = f.collection_select :category_id, Category.roots, :id, :name, {selected: @item.category.parent.parent.id, prompt: true}, {class: "content-form__input", id: "parent-form"}
               %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
-            .input-error#item_category_index_id_error
+              .new-container__body__detail-box__category__added#children_wrapper
+                .new-container__body__detail-box__category__select
+                  = f.collection_select :category_id, @item.category.parent.parent.children, :id, :name, {selected: @item.category.parent.id, prompt: true}, {class: "content-form__input", id: "child-form"}
+                  %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
+                .new-container__body__detail-box__category__select__grandchildren
+                  .new-container__body__detail-box__category__added#grandchildren_wrapper
+                    .new-container__body__detail-box__category__select
+                      = f.collection_select :category_id, @item.category.parent.children, :id, :name, {selected: @item.category.id, prompt: true}, {class: "content-form__input", id: "grandchild-form"}
+                      %i.fas.fa-angle-down.new-container__body__detail-box__category__select--icon.form-select--icon
+                      .new-container__body__detail-box__category__select__grandchildren
 
+
+
+
+
+
+
+            .input-error#item_category_index_id_error
         .new-container__body__detail-box__item-size.content-box
+       
           .new-container__body__detail-box__item-size__label.content-label
             %p.new-container__body__detail-box__item-size__label__text.content-label__text
               サイズ
