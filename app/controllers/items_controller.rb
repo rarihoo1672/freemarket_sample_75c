@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   require 'payjp'
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_item, only: [:edit, :update, :show, :purchase, :pay, :done]
+  before_action :set_item, only: [:edit, :update, :show, :purchase, :pay, :done, :destroy]
   before_action :set_image, only: [:purchase, :done]
   before_action :set_card, only: [:purchase, :pay]
   before_action :size, :status, :shipping_cost, :shipping_days, only: [:edit]
