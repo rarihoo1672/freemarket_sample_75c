@@ -77,22 +77,36 @@
             %span 0
     .mypage-contents
       %ul.mypage-tabs
-        %li.mypage-tabs__tab
-          %h3
-            = link_to "#" do
-              取引中
-        %li.mypage-tabs__tab
-          %h3
-            = link_to "#" do
-              過去の取引
+        %li.mypage-tabs__now
+          取引中
+        %li.mypage-tabs__old
+          過去の取引
       .tab-content
-        %ul.content-action-now
-          %li.not-found
-            取引中の商品がありません
-        %ul.content-action-old
-          %li.not-found
-            過去に取引した商品がありません
+        .tab-content__left
+          - if @sell_items != ""
+            %ul.found-action
+              %li.found
+                - @sell_items.each do |sell|
+                  = link_to user_path(@user.id), class: 'tab__link' do
+                    = image_tag ("#{sell.images.first.image}"), size:"220x150",class: 'pick-img'
+          - else
+            %ul.notfound-action
+              %li.not-found
+              取引中の商品がありません
 
+        .tab-content__right
+          - if @sold_items != ""
+            %ul.found-action
+              %li.found
+                - @sold_items.each do |sold|
+                  = link_to user_path(@user.id) do
+                    = image_tag ("#{sold.images.first.image}"), size:"220x150",class: 'pick-img'
+          - else
+            %ul.notfound-action
+              = image_tag asset_path('logo/logo.png'), size: "150×40",class: 'pick-img'
+              %li.not-found
+                過去に取引した商品がありません
+                    
 .suggestApp
   .suggestDl
     .suggestDl__text

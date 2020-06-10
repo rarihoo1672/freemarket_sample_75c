@@ -72,15 +72,20 @@
           .mypage-field
             .mypage-label
               = f.label :name, "お名前（全角）"
-              %p.info<柏井麻希
+            .mypage-input
+              = f.text_field :firstname, value: current_user.first_name
+              = f.text_field :lastname, value: current_user.last_name
           .mypage-field
             .mypage-label
               = f.label :name, "お名前カナ（全角）"
-              %p.info<カシワイマキ
+            .mypage-input
+              = f.text_field :firstname_kana, value: current_user.firstname_kana
+              = f.text_field :lastname_kana, value: current_user.lastname_kana
           .mypage-field
             .mypage-label
               = f.label :birth_year, "生年月日"
-              %p.info<1994/05/29
+            .mypage-input
+              = f.text_field :firstname_kana, value: current_user.birth_day
           .mypage-field
             .mypage-label
               = f.label :post_nunber, "郵便番号"
