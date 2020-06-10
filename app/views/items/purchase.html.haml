@@ -1,3 +1,5 @@
+= render partial: "devise/shared/header";
+
 .purchase--item
   .content
     %h2
@@ -26,3 +28,5 @@
     .content__main
       = form_tag(action: :pay, method: :post) do
         = submit_tag "購入する", class: "button"
+
+= render partial: "devise/shared/footer";

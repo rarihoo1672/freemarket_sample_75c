@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   has_many :images, dependent: :destroy
   belongs_to :category
   has_one :brand, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   accepts_nested_attributes_for :brand, allow_destroy:true
 
