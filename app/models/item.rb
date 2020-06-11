@@ -22,7 +22,6 @@ class Item < ApplicationRecord
   validates :prefecture_id,  presence: true
   validates :user_id,        presence: true
   validates :category_id,    presence: true
-  # validates :images, length: {minimum: 1, maximum: 10}
   enum buyer: { sell: 0, buy: 1}
   scope :on_sell, -> { where(buyer: 0) }
 
