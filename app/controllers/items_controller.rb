@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.on_sell.includes([:images]).order(created_at: :desc)
     @ladies_items = Item.where(category_id: 1..199).limit(3)
-    @mens_items = Item.where(category_id: 200..345).limit(3)
+    @item_lists = Item.where.not(category_id: 1..199).limit(3)
   end
 
   def new

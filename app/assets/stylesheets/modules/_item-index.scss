@@ -295,7 +295,7 @@
     }
   }
   //ピックアップブランド
-  .brandPick {
+  .listsPick {
     width: 100%;
     height: 100%;
     background-color: #f8f8f8;
@@ -323,8 +323,13 @@
     }
     &__image {
       background-color: #fff;
+      width: 220px;
+      &__title {
+        height: 25px;
+        overflow: scroll;
+      }
     }
-    #brandPick-center {
+    #listsPick-center {
       margin :0 40px;
     }
     .tax{
