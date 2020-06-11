@@ -102,18 +102,21 @@
             %p.tax
               (税込み)
 
-    .brandPick
-      .brandPick__text
-        .brandPick__text__tittle
-          -# ピックアップブランド
-        =link_to "メンズアイテム", root_path, class:"brandPick__text__archive"
-      .brandPick__images
-        - @mens_items.each do |item|
-          .brandPick__image
+    .listsPick
+      .listsPick__text
+        .listsPick__text__tittle
+          商品一覧
+      .listsPick__images
+        - @item_lists.each do |item|
+          .listsPick__image
             = link_to item_path(item.id) do
               = image_tag ("#{item.images.first.image}"), size:"220x150",class: 'pick-img'
-            %p
+            %p.listsPick__image__title
               = item.name
+            %p
+              = item.category.parent.parent.name
+            %p
+              = item.category.name
             %p
               = "¥" + item.price.to_s
             %p.tax
