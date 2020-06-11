@@ -281,14 +281,38 @@
       }
     }
     &__images {
-    display: flex;
-    justify-content: space-around;
-    margin: 0 auto;
-    width: 780px;
-    margin-top: 26px;
-    }
-    &__image {
-      background-color: #fff;
+      display: flex;
+      justify-content: space-around;
+      margin: 0 auto;
+      width: 780px;
+      margin-top: 26px;
+      .itemPick__image {
+        background-color: #fff;
+        position: relative;
+        .items-box_photo__sold{
+          width: 0;
+          height: 0;
+          border-width: 120px 120px 0 0;
+          border-color: #ea352d transparent transparent transparent;
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          border-style: solid;
+          &__inner{
+            top: -95px;
+            font-size: 30px;
+            position: absolute;
+            left: 0;
+            z-index: 2;
+            color: #fff;
+            transform: rotate(-45deg);
+            letter-spacing: 2px;
+            font-weight: 600;
+          }
+        }
+      }
     }
     .tax{
       font-size: 10px;
@@ -315,20 +339,42 @@
       }
     }
     &__images {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin: 0 auto;
-    width: 780px;
-
-    }
-    &__image {
-      margin: 20px;
-      background-color: #fff;
-      width: 220px;
-      &__title {
-        height: 25px;
-        overflow: scroll;
+      display: flex;
+      justify-content: space-around;
+      margin: 0 auto;
+      width: 780px;
+      margin-top: 26px;
+      .listsPick__image {
+        background-color: #fff;
+        width: 220px;
+        position: relative;
+        .items-box_photo__sold{
+          width: 0;
+          height: 0;
+          border-width: 120px 120px 0 0;
+          border-color: #ea352d transparent transparent transparent;
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          border-style: solid;
+          &__inner{
+            top: -95px;
+            font-size: 30px;
+            position: absolute;
+            left: 0;
+            z-index: 2;
+            color: #fff;
+            transform: rotate(-45deg);
+            letter-spacing: 2px;
+            font-weight: 600;
+          }
+        }
+        &__title {
+          height: 25px;
+          overflow: scroll;
+        }
       }
     }
     #listsPick-center {
