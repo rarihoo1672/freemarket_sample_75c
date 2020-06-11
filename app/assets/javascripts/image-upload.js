@@ -1,9 +1,8 @@
 $(document).on('turbolinks:load', ()=> {
   const buildFileField = (index) => {
-    console.log(index)
     const html = `
         <div data-index="${index}" class="img-file_group">
-          <input class="img-file" type="file" name="item[images_attributes][${index}][image]" id="item_images_attributes_${index}_image"><br>
+          <input class="secret-image img-file" type="file" name="item[images_attributes][${index}][image]" id="item_images_attributes_${index}_image"><br>
           <div class="exhibit__drop-box__previews__preview__delete img-remove">
             削除
           </div>
@@ -18,7 +17,6 @@ $(document).on('turbolinks:load', ()=> {
 
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
   lastIndex = $('.img-file_group:last').data('index');
-  console.log(lastIndex)
   fileIndex.splice(0, lastIndex);
 
   $('.hidden-destroy').hide();
@@ -40,16 +38,11 @@ $(document).on('turbolinks:load', ()=> {
 
   $("#exhibit__drop-box").on('click','.img-remove', function() {
     const targetIndex = $(this).parent().data('index');
-    console.log(targetIndex)
-    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
-    console.log(hiddenCheck)
-    // hiddenCheck.prop('checked', true);
     $(`#item_images_attributes_${targetIndex}__destroy`).prop('checked', true);
 
     $(this).parent().remove();
     $(`#item_images_attributes_${targetIndex}_image`).remove()
     $(`img[data-index="${targetIndex}"]`).remove();
-    // $(`img[data-index="${targetIndex}"]`).val("")
 
     if($(".img-file").length == 0) $("#exhibit__drop-box").append(buildFileField(fileIndex[0]));
   });
