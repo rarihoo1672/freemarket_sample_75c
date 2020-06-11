@@ -99,9 +99,11 @@
               .items-box_photo__sold
                 .items-box_photo__sold__inner
                   SOLD
-            %p
+            %p.itemPick__image__title
               = item.name
-            %p
+            %p.itemPick__image__title
+              = item.category.name
+            %p.itemPick__image__title
               = "¥" + item.price.to_s
             %p.tax
               (税込み)
@@ -121,9 +123,9 @@
                   SOLD
             %p.listsPick__image__title
               = item.name
-            %p
+            %p.listsPick__image__title
               = item.category.parent.parent.name
-            %p
+            %p.listsPick__image__title
               = item.category.name
             %p
               = "¥" + item.price.to_s

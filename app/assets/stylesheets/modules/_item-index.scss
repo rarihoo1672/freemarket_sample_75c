@@ -289,6 +289,11 @@
       .itemPick__image {
         background-color: #fff;
         position: relative;
+        width: 220px;
+        &__title {
+          height: 25px;
+          overflow: scroll;
+        }
         .items-box_photo__sold{
           width: 0;
           height: 0;
