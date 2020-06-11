@@ -66,27 +66,26 @@
           過去の取引
       .tab-content
         .tab-content__left
-          - if @sell_items != ""
+          - if @sell_items.present?
             %ul.found-action
               %li.found
                 - @sell_items.each do |sell|
-                  = link_to user_path(@user.id), class: 'tab__link' do
-                    = image_tag ("#{sell.images.first.image}"), size:"220x150",class: 'pick-img'
+                  = link_to item_path(sell.id), class: 'tab__link' do
+                    = image_tag asset_path(sell.images.first.image), size:"220x150",class: 'pick-img'
           - else
             %ul.notfound-action
               %li.not-found
-              取引中の商品がありません
+                取引中の商品がありません
 
         .tab-content__right
-          - if @sold_items != ""
+          - if @sold_items.present?
             %ul.found-action
               %li.found
                 - @sold_items.each do |sold|
-                  = link_to user_path(@user.id) do
-                    = image_tag ("#{sold.images.first.image}"), size:"220x150",class: 'pick-img'
+                  = link_to item_path(sold.id) do
+                    = image_tag asset_path(sold.images.first.image), size:"220x150",class: 'pick-img'
           - else
             %ul.notfound-action
-              = image_tag asset_path('logo/logo.png'), size: "150×40",class: 'pick-img'
               %li.not-found
                 過去に取引した商品がありません
                     
