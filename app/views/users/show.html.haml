@@ -72,7 +72,7 @@
                 - @sell_items.each_with_index do |sell, i|
                   = link_to item_path(sell.id), class: 'tab__link' do
                     = image_tag asset_path(sell.images.first.image), size:"220x150",class: 'pick-img'
-                    %p
+                    %p.item_name
                       = i + 1
                       ：
                       = sell.name.truncate(15) 
@@ -87,12 +87,12 @@
             %ul.found-action
               %li.found
                 - @sold_items.each_with_index do |sold, i|
-                  = link_to item_path(sold.id) do
+                  = link_to item_path(sold.id), class: 'tab__link' do
                     = image_tag asset_path(sold.images.first.image), size:"220x150",class: 'pick-img'
-                    %p
+                    %p.item_name
                       = i + 1
                       ：
-                      = sell.name.truncate(15) 
+                      = sold.name.truncate(15) 
           - else
             %ul.notfound-action
               %li.not-found

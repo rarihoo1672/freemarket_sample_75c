@@ -585,6 +585,9 @@
           position: relative;
           color: #ccc;
           font-weight: bold;
+          .item_name {
+            margin-bottom: 7px;
+          }
         }
       }
     }

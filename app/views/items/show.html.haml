@@ -145,7 +145,7 @@
             相手のことを考え丁寧なコメントを心がけましょう。
             %br
               不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          - if user_signed_in?
+          - if user_signed_in? && @item.buyer == "sell"
             %input{name: "current_user_nickname", type: "hidden", value: current_user.user_image, id: 'current_user' }
             = f.text_field :message,  class:"showcontainer__messages__box__form__text", id: "form-input", placeholder: "35文字以内",maxlength:"35"
 
@@ -153,8 +153,11 @@
             %button{ type: "submit", class: "showcontainer__messages__box__form__btn form-submit show-a" }
               %i.fas.fa-comment
               コメントする
+          - elsif @item.buyer == "buy"
+            %p.showcontainer__messages__box__form__notice
+              SOLD済みの商品には、コメントできません
           - else
-            .detail-comment-box__login
+            %p.showcontainer__messages__box__form__notice
               コメントにはログインが必要です
 
 
