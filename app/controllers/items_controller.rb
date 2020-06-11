@@ -34,7 +34,6 @@ class ItemsController < ApplicationController
     if @item.user != current_user
       redirect_to root_path
     else
-      @item.images.new
     end
   end
 
