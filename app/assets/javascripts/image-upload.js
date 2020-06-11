@@ -43,6 +43,7 @@ $(document).on('turbolinks:load', ()=> {
     if(hiddenCheck) hiddenCheck.prop('checked', true);
 
     $(this).parent().remove();
+    $(`#item_images_attributes_${targetIndex}_image`).remove()
     $(`img[data-index="${targetIndex}"]`).remove();
 
     if($(".img-file").length == 0) $("#exhibit__drop-box").append(buildFileField(fileIndex[0]));
