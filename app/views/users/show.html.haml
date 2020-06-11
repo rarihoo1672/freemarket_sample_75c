@@ -71,7 +71,7 @@
               %li.found
                 - @sell_items.each do |sell|
                   = link_to item_path(sell.id), class: 'tab__link' do
-                    = image_tag ("#{sell.images.first.image}"), size:"220x150",class: 'pick-img'
+                    = image_tag asset_path(sell.images.first.image), size:"220x150",class: 'pick-img'
           - else
             %ul.notfound-action
               %li.not-found
@@ -83,7 +83,7 @@
               %li.found
                 - @sold_items.each do |sold|
                   = link_to item_path(sold.id) do
-                    = image_tag ("#{sold.images.first.image}"), size:"220x150",class: 'pick-img'
+                    = image_tag asset_path(sold.images.first.image), size:"220x150",class: 'pick-img'
           - else
             %ul.notfound-action
               %li.not-found
