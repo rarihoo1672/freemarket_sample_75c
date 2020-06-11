@@ -69,9 +69,14 @@
           - if @sell_items.present?
             %ul.found-action
               %li.found
-                - @sell_items.each do |sell|
+                - @sell_items.each_with_index do |sell, i|
                   = link_to item_path(sell.id), class: 'tab__link' do
                     = image_tag asset_path(sell.images.first.image), size:"220x150",class: 'pick-img'
+                    %p
+                      = i + 1
+                      ：
+                      = sell.name.truncate(15) 
+
           - else
             %ul.notfound-action
               %li.not-found
@@ -81,9 +86,13 @@
           - if @sold_items.present?
             %ul.found-action
               %li.found
-                - @sold_items.each do |sold|
+                - @sold_items.each_with_index do |sold, i|
                   = link_to item_path(sold.id) do
                     = image_tag asset_path(sold.images.first.image), size:"220x150",class: 'pick-img'
+                    %p
+                      = i + 1
+                      ：
+                      = sell.name.truncate(15) 
           - else
             %ul.notfound-action
               %li.not-found
