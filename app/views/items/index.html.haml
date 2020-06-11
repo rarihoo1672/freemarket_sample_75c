@@ -95,6 +95,10 @@
           .itemPick__image
             = link_to item_path(item.id) do
               = image_tag ("#{item.images.first.image}"), size:"220x150",class: 'pick-img'
+            - if item.buyer == "buy"
+              .items-box_photo__sold
+                .items-box_photo__sold__inner
+                  SOLD
             %p
               = item.name
             %p
@@ -111,6 +115,10 @@
           .listsPick__image
             = link_to item_path(item.id) do
               = image_tag ("#{item.images.first.image}"), size:"220x150",class: 'pick-img'
+            - if item.buyer == "buy"
+              .items-box_photo__sold
+                .items-box_photo__sold__inner
+                  SOLD
             %p.listsPick__image__title
               = item.name
             %p
