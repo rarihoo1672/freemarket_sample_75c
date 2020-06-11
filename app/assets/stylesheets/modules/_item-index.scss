@@ -316,12 +316,14 @@
     }
     &__images {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     margin: 0 auto;
     width: 780px;
-    margin-top: 26px;
+
     }
     &__image {
+      margin: 20px;
       background-color: #fff;
       width: 220px;
       &__title {
