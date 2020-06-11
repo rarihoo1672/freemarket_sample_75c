@@ -14,20 +14,41 @@
               必須
         .new-container__body__image-box__limit
           最大10枚までアップロードできます
-        .newcontainer__drop-box#exhibit__drop-box
-          .exhibit__drop-box__previews#exhibit__drop-box__previews
-            - @item.images.each_with_index do |image, i|
-              - if image.persisted?
-                = image_tag image.image.url , data: { index: i }, width: "100", height: "100"
-          .exhibit__drop-box__uploader#exhibit__drop-box__uploader
-            %label.exhibit__drop-box__uploader__label#exhibit__drop-box__uploader__label
-              =f.fields_for :images do |image|
-                - if @item.persisted?
-                  =image.check_box :_destroy, data: { index: image.index }, class: 'hidden-destroy'
-                .img-file_group{"data-index" => "#{image.index()}"}
-                  = image.file_field :image ,type: 'file', value: "",class: 'secret-image img-file'
-                  .img-remove
-                    削除
+        .post__drop__box__container
+          .prev-content
+            //JSで挿入したhtmlと同じ形 each文でのプレビュー表示
+            - @item.images.each do |image|
+              .preview-box
+                .upper-box
+                  = image_tag image.image.url, width: "112", height: "112", alt: "preview"
+                .lower-box
+                  .update-box
+                    %label.edit-btn 編集
+                  .delete-box
+                    .delete-btn
+                      %span 削除
+          .label-content
+            //プレビューの数に合わせてforオプションを指定
+            = f.label :"images_attributes_#{@item.images.length}_image", class: "label-box", id: "label-box--#{@item.images.length}" do
+              %pre.label-box__text-visible クリックしてファイルをアップロード
+          .hidden-content
+            = f.fields_for :images do |i|
+              //プレビューが出ている分のfile_fieldとdelete用のチェックボックスを設置
+              = i.file_field :image, class: "hidden-field"
+              = i.check_box:_destroy, class: "hidden-checkbox"
+              //5つのfile_fieldを準備するに当たって、足りない分を表示
+            - @item.images.length.upto(4) do |i|
+              %input{name: "item[images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
+
+
+
+
+
+
+
+
+
+
         .input-error#item_image_error
 
 
@@ -195,7 +216,11 @@
 
       .new-container__body__links-box
         .new-container__body__links-box__submit
+<<<<<<< Updated upstream
           = f.submit value: "編集する",  class: "new-container__body__links-box__submit__btn"
+=======
+          = f.submit value: "出品する",  class: "new-container__body__links-box__submit__btn"
+>>>>>>> Stashed changes
         .new-container__body__links-box__back
           = link_to "戻る", "/", class: "new-container__body__links-box__back__btn"
 
