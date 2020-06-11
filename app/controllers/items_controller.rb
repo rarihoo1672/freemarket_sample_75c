@@ -33,13 +33,11 @@ class ItemsController < ApplicationController
   def edit
     if @item.user != current_user
       redirect_to root_path
-    else
-      @item.images.new
     end
   end
 
   def update
-    if @item.update(item_params)
+    if @item.update!(item_params)
       redirect_to root_path
     else
       render :edit

@@ -6,6 +6,7 @@
 
   = form_with model: @item, local: true do |f|
     .new-container__body
+
       .new-container__body__image-box.contents-box
         .new-container__body__image-box__label.content-label
           %p.new-container__body__image-box__label__text.content-label__text
@@ -16,20 +17,19 @@
           最大10枚までアップロードできます
         .newcontainer__drop-box#exhibit__drop-box
           .exhibit__drop-box__previews#exhibit__drop-box__previews
-            - @item.images.each_with_index do |image, i|
-              - if image.persisted?
+            - if @item.persisted?
+              - @item.images.each_with_index do |image, i|
                 = image_tag image.image.url , data: { index: i }, width: "100", height: "100"
-          .exhibit__drop-box__uploader#exhibit__drop-box__uploader
-            %label.exhibit__drop-box__uploader__label#exhibit__drop-box__uploader__label
-              =f.fields_for :images do |image|
-                - if @item.persisted?
-                  =image.check_box :_destroy, data: { index: image.index }, class: 'hidden-destroy'
-                .img-file_group{"data-index" => "#{image.index()}"}
-                  = image.file_field :image ,type: 'file', value: "",class: 'secret-image img-file'
-                  .img-remove
-                    削除
-        .input-error#item_image_error
-
+          = f.fields_for :images do |image|
+            .img-file_group{"data-index" => "#{image.index}"}
+              = image.file_field :image ,type: 'file', value: "",class: 'img-file'
+              .img-remove 削除
+            - if @item.persisted?
+              =image.check_box :_destroy, data: { index: image.index }, class: 'hidden-destroy'
+          - if @item.persisted?
+            .img-file_group{"data-index" => "#{@item.images.count}"}
+              = file_field_tag :image ,name: "item[images_attributes][#{@item.images.count}][image]", class: 'secret-image img-file'
+              .img-remove 削除
 
       .new-container__body__intro-box.contents-box
         .new-container__body__intro-box__item-name.content-box
@@ -195,7 +195,7 @@
 
       .new-container__body__links-box
         .new-container__body__links-box__submit
-          = f.submit value: "編集する",  class: "new-container__body__links-box__submit__btn"
+          = f.submit value: "完了",  class: "new-container__body__links-box__submit__btn"
         .new-container__body__links-box__back
           = link_to "戻る", "/", class: "new-container__body__links-box__back__btn"
 

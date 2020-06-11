@@ -1,9 +1,8 @@
 $(document).on('turbolinks:load', ()=> {
   const buildFileField = (index) => {
     const html = `
-        <div class="exhibit__drop-box__previews" id="exhibit__drop-box__previews"></div>
         <div data-index="${index}" class="img-file_group">
-          <input class="img-file" type="file" name="item[images_attributes][${index}][image]" id=#item_images_attributes_${index}_image"><br>
+          <input class="secret-image img-file" type="file" name="item[images_attributes][${index}][image]" id="item_images_attributes_${index}_image"><br>
           <div class="exhibit__drop-box__previews__preview__delete img-remove">
             削除
           </div>
@@ -39,10 +38,10 @@ $(document).on('turbolinks:load', ()=> {
 
   $("#exhibit__drop-box").on('click','.img-remove', function() {
     const targetIndex = $(this).parent().data('index');
-    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
-    if(hiddenCheck) hiddenCheck.prop('checked', true);
+    $(`#item_images_attributes_${targetIndex}__destroy`).prop('checked', true);
 
     $(this).parent().remove();
+    $(`#item_images_attributes_${targetIndex}_image`).remove()
     $(`img[data-index="${targetIndex}"]`).remove();
 
     if($(".img-file").length == 0) $("#exhibit__drop-box").append(buildFileField(fileIndex[0]));
