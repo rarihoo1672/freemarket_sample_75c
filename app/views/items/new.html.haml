@@ -14,13 +14,18 @@
               必須
         .new-container__body__image-box__limit
           最大10枚までアップロードできます
-        .newcontainer__drop-box#exhibit__drop-box
-          .exhibit__drop-box__previews#exhibit__drop-box__previews
-          .exhibit__drop-box__uploader#exhibit__drop-box__uploader
-            %label.exhibit__drop-box__uploader__label#exhibit__drop-box__uploader__label
-              =f.fields_for :images do |image|
-                .img-file_group{"data-index" => "#{image.index()}"}
-                  = image.file_field :image ,type: 'file', value: "",class: "secret-image img-file"
+        .post__drop__box__container
+          .prev-content
+          .label-content
+            %label{for: "item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
+              %pre.label-box__text-visible クリックしてファイルをアップロード
+          .hidden-content
+            = f.fields_for :images do |i|
+              = i.file_field :image, class: "hidden-field"
+              %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][image]", id: "item_images_attributes_1_image" }
+              %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_2_image" }
+              %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][image]", id: "item_images_attributes_3_image" }
+              %input{class:"hidden-field", type: "file", name: "item[images_attributes][4][image]", id: "item_images_attributes_4_image" }
         .input-error#item_image_error
 
 
