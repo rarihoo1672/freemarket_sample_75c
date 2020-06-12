@@ -157,7 +157,7 @@
             .new-container__body__price-box__selling-price__wrapper__form.content-form
               %p
                 ¥
-              = f.number_field :price, class:"new-container__body__price-box__selling-price__wrapper__form__input content-form__input", id:"item_price", placeholder: 0
+              = f.number_field :price, class:"new-container__body__price-box__selling-price__wrapper__form__input content-form__input", id:"item_price", placeholder: 0, maxlength: 7
 
             .input-error#item_selling-price_error
 
