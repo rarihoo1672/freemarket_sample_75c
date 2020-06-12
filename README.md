@@ -49,9 +49,6 @@
 ## 川畑 拓也
   実装内容：
 
-# 📝 ER Diagram
-
-
 # 🎨 DataBase Disign
 ## userテーブル
 |Column|Type|Options|
