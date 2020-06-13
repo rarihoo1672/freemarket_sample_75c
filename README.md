@@ -21,17 +21,17 @@
  - Pass：tech5admin777
 ### テストユーザー情報
 **購入者用アカウント**
- - Email：buyer75c@gmail.com
- - Pass：buy1234
+ - Email：buyer.sample01@gamil.com
+ - Pass： buyer1234
 
 **クレジットカード**
- - 番号：4242424242424242
+ - 番号：5105105105105100
  - 期限：12月/30年
  - cvcコード：123
 
 **出品者用アカウント**
- - Email：seller75c@gmail.com
- - Pass：sell1234
+ - Email：seller.sample01@gmail.com
+ - Pass：seller1234
 
 **※上記アカウント以外のユーザーを登録する場合は、登録したメールアドレス宛てにユーザー確認用のメールが届きます。**  
 **メール内のURLをクリックすることで、新規登録完了となります。**
