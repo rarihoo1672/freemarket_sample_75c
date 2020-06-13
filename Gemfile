@@ -116,3 +116,5 @@ gem 'fog-aws'
 #enumをi18nに対応させる
 gem 'enum_help'
 
+#er図の自動生成
+gem 'rails-erd'
