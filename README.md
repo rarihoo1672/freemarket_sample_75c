@@ -50,6 +50,7 @@
   実装内容：
 
 # 📝 ER Diagram
+[erd-4.pdf](https://github.com/rarihoo1672/freemarket_sample_75c/files/4774038/erd-4.pdf)
 
 
 # 🎨 DataBase Disign
